@@ -28,20 +28,6 @@ public class SystemExplorer implements Runnable, Cancellable {
         this.taskQueue = taskQueue;
     }
 
-    public synchronized void addDirectory(String dir) {
-        if (!directories.contains(dir)) {
-            directories.add(dir);
-        }
-    }
-
-    public void addFileToMap(File file) {
-        this.fileMap.put(file.getName(), file.lastModified());
-    }
-
-    public void removeFileFromMap(String fileName) {
-        fileMap.remove(fileName);
-    }
-
     @Override
     public void run() {
         running = true;
@@ -61,6 +47,20 @@ public class SystemExplorer implements Runnable, Cancellable {
     @Override
     public void stop() {
         running = false;
+    }
+
+    public void addDirectory(String dir) {
+        if (!directories.contains(dir)) {
+            directories.add(dir);
+        }
+    }
+
+    public void addFileToMap(File file) {
+        this.fileMap.put(file.getName(), file.lastModified());
+    }
+
+    public void removeFileFromMap(String fileName) {
+        fileMap.remove(fileName);
     }
 
     private void searchDirectories() {
@@ -101,7 +101,6 @@ public class SystemExplorer implements Runnable, Cancellable {
             synchronized (coordinatorLock) {
                 coordinatorLock.notifyAll();
             }
-
         } catch (InterruptedException e) {
             System.out.println(e.getMessage());
             System.exit(-2);

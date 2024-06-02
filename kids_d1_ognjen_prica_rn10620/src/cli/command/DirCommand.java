@@ -3,6 +3,8 @@ package cli.command;
 import cli.Command;
 import system_explorer.SystemExplorer;
 
+import java.io.File;
+
 public class DirCommand implements Command {
 
     private final SystemExplorer systemExplorer;
@@ -18,10 +20,9 @@ public class DirCommand implements Command {
 
     @Override
     public void execute(String args) {
-        String[] splitArgs = args.split(" ");
-        if (splitArgs.length != 1) {
-            System.out.println("Invalid arguments for dir. Usage: dir <directory_name>");
-            return;
+        File file = new File(args);
+        if (!file.isDirectory()) {
+            System.out.println("Directory \"" + args + "\" doesn't exist.");
         }
 
         systemExplorer.addDirectory(args);

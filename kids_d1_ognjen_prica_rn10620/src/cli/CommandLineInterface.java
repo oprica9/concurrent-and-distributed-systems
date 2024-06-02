@@ -15,10 +15,8 @@ import java.util.Scanner;
 public class CommandLineInterface implements Runnable, Cancellable {
 
     public volatile boolean running;
-
     private final CommandParser parser;
     private final CommandExecutor executor;
-
     private final TaskCoordinator taskCoordinator;
     private final SystemExplorer systemExplorer;
 

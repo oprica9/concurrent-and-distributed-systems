@@ -34,7 +34,6 @@ public class TaskCoordinator implements Runnable, Cancellable {
                         System.out.println("Sleeping");
                         coordinatorLock.wait();
                     } catch (InterruptedException e) {
-                        System.out.println("Woken up?");
                         Thread.currentThread().interrupt();
                         System.out.println(e.getMessage());
                     }

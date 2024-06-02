@@ -36,8 +36,8 @@ public class MatrixExtractor implements Cancellable {
     }
 
     public void extractMatrix(CreateTask task) {
-        System.out.println("extracting... " + task.getMatrixFile());
-        File file = task.getMatrixFile();
+        System.out.println("Extracting... " + task.matrixFile());
+        File file = task.matrixFile();
         long fileSize = file.length();
         String matrixFileLocation = file.getAbsolutePath();
 
@@ -45,7 +45,6 @@ public class MatrixExtractor implements Cancellable {
         int rows, cols;
         long startByteForProcessing = 0;
 
-        // Using try-with-resources to ensure the file is closed automatically
         try (RandomAccessFile raf = new RandomAccessFile(file, "r")) {
             // Read and parse the first line for metadata
             String firstLine = raf.readLine();
@@ -57,7 +56,7 @@ public class MatrixExtractor implements Cancellable {
             // Calculate the starting byte for chunk processing, skipping the first line
             startByteForProcessing = raf.getFilePointer();
         } catch (IOException e) {
-            throw new RuntimeException("Error reading matrix file or metadata", e);
+            throw new RuntimeException("Error reading matrix file", e);
         }
 
         Matrix matrix = new Matrix(matrixName, rows, cols, matrixFileLocation);
