@@ -11,7 +11,5 @@ public class App {
         CommandLineInterface cli = new CommandLineInterface(config);
         Thread cliThread = new Thread(cli, "command_line_interface");
         cliThread.start();
-
-        System.out.println("This?");
     }
 }

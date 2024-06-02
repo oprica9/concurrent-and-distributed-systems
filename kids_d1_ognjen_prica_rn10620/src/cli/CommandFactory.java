@@ -34,11 +34,11 @@ public class CommandFactory {
         this.commandLineInterface = commandLineInterface;
         this.taskCoordinator = taskCoordinator;
 
-        this.commandList = new ArrayList<>();
-        initCommandList();
-
         this.commandHelpList = new ArrayList<>();
         initHelp();
+
+        this.commandList = new ArrayList<>();
+        initCommandList();
     }
 
     public Command createCommand(String commandName) {

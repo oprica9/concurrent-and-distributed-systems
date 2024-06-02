@@ -22,7 +22,7 @@ public class SystemExplorer implements Runnable, Cancellable {
 
     public SystemExplorer(int sleepTime, String initialDir, TaskQueue taskQueue) {
         this.directories = new ArrayList<>();
-        directories.add(initialDir);
+        this.directories.add(initialDir);
         this.sleepTime = sleepTime;
         this.fileMap = new HashMap<>();
         this.taskQueue = taskQueue;
