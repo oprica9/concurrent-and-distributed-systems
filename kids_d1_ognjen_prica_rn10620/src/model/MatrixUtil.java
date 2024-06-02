@@ -18,26 +18,13 @@ public class MatrixUtil {
         }
     }
 
-    public static void printMatrixCompare(Matrix matrix) {
-        try (PrintWriter out = new PrintWriter(matrix.getName().toLowerCase() + ".txt")) {
-            out.printf("matrix_name=%s, rows=%d, cols=%d\n", matrix.getName(), matrix.getRows(), matrix.getCols());
-            for (int i = 0; i < matrix.getCols(); i++) {
-                for (int j = 0; j < matrix.getRows(); j++) {
-                    if (matrix.get(j, i).compareTo(BigInteger.ZERO) != 0)
-                        out.printf("%d,%d = %s \n", j, i, matrix.get(j, i));
-                }
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static File saveMatrix(Matrix matrix, String fileName) {
         try (PrintWriter out = new PrintWriter(fileName + ".rix")) {
             out.printf("matrix_name=%s, rows=%d, cols=%d\n", matrix.getName(), matrix.getRows(), matrix.getCols());
             for (int i = 0; i < matrix.getCols(); i++) {
                 for (int j = 0; j < matrix.getRows(); j++) {
-                    out.printf("%d,%d = %s \n", j, i, matrix.get(i, j));
+                    if (matrix.get(j, i).compareTo(BigInteger.ZERO) != 0)
+                        out.printf("%d,%d = %s \n", j, i, matrix.get(j, i));
                 }
             }
         } catch (FileNotFoundException e) {
@@ -84,6 +71,52 @@ public class MatrixUtil {
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public static void multiplyMatrix(Matrix m1, Matrix m2) {
+        int i, j, k;
+
+        // Print the matrices m1 and m2
+//        System.out.println("\nMatrix m1:");
+//        printMatrix(m1);
+//        System.out.println("\nMatrix m2:");
+//        printMatrix(m2);
+
+        int row1 = m1.getRows();
+        int col1 = m1.getCols();
+
+        int row2 = m2.getRows();
+        int col2 = m2.getCols();
+
+        // Check if multiplication is Possible
+        if (row2 != col1) {
+
+            System.out.println(
+                    "\nMultiplication Not Possible");
+            return;
+        }
+
+        // Matrix to store the result
+        // The product matrix will
+        // be of size row1 x col2
+        Matrix matrix = new Matrix("Test", row1, col2, "location");
+
+        // Multiply the two matrices
+        for (i = 0; i < row1; i++) {
+            for (j = 0; j < col2; j++) {
+                for (k = 0; k < row2; k++) {
+                    BigInteger ik = new BigInteger(m1.get(i, k) + "");
+                    BigInteger kj = new BigInteger(m2.get(k, j) + "");
+                    BigInteger val = ik.multiply(kj);
+                    matrix.insert(i, j, matrix.get(i, j).add(val));
+                }
+            }
+        }
+
+        // Print the result
+//        System.out.println("\nResultant Matrix:");
+//        printMatrix(matrix);
+        saveMatrix(matrix, "SACUVAN");
     }
 
 }

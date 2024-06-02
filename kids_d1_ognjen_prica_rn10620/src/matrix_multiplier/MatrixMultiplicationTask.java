@@ -19,8 +19,7 @@ public class MatrixMultiplicationTask implements Callable<Matrix> {
     }
 
     @Override
-    public Matrix call() throws Exception {
-        int rows1 = matrix1.getRows();
+    public Matrix call() {
         int cols2 = matrix2.getCols();
         int cols1 = matrix1.getCols();
         BigInteger[][] product = new BigInteger[endRow - startRow][cols2];

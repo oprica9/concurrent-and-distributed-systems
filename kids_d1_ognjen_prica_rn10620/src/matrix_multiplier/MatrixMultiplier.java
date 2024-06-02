@@ -4,6 +4,7 @@ import app.Cancellable;
 import exceptions.MatrixDimensionException;
 import matrix_brain.MatrixBrain;
 import model.Matrix;
+import model.MatrixUtil;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -52,7 +53,6 @@ public class MatrixMultiplier implements Cancellable {
                 System.arraycopy(partialResult.getMatrix(), 0, finalProduct, startRow, partialResult.getMatrix().length);
             }
 
-            // Optionally add the result to MatrixBrain here or handle it outside based on the future's completion
             return new Matrix(name, finalProduct);
         });
 

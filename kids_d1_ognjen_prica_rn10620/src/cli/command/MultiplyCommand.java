@@ -5,6 +5,7 @@ import exceptions.MatrixDimensionException;
 import matrix_brain.MatrixBrain;
 import matrix_multiplier.MultiplyTask;
 import model.Matrix;
+import model.MatrixUtil;
 import queue.TaskQueue;
 
 import static context.Locks.coordinatorLock;
@@ -83,9 +84,7 @@ public class MultiplyCommand implements Command {
 
         // it's getting there
         if (matrixBrain.isMultiplicationOngoing(m1, m2)) {
-            System.out.println("ongoing");
             if (async) {
-                System.out.println("async");
                 System.out.println("Slow down there buckaroo, its multiplying...");
                 return;
             }

@@ -53,6 +53,8 @@ public class MatrixBrain implements Cancellable {
             int i = completedMatrices.indexOf(matrix);
             completedMatrices.get(i).update(matrix);
         } else {
+//            if (matrix.getName().equals("A1"))
+//                MatrixUtil.printMatrixCompare(matrix);
             completedMatrices.add(matrix);
             if (matrix.getLocation() != null) {
                 fileNameMatrixName.put(matrix.getLocation().substring(matrix.getLocation().lastIndexOf("\\") + 1), matrix.getName());

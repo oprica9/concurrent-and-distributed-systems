@@ -75,7 +75,11 @@ public class MatrixExtractor implements Cancellable {
         futures.forEach(future -> {
             try {
                 List<MatrixUpdate> updates = future.get();
-                updates.forEach(update -> matrix.insert(update.row(), update.col(), update.value()));
+//                if (matrixName.equals("A1"))
+//                    printUpdates(updates);
+                for (MatrixUpdate update : updates) {
+                    matrix.insert(update.row(), update.col(), update.value());
+                }
             } catch (InterruptedException | ExecutionException e) {
                 Thread.currentThread().interrupt();
                 throw new RuntimeException("Error processing matrix update tasks", e);
@@ -84,6 +88,12 @@ public class MatrixExtractor implements Cancellable {
 
         matrixBrain.completeTask(matrix.getName(), matrix);
         createSquareMatrixTask(matrix);
+    }
+
+    private void printUpdates(List<MatrixUpdate> updates) {
+        for (MatrixUpdate u : updates) {
+            System.out.println(u.row() + "," + u.col() + " = " + u.value() + " ");
+        }
     }
 
     private void createSquareMatrixTask(Matrix matrix) {
