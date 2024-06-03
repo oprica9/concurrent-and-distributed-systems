@@ -1,0 +1,76 @@
+10:56:58 - Starting servent [4|localhost|1500]
+10:56:58 - Pausing for 500 ms
+10:56:58 - Pausing for 15000 ms
+10:56:59 - Got message [5|14|7|TRANSACTION|4]
+10:56:59 - Got message [5|46|10|TRANSACTION|4]
+10:56:59 - Got message [5|10|6|TRANSACTION|4]
+10:56:59 - Got message [5|12|3|TRANSACTION|4]
+10:56:59 - Got message [5|76|5|TRANSACTION|4]
+10:56:59 - Got message [5|19|4|TRANSACTION|4]
+10:57:00 - Got message [5|11|7|TRANSACTION|4]
+10:57:00 - Got message [5|130|3|TRANSACTION|4]
+10:57:00 - Got message [5|132|2|TRANSACTION|4]
+10:57:00 - Got message [5|134|6|TRANSACTION|4]
+10:57:00 - Got message [5|79|4|TRANSACTION|4]
+10:57:00 - Got message [5|133|9|TRANSACTION|4]
+10:57:00 - Sending message [4|0|4|LY_MARKER|3]
+10:57:00 - Got message [5|78|9|TRANSACTION|4]
+10:57:00 - Got message [5|16|9|TRANSACTION|4]
+10:57:00 - Got message [5|44|3|TRANSACTION|4]
+10:57:00 - Got message [5|13|5|TRANSACTION|4]
+10:57:00 - Got message [5|103|2|TRANSACTION|4]
+10:57:00 - Got message [5|48|2|TRANSACTION|4]
+10:57:00 - Got message [5|102|3|TRANSACTION|4]
+10:57:00 - Got message [5|75|8|TRANSACTION|4]
+10:57:00 - Got message [5|139|4|TRANSACTION|4]
+10:57:00 - Got message [5|131|8|TRANSACTION|4]
+10:57:00 - Sending message [4|1|4|LY_MARKER|5]
+10:57:00 - Got message [5|74|1|TRANSACTION|4]
+10:57:00 - Got message [5|43|6|TRANSACTION|4]
+10:57:00 - Got message [5|15|7|TRANSACTION|4]
+10:57:00 - Got message [5|49|10|TRANSACTION|4]
+10:57:00 - Got message [5|77|4|TRANSACTION|4]
+10:57:00 - Got message [5|40|5|TRANSACTION|4]
+10:57:00 - Got message [5|101|2|TRANSACTION|4]
+10:57:00 - Got message [5|41|1|TRANSACTION|4]
+10:57:00 - Got message [5|73|2|TRANSACTION|4]
+10:57:00 - Got message [5|70|3|TRANSACTION|4]
+10:57:00 - Got message [5|109|5|TRANSACTION|4]
+10:57:00 - Got message [5|72|8|TRANSACTION|4]
+10:57:00 - Got message [5|71|5|TRANSACTION|4]
+10:57:00 - Got message [5|105|1|TRANSACTION|4]
+10:57:00 - Got message [5|138|8|TRANSACTION|4]
+10:57:00 - Got message [5|136|8|TRANSACTION|4]
+10:57:00 - Got message [5|42|2|TRANSACTION|4]
+10:57:00 - Got message [5|137|8|TRANSACTION|4]
+10:57:00 - Got message [5|108|7|TRANSACTION|4]
+10:57:00 - Got message [5|47|1|TRANSACTION|4]
+10:57:00 - Got message [5|100|7|TRANSACTION|4]
+10:57:00 - Got message [5|45|7|TRANSACTION|4]
+10:57:00 - Got message [5|18|4|TRANSACTION|4]
+10:57:00 - Got message [5|135|8|TRANSACTION|4]
+10:57:00 - Got message [5|107|6|TRANSACTION|4]
+10:57:00 - Got message [5|104|4|TRANSACTION|4]
+10:57:00 - Got message [5|17|7|TRANSACTION|4]
+10:57:00 - Got message [5|106|6|TRANSACTION|4]
+10:57:01 - Got message [3|3|4|LY_MARKER|4]
+10:57:01 - Got message [5|152|4|LY_MARKER|4]
+10:57:01 - Got message [1|200||LY_TELL|4]
+10:57:01 - Got message [3|0||LY_TELL|4]
+10:57:01 - Got message [5|150||LY_TELL|4]
+10:57:02 - Got message [6|200||LY_TELL|4]
+10:57:02 - Got message [2|200||LY_TELL|4]
+10:57:03 - Got message [0|150||LY_TELL|4]
+10:57:04 - Recorded bitcake amount for 0 = 765
+10:57:04 - Recorded bitcake amount for 1 = 504
+10:57:04 - Recorded bitcake amount for 2 = 574
+10:57:04 - Recorded bitcake amount for 3 = 1364
+10:57:04 - Recorded bitcake amount for 4 = 1000
+10:57:04 - Recorded bitcake amount for 5 = 935
+10:57:04 - Recorded bitcake amount for 6 = 1463
+10:57:04 - Unreceived bitcake amount: 208 from servent 2 to servent 3
+10:57:04 - Unreceived bitcake amount: 119 from servent 5 to servent 4
+10:57:04 - Unreceived bitcake amount: 47 from servent 6 to servent 3
+10:57:04 - Unreceived bitcake amount: 21 from servent 6 to servent 5
+10:57:04 - System bitcake count: 7000
+10:57:13 - Stopping...
