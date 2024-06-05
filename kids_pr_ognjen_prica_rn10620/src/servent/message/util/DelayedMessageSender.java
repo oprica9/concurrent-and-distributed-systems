@@ -35,7 +35,13 @@ public class DelayedMessageSender implements Runnable {
 
         if (MessageUtil.MESSAGE_UTIL_PRINTING) {
             if (messageToSend.getMessageType() != MessageType.PING && messageToSend.getMessageType() != MessageType.PONG) {
-                AppConfig.timestampedStandardPrint("Sending message " + messageToSend);
+                if (messageToSend.getSenderIpAddress().equals(AppConfig.myServentInfo.getIpAddress())
+                        && messageToSend.getSenderPort() == AppConfig.myServentInfo.getListenerPort()) {
+                    AppConfig.timestampedStandardPrint("Sending message " + messageToSend);
+                } else {
+                    AppConfig.timestampedStandardPrint("Forwarding message " + messageToSend);
+                }
+
             }
         }
 
@@ -48,7 +54,7 @@ public class DelayedMessageSender implements Runnable {
 
             sendSocket.close();
         } catch (IOException e) {
-            AppConfig.timestampedErrorPrint("Couldn't send message: " + messageToSend);
+            AppConfig.timestampedErrorPrint("Couldn't send message: " + messageToSend + " Reason: " + e);
         }
     }
 

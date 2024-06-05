@@ -39,7 +39,7 @@ public class MultipleServentStarter {
                 + "If servents do not finish on their own, type \"stop\" to finish them");
 
         Process bsProcess;
-        ProcessBuilder bsBuilder = new ProcessBuilder("java", "-cp", "out\\production\\Roughbook", "app.BootstrapServer", String.valueOf(AppConfig.BOOTSTRAP_PORT));
+        ProcessBuilder bsBuilder = new ProcessBuilder("java", "-cp", "out\\production\\kids_pr_ognjen_prica_rn10620", "app.BootstrapServer", String.valueOf(AppConfig.BOOTSTRAP_PORT));
         try {
             bsBuilder.redirectOutput(new File(testName + "/output/bootstrap" + "_out.txt"));
             bsBuilder.redirectError(new File(testName + "/error/bootstrap" + "_err.txt"));
@@ -63,7 +63,7 @@ public class MultipleServentStarter {
         for (int i = 0; i < serventCount; i++) {
             try {
                 ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", "start",
-                        "java", "-cp", "out/production/Roughbook", "app.ServentMain",
+                        "java", "-cp", "out/production/kids_pr_ognjen_prica_rn10620", "app.ServentMain",
                         testName + "/servent" + "/servent" + i + ".properties", String.valueOf(i));
 
                 // We'll let the system handle the output for each process in its own terminal window
@@ -73,11 +73,11 @@ public class MultipleServentStarter {
                 AppConfig.timestampedErrorPrint(e);
             }
 
-            try { // Give each node 10s to start up
-                Thread.sleep(10000);
-            } catch (InterruptedException e) {
-                AppConfig.timestampedErrorPrint(e);
-            }
+//            try { // Give each node 10s to start up
+//                Thread.sleep(10000);
+//            } catch (InterruptedException e) {
+//                AppConfig.timestampedErrorPrint(e);
+//            }
         }
 
         Thread t = new Thread(new ServentCLI(serventProcesses, bsProcess));

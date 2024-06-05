@@ -7,6 +7,7 @@ import app.model.ServentInfo;
 import servent.message.Message;
 import servent.message.MessageType;
 import servent.message.UpdateMessage;
+import servent.message.mutex.UnlockMessage;
 import servent.message.util.MessageUtil;
 
 import java.util.ArrayList;
@@ -46,6 +47,11 @@ public class UpdateHandler implements MessageHandler {
             AppConfig.chordState.addNodes(allNodes);
             failureDetector.updateNodeList();
 
+            // Critical section end
+            MessageUtil.sendMessage(new UnlockMessage(
+                    AppConfig.myServentInfo.getIpAddress(), AppConfig.myServentInfo.getListenerPort(),
+                    AppConfig.chordState.getNextNodeIpAddress(), AppConfig.chordState.getNextNodePort()
+            ));
         } else {
             // If we are not the original sender
             ServentInfo newNodeInfo = new ServentInfo(updateMessage.getSenderIpAddress(), updateMessage.getSenderPort());

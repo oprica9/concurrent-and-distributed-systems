@@ -403,4 +403,7 @@ public class ChordState {
         return successors[0] == null && allNodes.size() <= 1;
     }
 
+    public List<ServentInfo> getAllNodes() {
+        return allNodes;
+    }
 }

@@ -63,7 +63,7 @@ public class FailureDetector implements Runnable, Cancellable {
     }
 
     public void updateNodeList() {
-        AppConfig.timestampedStandardPrint("Updating my buddies...");
+//        AppConfig.timestampedStandardPrint("Updating my buddies...");
         lastResponseTimes.clear();
         chordIds.clear();
         deadNodes.clear();
@@ -149,7 +149,7 @@ public class FailureDetector implements Runnable, Cancellable {
 
         int predChordId = predInfo.getChordId();
         if (myChordId != predChordId) {
-            AppConfig.timestampedStandardPrint("My buddy is: " + predChordId);
+//            AppConfig.timestampedStandardPrint("My buddy is: " + predChordId);
             lastResponseTimes.put(predChordId, System.currentTimeMillis());
             chordIds.put(predChordId, predInfo);
         }

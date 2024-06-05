@@ -4,6 +4,7 @@ import app.AppConfig;
 import app.FileManager;
 import app.model.ServentInfo;
 import app.model.StoredFileInfo;
+import app.mutex.SuzukiKasamiMutex;
 import servent.message.*;
 import servent.message.util.MessageUtil;
 
@@ -41,15 +42,17 @@ public class NewNodeHandler implements MessageHandler {
             return;
         }
 
+        SuzukiKasamiMutex.lock();
+
         // Check if he is my predecessor
         boolean isMyPred = AppConfig.chordState.isKeyMine(newNodeInfo.getChordId());
         if (isMyPred) {
+
             // If he is my predecessor, prepare and send a welcome message
             ServentInfo hisPred = AppConfig.chordState.getPredecessor();
             if (hisPred == null) {
                 hisPred = AppConfig.myServentInfo;
             }
-
 
             AppConfig.chordState.setPredecessor(newNodeInfo);
 
@@ -86,6 +89,14 @@ public class NewNodeHandler implements MessageHandler {
                     hisFiles
             );
             MessageUtil.sendMessage(wm);
+
+            try {
+                SuzukiKasamiMutex.awaitWelcomeResponse(); // Use a condition variable
+            } catch (InterruptedException e) {
+                AppConfig.timestampedErrorPrint("Interrupted while waiting for Welcome response.");
+                Thread.currentThread().interrupt(); // Preserve the interruption status
+            }
+
         } else {
             // If he is not my predecessor, let someone else take care of it
             ServentInfo nextNode = AppConfig.chordState.getNextNodeForKey(newNodeInfo.getChordId());
@@ -95,6 +106,7 @@ public class NewNodeHandler implements MessageHandler {
             );
             MessageUtil.sendMessage(nnm);
         }
+        SuzukiKasamiMutex.unlock();
     }
 
     private Map<String, StoredFileInfo> getHisFiles(ServentInfo hisPred, ServentInfo newNodeInfo, Map<String, StoredFileInfo> myFiles) {
@@ -186,4 +198,3 @@ public class NewNodeHandler implements MessageHandler {
         return hisValues;
     }
 }
-

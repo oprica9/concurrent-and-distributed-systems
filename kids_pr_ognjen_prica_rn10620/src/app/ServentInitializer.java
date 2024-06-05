@@ -1,5 +1,7 @@
 package app;
 
+import app.model.ServentInfo;
+import app.mutex.SuzukiKasamiMutex;
 import servent.message.NewNodeMessage;
 import servent.message.util.MessageUtil;
 
@@ -21,6 +23,7 @@ public class ServentInitializer implements Runnable {
 
         if (someServent.equals("first")) { // We are first
             AppConfig.timestampedStandardPrint("First node in Chord system.");
+            SuzukiKasamiMutex.initToken();
         } else {
             String[] split = someServent.split(":");
             String serventIp = split[0];
@@ -31,6 +34,10 @@ public class ServentInitializer implements Runnable {
                 AppConfig.timestampedErrorPrint("Error in parsing servent information: " + someServent + "(must be in format: ip_address:port)");
                 System.exit(0);
             }
+
+            // Add this one, so we have at least one node to send a token request to
+//            AppConfig.chordState.getAllNodes().add(new ServentInfo(serventIp, serventPort));
+            AppConfig.temp = new ServentInfo(serventIp, serventPort);
 
             // Bootstrap gave us something else - let that node tell our successor that we are here
             NewNodeMessage nnm = new NewNodeMessage(

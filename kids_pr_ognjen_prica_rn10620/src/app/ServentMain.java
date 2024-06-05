@@ -1,6 +1,7 @@
 package app;
 
 import app.failure_detection.FailureDetector;
+import app.mutex.SuzukiKasamiMutex;
 import cli.CLIParser;
 import servent.SimpleServentListener;
 
@@ -56,6 +57,8 @@ public class ServentMain {
     }
 
     private static Thread getInitializerThread() {
+        SuzukiKasamiMutex.initialize();
+
         FailureDetector failureDetector = new FailureDetector();
         Thread failureDetectorThread = new Thread(failureDetector);
         failureDetectorThread.start();

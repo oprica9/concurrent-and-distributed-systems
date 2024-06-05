@@ -11,6 +11,9 @@ import servent.handler.dht.TellGetHandler;
 import servent.handler.files.*;
 import servent.handler.friends.AddFriendRequestHandler;
 import servent.handler.friends.AddFriendResponseHandler;
+import servent.handler.mutex.TokenReplyHandler;
+import servent.handler.mutex.TokenRequestHandler;
+import servent.handler.mutex.UnlockHandler;
 import servent.handler.ping_pong.PingHandler;
 import servent.handler.ping_pong.PongHandler;
 import servent.handler.ping_pong.RestructureSystemHandler;
@@ -110,6 +113,15 @@ public class SimpleServentListener implements Runnable, Cancellable {
                             break;
                         case RESTRUCTURE:
                             messageHandler = new RestructureSystemHandler(clientMessage, failureDetector);
+                            break;
+                        case TOKEN_REQUEST:
+                            messageHandler = new TokenRequestHandler(clientMessage);
+                            break;
+                        case TOKEN_REPLY:
+                            messageHandler = new TokenReplyHandler(clientMessage);
+                            break;
+                        case UNLOCK:
+                            messageHandler = new UnlockHandler(clientMessage);
                             break;
                     }
 

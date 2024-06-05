@@ -96,7 +96,7 @@ public class BootstrapServer {
                     socketWriter.flush();
                     newServentSocket.close();
                 } else if (message.equals("New")) {
-                    //When a servent is confirmed not to be a collider, we add him to the list.
+                    // When a servent is confirmed not to be a collider, we add him to the list.
                     String newServentIp = socketScanner.nextLine();
                     int newServentPort = socketScanner.nextInt();
 
