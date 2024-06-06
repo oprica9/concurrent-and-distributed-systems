@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bfc1f4d-25df-485b-b554-52cb64c30d88" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/AmAliveHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/CheckSusHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/IsAliveHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/UAliveHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servent/message/ping_pong/AmAliveMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servent/message/ping_pong/CheckSusNodeMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servent/message/ping_pong/IsAliveMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servent/message/ping_pong/UAliveMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/NewTokenHolderHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/servent/message/ping_pong/NewTokenHolderMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/AppConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/snapshot_bitcake/NullSnapshotCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/snapshot_bitcake/NullSnapshotCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/snapshot_bitcake/SnapshotCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/snapshot_bitcake/SnapshotCollector.java" afterDir="false" />
@@ -26,11 +20,17 @@
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/util/DelayedMessageSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/util/DelayedMessageSender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/roughbook/output/bootstrap_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/roughbook/output/bootstrap_out.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/BootstrapServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/BootstrapServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/failure_detection/FailureDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/failure_detection/FailureDetector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli/CLIParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/CLIParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli/command/SuccessorInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/command/SuccessorInfoCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/mutex/SuzukiKasamiMutex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/mutex/SuzukiKasamiMutex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/command/InfoCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/command/InfoCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/servent/SimpleServentListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/SimpleServentListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servent/handler/NewNodeHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/NewNodeHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servent/handler/mutex/TokenRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/mutex/TokenRequestHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servent/handler/ping_pong/PingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/PingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servent/handler/ping_pong/RestructureSystemHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/RestructureSystemHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/servent/message/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/MessageType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servent/message/ping_pong/PingMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/ping_pong/PingMessage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,23 +96,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ServentMain" type="Application" factoryName="Application" nameIsGenerated="true">
+    <configuration name="ServentMain 0" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="app.ServentMain" />
       <module name="kids_pr_ognjen_prica_rn10620" />
-      <option name="PROGRAM_PARAMETERS" value="roughbook/servent/servent4.properties 4" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="app.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+      <option name="PROGRAM_PARAMETERS" value="roughbook/servent/servent0.properties 0" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServentMain 5" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="app.ServentMain" />
+      <module name="kids_pr_ognjen_prica_rn10620" />
+      <option name="PROGRAM_PARAMETERS" value="roughbook/servent/servent5.properties 5" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.ServentMain 5" />
+      <item itemvalue="Application.ServentMain 0" />
       <item itemvalue="Application.MultipleServentStarter" />
-      <item itemvalue="Application.ServentMain" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -126,7 +129,7 @@
       <workItem from="1717437910268" duration="1543000" />
       <workItem from="1717493280758" duration="28595000" />
       <workItem from="1717571938039" duration="23519000" />
-      <workItem from="1717657040803" duration="10123000" />
+      <workItem from="1717657040803" duration="29765000" />
     </task>
     <servers />
   </component>

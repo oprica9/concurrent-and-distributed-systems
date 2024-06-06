@@ -9,7 +9,14 @@ public class PingMessage extends BasicMessage {
     @Serial
     private static final long serialVersionUID = -5638617007208022948L;
 
-    public PingMessage(String senderIpAddress, int senderPort, String receiverIpAddress, int receiverPort) {
+    private final boolean hasToken;
+
+    public PingMessage(String senderIpAddress, int senderPort, String receiverIpAddress, int receiverPort, boolean hasToken) {
         super(MessageType.PING, senderIpAddress, senderPort, receiverIpAddress, receiverPort);
+        this.hasToken = hasToken;
+    }
+
+    public boolean hasToken() {
+        return hasToken;
     }
 }

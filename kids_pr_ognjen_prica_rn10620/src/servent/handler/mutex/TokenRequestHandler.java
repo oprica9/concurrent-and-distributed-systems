@@ -34,8 +34,13 @@ public class TokenRequestHandler implements MessageHandler {
         SuzukiKasamiMutex.setRN(i, n);
 
         // If Sj has the idle token, then it sends the token to Si if RNj[i] = LN[i] + 1.
+
+        System.out.println("MY TOKEN: " + SuzukiKasamiMutex.TOKEN);
+
         if (SuzukiKasamiMutex.hasToken()) {
+            System.out.println("IS IN CRITICAL SECTION : " + SuzukiKasamiMutex.isInCS());
             if (!SuzukiKasamiMutex.isInCS()) {
+                System.out.println("SuzukiKasamiMutex.RN.get(i) == SuzukiKasamiMutex.getLN(i) + 1 : " + SuzukiKasamiMutex.RN.get(i) + " == " + SuzukiKasamiMutex.getLN(i) + " + " + 1);
                 if (SuzukiKasamiMutex.RN.get(i) == SuzukiKasamiMutex.getLN(i) + 1) {
                     ServentInfo nextNode = AppConfig.chordState.getNextNodeForKey(i);
 

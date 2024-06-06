@@ -106,6 +106,16 @@ public class BootstrapServer {
 
                     activeServents.add(newServent);
                     newServentSocket.close();
+                } else if (message.equals("Dead")) {
+                    String deadServentIp = socketScanner.nextLine();
+                    int deadServentPort = socketScanner.nextInt();
+
+                    String deadServent = deadServentIp + ":" + deadServentPort;
+
+                    System.out.println("Removing dead servent: " + deadServent);
+
+                    activeServents.remove(deadServent);
+                    newServentSocket.close();
                 }
 
             } catch (SocketTimeoutException e) {

@@ -3,6 +3,7 @@ package servent.handler.ping_pong;
 import app.AppConfig;
 import app.failure_detection.FailureDetector;
 import app.model.ServentInfo;
+import app.mutex.SuzukiKasamiMutex;
 import servent.handler.MessageHandler;
 import servent.message.Message;
 import servent.message.MessageType;
@@ -45,10 +46,19 @@ public class RestructureSystemHandler implements MessageHandler {
         }
 
         List<ServentInfo> deadServents = new ArrayList<>();
-        deadServents.add(new ServentInfo(ip, port));
+        ServentInfo deadServent = new ServentInfo(ip, port);
+
+        // I should also try to become the token holder
+        // But in case that the other node was too fast and I didn't become the token holder before
+        // restructuring the system, I set the flag to true, so I know not to propagate the NEW_TOKEN_HOLDER message
+        // when it arrives
+        failureDetector.setShouldBeTokenHolder(deadServent.getChordId() == AppConfig.chordState.getSuccessors()[0].getChordId() || deadServent.getChordId() == AppConfig.chordState.getPredecessor().getChordId());
+
+        deadServents.add(deadServent);
         AppConfig.timestampedStandardPrint("Restructuring system...\nRemoving " + deadServents);
         AppConfig.chordState.removeNodes(deadServents);
         failureDetector.updateNodeList();
+        failureDetector.setRefactored(false);
 
         // If it ain't moi, send on
         if (!clientMessage.getSenderIpAddress().equals(AppConfig.myServentInfo.getIpAddress()) ||
@@ -64,8 +74,6 @@ public class RestructureSystemHandler implements MessageHandler {
                     break;
                 }
             }
-
-
         }
     }
 }

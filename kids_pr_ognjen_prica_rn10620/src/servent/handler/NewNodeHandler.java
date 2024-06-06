@@ -42,7 +42,9 @@ public class NewNodeHandler implements MessageHandler {
             return;
         }
 
+        System.out.println("LOCK FOR: " + newNodeInfo.getChordId() + ", My token: " + SuzukiKasamiMutex.TOKEN);
         SuzukiKasamiMutex.lock();
+        System.out.println("CRITICAL SECTION FOR: " + newNodeInfo.getChordId());
 
         // Check if he is my predecessor
         boolean isMyPred = AppConfig.chordState.isKeyMine(newNodeInfo.getChordId());

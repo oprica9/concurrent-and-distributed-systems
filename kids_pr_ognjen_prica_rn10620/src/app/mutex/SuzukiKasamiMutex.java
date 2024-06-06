@@ -31,6 +31,12 @@ public class SuzukiKasamiMutex {
 
     }
 
+    public static void reset() {
+        inCS.set(false);
+        waitingForWelcomeResponse = false;
+        RN = new ConcurrentHashMap<>();
+    }
+
     public static void initToken() {
         TOKEN = new Token();
     }

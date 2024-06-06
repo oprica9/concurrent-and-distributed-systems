@@ -124,6 +124,9 @@ public class SimpleServentListener implements Runnable, Cancellable {
                         case RESTRUCTURE:
                             messageHandler = new RestructureSystemHandler(clientMessage, failureDetector);
                             break;
+                        case NEW_TOKEN_HOLDER:
+                            messageHandler = new NewTokenHolderHandler(clientMessage, failureDetector);
+                            break;
                         case TOKEN_REQUEST:
                             messageHandler = new TokenRequestHandler(clientMessage);
                             break;
