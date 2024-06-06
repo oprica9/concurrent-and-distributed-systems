@@ -52,7 +52,7 @@ public class ViewFilesCommand implements CLICommand {
                 return;
             }
 
-            Map<String, StoredFileInfo> fileMap = fileManager.getFiles(ip, port);
+            Map<String, StoredFileInfo> fileMap = fileManager.getFilesIfIpPortMatches(ip, port, AppConfig.myServentInfo.getChordId());
             if (fileMap == null) {
                 AppConfig.timestampedStandardPrint("Please wait...");
                 ServentInfo nextNode = AppConfig.chordState.getNextNodeForKey(ChordState.chordHash2(ip, port));
@@ -62,7 +62,7 @@ public class ViewFilesCommand implements CLICommand {
                         nextNode.getIpAddress(),
                         nextNode.getListenerPort(),
                         ip, port,
-                        ChordState.chordHash2(AppConfig.myServentInfo.getIpAddress(), AppConfig.myServentInfo.getListenerPort())
+                        AppConfig.myServentInfo.getChordId()
                 );
 
                 MessageUtil.sendMessage(askViewFilesMessage);

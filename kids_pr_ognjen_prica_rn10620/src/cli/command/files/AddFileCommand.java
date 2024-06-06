@@ -4,13 +4,9 @@ import app.AppConfig;
 import app.FileManager;
 import cli.command.CLICommand;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 public class AddFileCommand implements CLICommand {
 
-    private final static Set<String> ALLOWED_VISIBILITY = new HashSet<>(List.of(new String[]{"private", "public"}));
+
     private final FileManager fileManager;
 
     public AddFileCommand(FileManager fileManager) {
@@ -33,7 +29,7 @@ public class AddFileCommand implements CLICommand {
         String filePath = splitArgs[0];
         String visibility = splitArgs[1];
 
-        if (!ALLOWED_VISIBILITY.contains(visibility)) {
+        if (!FileManager.ALLOWED_VISIBILITY.contains(visibility)) {
             AppConfig.timestampedErrorPrint("Invalid arguments for add_file. Usage: add_file <path> <private/public>");
             return;
         }
@@ -51,7 +47,10 @@ public class AddFileCommand implements CLICommand {
             AppConfig.timestampedStandardPrint("Saved file " + filePath + " (" + visibility + ")");
         }
 
-        fileManager.backupFile(filePath, fileContent, visibility);
+        // Backup only if the file is public
+        if (fileManager.getFileVisibility(filePath).equals(FileManager.PUBLIC)) {
+            fileManager.backupFile(filePath, fileContent, visibility);
+        }
     }
 
 }

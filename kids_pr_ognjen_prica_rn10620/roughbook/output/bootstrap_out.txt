@@ -1,5 +1,5 @@
-09:36:39 - Bootstrap server started on port: 2000
->Got: localhost:1000
+10:07:06 - Bootstrap server started on port: 2000
+Got: localhost:1000
 Adding servent: localhost:1000
 Got: localhost:1020
 Got: localhost:1010

@@ -45,7 +45,7 @@ public class AskViewFilesHandler implements MessageHandler {
             return;
         }
 
-        Map<String, StoredFileInfo> fileMap = fileManager.getFiles(ip, port);
+        Map<String, StoredFileInfo> fileMap = fileManager.getFilesIfIpPortMatches(ip, port, ogKey);
 
         ServentInfo nextNode = fileMap != null
                 ? AppConfig.chordState.getNextNodeForKey(ogKey)
@@ -58,8 +58,8 @@ public class AskViewFilesHandler implements MessageHandler {
                 fileMap,
                 ogKey)
                 : new AskViewFilesMessage(
-                AppConfig.myServentInfo.getIpAddress(),
-                AppConfig.myServentInfo.getListenerPort(),
+                clientMessage.getSenderIpAddress(),
+                clientMessage.getSenderPort(),
                 nextNode.getIpAddress(),
                 nextNode.getListenerPort(),
                 ip, port,

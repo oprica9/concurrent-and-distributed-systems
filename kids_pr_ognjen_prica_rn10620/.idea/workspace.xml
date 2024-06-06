@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bfc1f4d-25df-485b-b554-52cb64c30d88" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/cli/command/friends/ListFriendsCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/AppConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/snapshot_bitcake/NullSnapshotCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/snapshot_bitcake/NullSnapshotCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/snapshot_bitcake/SnapshotCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/snapshot_bitcake/SnapshotCollector.java" afterDir="false" />
@@ -17,15 +16,12 @@
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/MessageType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/util/DelayedMessageSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/util/DelayedMessageSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/roughbook/output/bootstrap_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/roughbook/output/bootstrap_out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/AppConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/ChordState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/ChordState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/FileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli/CLIParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/CLIParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/handler/NewNodeHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/NewNodeHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/handler/WelcomeHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/WelcomeHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/command/files/AddFileCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/command/files/AddFileCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/command/files/ViewFilesCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/command/files/ViewFilesCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servent/handler/files/AskViewFilesHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/files/AskViewFilesHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +98,7 @@
       <workItem from="1717437910268" duration="1543000" />
       <workItem from="1717493280758" duration="28595000" />
       <workItem from="1717571938039" duration="23519000" />
-      <workItem from="1717657040803" duration="2360000" />
+      <workItem from="1717657040803" duration="4466000" />
     </task>
     <servers />
   </component>

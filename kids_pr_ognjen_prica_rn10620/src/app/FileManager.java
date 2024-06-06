@@ -14,11 +14,18 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.file.Files;
 import java.security.MessageDigest;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.stream.Collectors;
 
 public class FileManager {
 
+    public static final String PRIVATE = "private";
+    public static final String PUBLIC = "public";
+    public static final Set<String> ALLOWED_VISIBILITY = new HashSet<>(List.of(new String[]{PRIVATE, PUBLIC}));
     public static final int REPLICATION_FACTOR = 3;
     private Map<String, StoredFileInfo> fileMap = new ConcurrentHashMap<>();
 
@@ -151,9 +158,13 @@ public class FileManager {
     /**
      * @return file map if the ip and port matches, null otherwise
      */
-    public Map<String, StoredFileInfo> getFiles(String ip, int port) {
+    public Map<String, StoredFileInfo> getFilesIfIpPortMatches(String ip, int port, int requesterId) {
         return sameIpAndPort(ip, port)
+                ? AppConfig.isFriend(requesterId)
                 ? fileMap
+                : fileMap.entrySet().stream().collect(Collectors.filtering(
+                entry -> entry.getValue().getVisibility().equals(PUBLIC),
+                Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)))
                 : null;
     }
 
@@ -192,6 +203,12 @@ public class FileManager {
 
     public boolean containsFile(String filePath) {
         return fileMap.containsKey(filePath);
+    }
+
+    public String getFileVisibility(String filePath) {
+        return fileMap.containsKey(filePath)
+                ? fileMap.get(filePath).getVisibility()
+                : "";
     }
 
     public StoredFileInfo getFile(String filePath) {
