@@ -183,7 +183,7 @@ public class FileManager {
 
     public void init(WelcomeMessage welcomeMsg) {
         this.fileMap = welcomeMsg.getFiles();
-        AppConfig.timestampedStandardPrint("My fileMap that I got from my successor:\n" + fileMap);
+//        AppConfig.timestampedStandardPrint("My fileMap that I got from my successor:\n" + fileMap);
     }
 
     public boolean containsFile(StoredFileInfo storedFileInfo) {

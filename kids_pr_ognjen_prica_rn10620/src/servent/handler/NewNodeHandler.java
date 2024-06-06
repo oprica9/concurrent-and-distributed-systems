@@ -68,18 +68,18 @@ public class NewNodeHandler implements MessageHandler {
             AppConfig.chordState.setValueMap(myValues);
 
             // Set his files
-            AppConfig.timestampedStandardPrint("Refactoring my file map...\n" + fileManager.getFiles());
+//            AppConfig.timestampedStandardPrint("Refactoring my file map...\n" + fileManager.getFiles());
             Map<String, StoredFileInfo> myFiles = fileManager.getFiles();
             Map<String, StoredFileInfo> hisFiles = getHisFiles(hisPred, newNodeInfo, myFiles);
-            AppConfig.timestampedStandardPrint("His file map before:\n" + hisFiles);
+//            AppConfig.timestampedStandardPrint("His file map before:\n" + hisFiles);
 
             for (String key : hisFiles.keySet()) {
                 myFiles.remove(key);
             }
 
             fileManager.setFiles(myFiles);
-            AppConfig.timestampedStandardPrint("My new file map:\n" + fileManager.getFiles());
-            AppConfig.timestampedStandardPrint("His file map after:\n" + hisFiles);
+//            AppConfig.timestampedStandardPrint("My new file map:\n" + fileManager.getFiles());
+//            AppConfig.timestampedStandardPrint("His file map after:\n" + hisFiles);
 
             // Send the info
             WelcomeMessage wm = new WelcomeMessage(

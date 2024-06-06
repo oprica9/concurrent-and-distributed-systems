@@ -184,4 +184,15 @@ public class AppConfig {
         return friendRequests.contains(requesterHash);
     }
 
+    public static void printFriends() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Friends: ");
+        for (Integer friendId : friends) {
+            builder.append("\t");
+            builder.append(friendId);
+            builder.append("\n");
+        }
+        builder.deleteCharAt(builder.length() - 1);
+        System.out.println(builder);
+    }
 }

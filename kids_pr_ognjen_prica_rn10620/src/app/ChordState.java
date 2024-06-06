@@ -224,11 +224,11 @@ public class ChordState {
      * Once the list is created, we invoke <code>updateSuccessorTable()</code> to do the rest of the work.
      */
     public void removeNodes(List<ServentInfo> newNodes) {
-        AppConfig.timestampedStandardPrint("BEFORE: " + allNodes);
-        AppConfig.timestampedStandardPrint("REMOVING: " + newNodes);
+//        AppConfig.timestampedStandardPrint("BEFORE: " + allNodes);
+//        AppConfig.timestampedStandardPrint("REMOVING: " + newNodes);
         boolean changed = allNodes.removeAll(newNodes);
-        AppConfig.timestampedStandardPrint("CHANGED " + changed);
-        AppConfig.timestampedStandardPrint("AFTER: " + allNodes);
+//        AppConfig.timestampedStandardPrint("CHANGED " + changed);
+//        AppConfig.timestampedStandardPrint("AFTER: " + allNodes);
         if (changed) {
             updateNodes();
         }

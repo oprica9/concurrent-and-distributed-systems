@@ -36,8 +36,8 @@ public class WelcomeHandler implements MessageHandler {
                 ""
         );
 
-        System.out.println(AppConfig.myServentInfo.getIpAddress() + ":" + AppConfig.myServentInfo.getListenerPort());
-        System.out.println(AppConfig.chordState.getNextNodeIpAddress() + ":" + AppConfig.chordState.getNextNodePort());
+//        System.out.println(AppConfig.myServentInfo.getIpAddress() + ":" + AppConfig.myServentInfo.getListenerPort());
+//        System.out.println(AppConfig.chordState.getNextNodeIpAddress() + ":" + AppConfig.chordState.getNextNodePort());
 
         MessageUtil.sendMessage(um);
     }

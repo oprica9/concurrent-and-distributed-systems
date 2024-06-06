@@ -12,6 +12,7 @@ import cli.command.files.RemoveFileCommand;
 import cli.command.files.ViewFilesCommand;
 import cli.command.friends.AcceptFriendRequestCommand;
 import cli.command.friends.AddFriendCommand;
+import cli.command.friends.ListFriendsCommand;
 import servent.SimpleServentListener;
 
 import java.util.ArrayList;
@@ -57,6 +58,7 @@ public class CLIParser implements Runnable, Cancellable {
         commandList.add(new RemoveFileCommand(fileManager));
         commandList.add(new AddFriendCommand());
         commandList.add(new AcceptFriendRequestCommand());
+        commandList.add(new ListFriendsCommand());
     }
 
     @Override
