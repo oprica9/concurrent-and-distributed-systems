@@ -3,7 +3,7 @@ package cli.command;
 import app.AppConfig;
 import app.model.ServentInfo;
 
-public class SuccessorInfo implements CLICommand {
+public class SuccessorInfoCommand implements CLICommand {
 
     @Override
     public String commandName() {

@@ -3,11 +3,15 @@ package app.failure_detection;
 import app.AppConfig;
 import app.Cancellable;
 import app.model.ServentInfo;
+import servent.message.ping_pong.CheckSusNodeMessage;
 import servent.message.ping_pong.PingMessage;
 import servent.message.ping_pong.RestructureSystemMessage;
 import servent.message.util.MessageUtil;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class FailureDetector implements Runnable, Cancellable {
@@ -19,7 +23,7 @@ public class FailureDetector implements Runnable, Cancellable {
 
     private final Map<Integer, Long> lastResponseTimes = new ConcurrentHashMap<>();
     private final Map<Integer, ServentInfo> chordIds = new ConcurrentHashMap<>();
-    private final Set<Integer> deadNodes = new HashSet<>();
+    private final Set<Integer> deadNodes = ConcurrentHashMap.newKeySet();
 
     public FailureDetector() {
     }
@@ -99,14 +103,14 @@ public class FailureDetector implements Runnable, Cancellable {
 
                 if (!deadNodes.contains(chordId) && currentTime - lastResponse > STRONG_FAILURE_THRESHOLD) {
                     // it's dead fr fr
-                    AppConfig.timestampedStandardPrint("Node " + chordId + " is dead." + " How much time passed since response: " + (currentTime - lastResponse));
+                    AppConfig.timestampedStandardPrint("Node " + chordId + " is dead." + " Time passed since response: " + (currentTime - lastResponse) / 1000.0 + "s");
                     AppConfig.timestampedStandardPrint("Starting system restructuring...");
                     deadNodes.add(chordId);
 
-                    List<ServentInfo> deads = new ArrayList<>();
-                    deads.add(chordIds.get(chordId));
+                    List<ServentInfo> died = new ArrayList<>();
+                    died.add(chordIds.get(chordId));
 
-                    AppConfig.chordState.removeNodes(deads);
+                    AppConfig.chordState.removeNodes(died);
 
                     int myChordId = AppConfig.myServentInfo.getChordId();
                     for (int i = 0; i < AppConfig.chordState.getSuccessors().length; i++) {
@@ -128,7 +132,19 @@ public class FailureDetector implements Runnable, Cancellable {
                     updateNodeList();
                 } else if (!deadNodes.contains(chordId) && currentTime - lastResponse > WEAK_FAILURE_THRESHOLD) {
                     // it's sus
-                    AppConfig.timestampedStandardPrint("Node " + chordId + " is suspect." + " How much time passed since response: " + (currentTime - lastResponse));
+                    AppConfig.timestampedStandardPrint("Node " + chordId + " is suspicious." + " Time passed since last response: " + (currentTime - lastResponse) / 1000.0 + "s");
+
+                    ServentInfo checkHelpNode = chordId == AppConfig.chordState.getPredecessor().getChordId()
+                            ? AppConfig.chordState.getSuccessors()[0]
+                            : AppConfig.chordState.getPredecessor();
+
+                    AppConfig.timestampedStandardPrint("Asking " + checkHelpNode.getChordId() + " to check on " + chordId);
+
+                    MessageUtil.sendMessage(new CheckSusNodeMessage(
+                            AppConfig.myServentInfo.getIpAddress(), AppConfig.myServentInfo.getListenerPort(),
+                            checkHelpNode.getIpAddress(), checkHelpNode.getListenerPort(),
+                            chordIds.get(chordId).getIpAddress(), chordIds.get(chordId).getListenerPort()
+                    ));
                 }
             }
         }

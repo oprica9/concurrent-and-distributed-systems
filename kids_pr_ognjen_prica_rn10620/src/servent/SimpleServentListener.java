@@ -14,9 +14,7 @@ import servent.handler.friends.AddFriendResponseHandler;
 import servent.handler.mutex.TokenReplyHandler;
 import servent.handler.mutex.TokenRequestHandler;
 import servent.handler.mutex.UnlockHandler;
-import servent.handler.ping_pong.PingHandler;
-import servent.handler.ping_pong.PongHandler;
-import servent.handler.ping_pong.RestructureSystemHandler;
+import servent.handler.ping_pong.*;
 import servent.message.Message;
 import servent.message.util.MessageUtil;
 
@@ -110,6 +108,18 @@ public class SimpleServentListener implements Runnable, Cancellable {
                             break;
                         case PONG:
                             messageHandler = new PongHandler(clientMessage, failureDetector);
+                            break;
+                        case CHECK_SUS:
+                            messageHandler = new CheckSusHandler(clientMessage, failureDetector);
+                            break;
+                        case U_ALIVE:
+                            messageHandler = new UAliveHandler(clientMessage);
+                            break;
+                        case AM_ALIVE:
+                            messageHandler = new AmAliveHandler(clientMessage);
+                            break;
+                        case IS_ALIVE:
+                            messageHandler = new IsAliveHandler(clientMessage, failureDetector);
                             break;
                         case RESTRUCTURE:
                             messageHandler = new RestructureSystemHandler(clientMessage, failureDetector);

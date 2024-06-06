@@ -5,6 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bfc1f4d-25df-485b-b554-52cb64c30d88" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/AmAliveHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/CheckSusHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/IsAliveHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/UAliveHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/servent/message/ping_pong/AmAliveMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/servent/message/ping_pong/CheckSusNodeMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/servent/message/ping_pong/IsAliveMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/servent/message/ping_pong/UAliveMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/AppConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/snapshot_bitcake/NullSnapshotCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/snapshot_bitcake/NullSnapshotCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/snapshot_bitcake/SnapshotCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/snapshot_bitcake/SnapshotCollector.java" afterDir="false" />
@@ -18,10 +26,11 @@
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/util/DelayedMessageSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/util/DelayedMessageSender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/roughbook/output/bootstrap_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/roughbook/output/bootstrap_out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/FileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli/command/files/AddFileCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/command/files/AddFileCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli/command/files/ViewFilesCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/command/files/ViewFilesCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/handler/files/AskViewFilesHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/files/AskViewFilesHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/failure_detection/FailureDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/failure_detection/FailureDetector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/CLIParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/CLIParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/cli/command/SuccessorInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/command/SuccessorInfoCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servent/SimpleServentListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/SimpleServentListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servent/message/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/MessageType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,11 +76,12 @@
       <recent name="C:\Users\Ognjen\Desktop\domaci\kids_pr_ognjen_prica_rn10620" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="servent.handler.ping_pong" />
       <recent name="servent.handler.mutex" />
       <recent name="servent.message.mutex" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.MultipleServentStarter">
     <configuration name="MultipleServentStarter" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="app.MultipleServentStarter" />
       <module name="kids_pr_ognjen_prica_rn10620" />
@@ -86,6 +96,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ServentMain" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="app.ServentMain" />
+      <module name="kids_pr_ognjen_prica_rn10620" />
+      <option name="PROGRAM_PARAMETERS" value="roughbook/servent/servent4.properties 4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="app.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.MultipleServentStarter" />
+      <item itemvalue="Application.ServentMain" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -98,7 +126,7 @@
       <workItem from="1717437910268" duration="1543000" />
       <workItem from="1717493280758" duration="28595000" />
       <workItem from="1717571938039" duration="23519000" />
-      <workItem from="1717657040803" duration="4466000" />
+      <workItem from="1717657040803" duration="10123000" />
     </task>
     <servers />
   </component>
