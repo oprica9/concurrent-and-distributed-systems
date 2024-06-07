@@ -1,7 +1,7 @@
 package servent.handler.files;
 
 import app.AppConfig;
-import app.FileManager;
+import app.file_manager.FileManager;
 import app.model.ServentInfo;
 import servent.handler.MessageHandler;
 import servent.message.Message;
@@ -9,7 +9,8 @@ import servent.message.MessageType;
 import servent.message.files.AskRemoveOriginalFileMessage;
 import servent.message.util.MessageUtil;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AskRemoveOriginalFileHandler implements MessageHandler {
 
@@ -28,22 +29,10 @@ public class AskRemoveOriginalFileHandler implements MessageHandler {
             return;
         }
 
-        String[] args = clientMessage.getMessageText().split(",");
+        AskRemoveOriginalFileMessage askRemoveOriginalFileMessage = (AskRemoveOriginalFileMessage) clientMessage;
 
-        if (args.length != 2) {
-            AppConfig.timestampedErrorPrint("Ask remove original file handler received invalid arguments: " + Arrays.toString(args));
-            return;
-        }
-
-
-        String filePath = args[0];
-        int ownerId;
-        try {
-            ownerId = Integer.parseInt(args[1]);
-        } catch (NumberFormatException e) {
-            AppConfig.timestampedErrorPrint("Ask remove file handler got an invalid ownerId: " + args[1]);
-            return;
-        }
+        String filePath = askRemoveOriginalFileMessage.getFilePath();
+        int ownerId = askRemoveOriginalFileMessage.getOwnerId();
 
         if (ownerId == AppConfig.myServentInfo.getChordId()) {
             int response = fileManager.removeOriginalFile(filePath);
@@ -53,11 +42,21 @@ public class AskRemoveOriginalFileHandler implements MessageHandler {
         } else {
             ServentInfo nextNode = AppConfig.chordState.getNextNodeForKey(ownerId);
 
-            MessageUtil.sendMessage(new AskRemoveOriginalFileMessage(
-                    clientMessage.getSenderIpAddress(), clientMessage.getSenderPort(),
-                    nextNode.getIpAddress(), nextNode.getListenerPort(),
-                    filePath, ownerId
-            ));
+            // We have to handle the case when the original owner is dead
+            // Simply compare the sender information with ours, if its equal
+            // the message circled back to us and this means the owner is dead.
+
+            if (!askRemoveOriginalFileMessage.hasVisited(AppConfig.myServentInfo.getChordId())) {
+                List<Integer> visited = new ArrayList<>(askRemoveOriginalFileMessage.getVisited());
+
+                visited.add(AppConfig.myServentInfo.getChordId());
+
+                MessageUtil.sendMessage(new AskRemoveOriginalFileMessage(
+                        clientMessage.getSenderIpAddress(), clientMessage.getSenderPort(),
+                        nextNode.getIpAddress(), nextNode.getListenerPort(),
+                        filePath, ownerId, visited
+                ));
+            }
         }
     }
 }

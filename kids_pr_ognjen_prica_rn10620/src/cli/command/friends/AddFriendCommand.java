@@ -2,6 +2,7 @@ package cli.command.friends;
 
 import app.AppConfig;
 import app.ChordState;
+import app.friend_manager.FriendManager;
 import app.model.ServentInfo;
 import cli.command.CLICommand;
 import servent.message.Message;
@@ -9,6 +10,13 @@ import servent.message.friends.AddFriendRequestMessage;
 import servent.message.util.MessageUtil;
 
 public class AddFriendCommand implements CLICommand {
+
+    private final FriendManager friendManager;
+
+    public AddFriendCommand(FriendManager friendManager) {
+        this.friendManager = friendManager;
+    }
+
     @Override
     public String commandName() {
         return "add_friend";
@@ -43,7 +51,7 @@ public class AddFriendCommand implements CLICommand {
 
         int toBefriendHash = ChordState.chordHash2(ip, port);
 
-        if (AppConfig.isFriend(toBefriendHash)) {
+        if (friendManager.isFriend(toBefriendHash)) {
             AppConfig.timestampedStandardPrint(ip + ":" + port + " is already your friend!");
             return;
         }

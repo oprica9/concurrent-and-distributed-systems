@@ -64,7 +64,7 @@ public class MultipleServentStarter {
             try {
                 ProcessBuilder builder = new ProcessBuilder("cmd.exe", "/c", "start",
                         "java", "-cp", "out/production/kids_pr_ognjen_prica_rn10620", "app.ServentMain",
-                        testName + "/servent" + "/servent" + i + ".properties", String.valueOf(i));
+                        testName + "/servent" + "/servent" + i + ".properties");
 
                 // We'll let the system handle the output for each process in its own terminal window
                 serventProcesses.add(builder.start());

@@ -106,18 +106,13 @@ public class FailureDetector implements Runnable, Cancellable {
         setUpBuddies();
     }
 
-    public String getDeadNodes() {
-        StringBuilder stringBuilder = new StringBuilder();
+    public List<String> getDeadNodes() {
+        List<String> deadNodeList = new ArrayList<>();
         for (int i : deadNodes) {
             ServentInfo deadServent = chordIds.get(i);
-            stringBuilder.append(deadServent.getIpAddress()).append(":").append(deadServent.getListenerPort());
-            stringBuilder.append(",");
+            deadNodeList.add(deadServent.getIpAddress() + ":" + deadServent.getListenerPort());
         }
-        if (!stringBuilder.isEmpty()) {
-            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
-        }
-        return stringBuilder.toString();
-
+        return deadNodeList;
     }
 
     public boolean shouldBeTokenHolder() {

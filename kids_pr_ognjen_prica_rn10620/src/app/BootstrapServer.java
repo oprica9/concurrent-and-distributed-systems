@@ -75,47 +75,48 @@ public class BootstrapServer {
                  * He wants to get a listener port from a random active servent,
                  * or -1 if he is the first one.
                  */
-                if (message.equals("Hail")) {
-                    String newServentIp = socketScanner.nextLine();
-                    int newServentPort = socketScanner.nextInt();
+                switch (message) {
+                    case "Hail" -> {
+                        String newServentIp = socketScanner.nextLine();
+                        int newServentPort = socketScanner.nextInt();
 
-                    String newServent = newServentIp + ":" + newServentPort;
+                        String newServent = newServentIp + ":" + newServentPort;
 
-                    System.out.println("Got: " + newServent);
-                    PrintWriter socketWriter = new PrintWriter(newServentSocket.getOutputStream());
+                        System.out.println("Got: " + newServent);
+                        PrintWriter socketWriter = new PrintWriter(newServentSocket.getOutputStream());
 
-                    if (activeServents.isEmpty()) {
-                        socketWriter.write("first" + "\n");
-                        activeServents.add(newServent); //first one doesn't need to confirm
-                        System.out.println("Adding servent: " + newServent);
-                    } else {
-                        String randServent = activeServents.get(rand.nextInt(activeServents.size()));
-                        socketWriter.write(randServent + "\n");
+                        if (activeServents.isEmpty()) {
+                            socketWriter.write("first" + "\n");
+                            activeServents.add(newServent); //first one doesn't need to confirm
+                            System.out.println("Adding servent: " + newServent);
+                        } else {
+                            String randServent = activeServents.get(rand.nextInt(activeServents.size()));
+                            socketWriter.write(randServent + "\n");
+                        }
+
+                        socketWriter.flush();
+                        newServentSocket.close();
                     }
+                    case "New" -> {
+                        // When a servent is confirmed not to be a collider, we add him to the list.
+                        String newServentIp = socketScanner.nextLine();
+                        int newServentPort = socketScanner.nextInt();
 
-                    socketWriter.flush();
-                    newServentSocket.close();
-                } else if (message.equals("New")) {
-                    // When a servent is confirmed not to be a collider, we add him to the list.
-                    String newServentIp = socketScanner.nextLine();
-                    int newServentPort = socketScanner.nextInt();
+                        String newServent = newServentIp + ":" + newServentPort;
 
-                    String newServent = newServentIp + ":" + newServentPort;
+                        System.out.println("Adding servent: " + newServent);
 
-                    System.out.println("Adding servent: " + newServent);
-
-                    activeServents.add(newServent);
-                    newServentSocket.close();
-                } else if (message.equals("Dead")) {
-                    String deadServentIp = socketScanner.nextLine();
-                    int deadServentPort = socketScanner.nextInt();
-
-                    String deadServent = deadServentIp + ":" + deadServentPort;
-
-                    System.out.println("Removing dead servent: " + deadServent);
-
-                    activeServents.remove(deadServent);
-                    newServentSocket.close();
+                        activeServents.add(newServent);
+                        newServentSocket.close();
+                    }
+                    case "Dead" -> {
+                        String deadServentIp = socketScanner.nextLine();
+                        int deadServentPort = socketScanner.nextInt();
+                        String deadServent = deadServentIp + ":" + deadServentPort;
+                        System.out.println("Removing dead servent: " + deadServent);
+                        activeServents.remove(deadServent);
+                        newServentSocket.close();
+                    }
                 }
 
             } catch (SocketTimeoutException e) {

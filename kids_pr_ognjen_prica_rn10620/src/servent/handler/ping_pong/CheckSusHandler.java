@@ -16,11 +16,9 @@ import java.util.List;
 public class CheckSusHandler implements MessageHandler {
 
     private final Message clientMessage;
-    private final FailureDetector failureDetector;
 
-    public CheckSusHandler(Message clientMessage, FailureDetector failureDetector) {
+    public CheckSusHandler(Message clientMessage) {
         this.clientMessage = clientMessage;
-        this.failureDetector = failureDetector;
     }
 
     @Override

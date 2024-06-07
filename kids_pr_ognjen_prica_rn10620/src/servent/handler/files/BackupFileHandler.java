@@ -1,9 +1,9 @@
 package servent.handler.files;
 
 import app.AppConfig;
-import app.FileManager;
+import app.file_manager.FileManager;
+import app.model.FileInfo;
 import app.model.ServentInfo;
-import app.model.StoredFileInfo;
 import servent.handler.MessageHandler;
 import servent.message.Message;
 import servent.message.MessageType;
@@ -29,56 +29,49 @@ public class BackupFileHandler implements MessageHandler {
 
         BackupFileMessage backupFileMessage = (BackupFileMessage) clientMessage;
         int fileHash = backupFileMessage.getFileHash();
-        StoredFileInfo backupFile = backupFileMessage.getStoredFileInfo();
+        FileInfo backupFile = backupFileMessage.getFileInfo();
 
         if (AppConfig.chordState.isKeyMine(fileHash)) {
             if (!fileManager.containsFile(backupFile)) {
                 fileManager.addFile(backupFile);
-                AppConfig.timestampedStandardPrint("Saving backup for file: " + backupFile.getPath());
+                AppConfig.timestampedStandardPrint("Saving backup for file: " + backupFile.getPath() + ", backupId: " + backupFile.getBackupId());
             }
 
             // Increase the backupId
-            backupFile = new StoredFileInfo(backupFile.getPath(), backupFile.getFileContent(), backupFile.getVisibility(), backupFile.getOwnerKey(), backupFile.getBackupId() + 1);
+            backupFile = fileManager.getInfoWithIncrementedBackupId(backupFile);
 
             // Send to successor
-            MessageUtil.sendMessage(new BackupFileMessage(
-                    clientMessage.getSenderIpAddress(), clientMessage.getSenderPort(),
-                    AppConfig.chordState.getNextNodeIpAddress(), AppConfig.chordState.getNextNodePort(),
-                    backupFile, fileHash
-            ));
-
+            sendBackupMessage(backupFile, fileHash, AppConfig.chordState.getNextNodeIpAddress(), AppConfig.chordState.getNextNodePort());
         } else {
             if (backupFile.getBackupId() > 0) {
                 // Time to save
                 if (AppConfig.myServentInfo.getChordId() != backupFile.getOwnerKey()) {
                     fileManager.addFile(backupFile);
-                    AppConfig.timestampedStandardPrint("Saving backup for file: " + backupFile.getPath());
+                    AppConfig.timestampedStandardPrint("Saving backup for file: " + backupFile.getPath() + ", backupId: " + backupFile.getBackupId());
                 }
 
                 // Increase the backupId
-                backupFile = new StoredFileInfo(backupFile.getPath(), backupFile.getFileContent(), backupFile.getVisibility(), backupFile.getOwnerKey(), backupFile.getBackupId() + 1);
+                backupFile = fileManager.getInfoWithIncrementedBackupId(backupFile);
 
-                // Send to successor (we would like 3 backups)
+                // Send to successor if we didn't hit a backup limit
                 if (backupFile.getBackupId() < FileManager.REPLICATION_FACTOR) {
-                    MessageUtil.sendMessage(new BackupFileMessage(
-                            clientMessage.getSenderIpAddress(), clientMessage.getSenderPort(),
-                            AppConfig.chordState.getNextNodeIpAddress(), AppConfig.chordState.getNextNodePort(),
-                            backupFile, fileHash
-                    ));
-                    AppConfig.timestampedStandardPrint("Forwarding backup for file: " + backupFile.getPath() + " to successor.");
+                    sendBackupMessage(backupFile, fileHash, AppConfig.chordState.getNextNodeIpAddress(), AppConfig.chordState.getNextNodePort());
+                    AppConfig.timestampedStandardPrint("Forwarding backup for file: " + backupFile.getPath() + " to successor, backupId: " + backupFile.getBackupId());
                 }
             } else {
-                // Find the node that should hold it
                 ServentInfo nextNode = AppConfig.chordState.getNextNodeForKey(fileHash);
-
-                MessageUtil.sendMessage(new BackupFileMessage(
-                        clientMessage.getSenderIpAddress(), clientMessage.getSenderPort(),
-                        nextNode.getIpAddress(), nextNode.getListenerPort(),
-                        backupFile, fileHash
-                ));
-                AppConfig.timestampedStandardPrint("Forwarding backup for file: " + backupFile.getPath());
+                sendBackupMessage(backupFile, fileHash, nextNode.getIpAddress(), nextNode.getListenerPort());
+                AppConfig.timestampedStandardPrint("Forwarding backup for file: " + backupFile.getPath() + ", backupId: " + backupFile.getBackupId());
             }
         }
+    }
+
+    private void sendBackupMessage(FileInfo backupFile, int fileHash, String ip, int port) {
+        MessageUtil.sendMessage(new BackupFileMessage(
+                clientMessage.getSenderIpAddress(), clientMessage.getSenderPort(),
+                ip, port,
+                backupFile, fileHash
+        ));
     }
 
 }

@@ -2,6 +2,7 @@ package cli.command.friends;
 
 import app.AppConfig;
 import app.ChordState;
+import app.friend_manager.FriendManager;
 import app.model.ServentInfo;
 import cli.command.CLICommand;
 import servent.message.Message;
@@ -9,6 +10,13 @@ import servent.message.friends.AddFriendResponseMessage;
 import servent.message.util.MessageUtil;
 
 public class AcceptFriendRequestCommand implements CLICommand {
+
+    private final FriendManager friendManager;
+
+    public AcceptFriendRequestCommand(FriendManager friendManager) {
+        this.friendManager = friendManager;
+    }
+
     @Override
     public String commandName() {
         return "accept_friend";
@@ -37,10 +45,10 @@ public class AcceptFriendRequestCommand implements CLICommand {
         }
 
         int toAccept = ChordState.chordHash2(ip, port);
-        if (AppConfig.haveRequest(toAccept)) {
+        if (friendManager.haveRequest(toAccept)) {
             // You're my friend now, we're having soft tacos later!
             AppConfig.timestampedStandardPrint("Accepted friend request from " + ip + ":" + port);
-            AppConfig.addFriend(toAccept);
+            friendManager.addFriend(toAccept, ip, port);
 
             ServentInfo nextNode = AppConfig.chordState.getNextNodeForKey(toAccept);
 

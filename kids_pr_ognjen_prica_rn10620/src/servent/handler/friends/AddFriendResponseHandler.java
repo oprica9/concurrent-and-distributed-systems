@@ -2,6 +2,7 @@ package servent.handler.friends;
 
 import app.AppConfig;
 import app.ChordState;
+import app.friend_manager.FriendManager;
 import app.model.ServentInfo;
 import servent.handler.MessageHandler;
 import servent.message.Message;
@@ -12,9 +13,11 @@ import servent.message.util.MessageUtil;
 public class AddFriendResponseHandler implements MessageHandler {
 
     private final Message clientMessage;
+    private final FriendManager friendManager;
 
-    public AddFriendResponseHandler(Message clientMessage) {
+    public AddFriendResponseHandler(Message clientMessage, FriendManager friendManager) {
         this.clientMessage = clientMessage;
+        this.friendManager = friendManager;
     }
 
     @Override
@@ -24,21 +27,17 @@ public class AddFriendResponseHandler implements MessageHandler {
             return;
         }
 
-        String[] hashRes = clientMessage.getMessageText().split(":");
+        AddFriendResponseMessage addFriendResponseMessage = (AddFriendResponseMessage) clientMessage;
 
-        int toFindHash;
-        try {
-            toFindHash = Integer.parseInt(hashRes[0]);
-        } catch (NumberFormatException e) {
-            AppConfig.timestampedErrorPrint("Add friend response handler got an invalid friend request response: " + e);
-            return;
-        }
+        int toFindHash = addFriendResponseMessage.getRequesterHash();
 
-        String senderIpPort = clientMessage.getSenderIpAddress() + ":" + clientMessage.getSenderPort();
+        String ip = clientMessage.getSenderIpAddress();
+        int port = clientMessage.getSenderPort();
+        String senderAddress = friendManager.getAddress(ip, port);
 
         if (toFindHash == AppConfig.myServentInfo.getChordId()) {
-            AppConfig.timestampedStandardPrint(senderIpPort + " accepted your friend request.");
-            AppConfig.addFriend(ChordState.chordHash2(clientMessage.getSenderIpAddress(), clientMessage.getSenderPort()));
+            AppConfig.timestampedStandardPrint(senderAddress + " accepted your friend request.");
+            friendManager.addFriend(ChordState.chordHash2(ip, port), ip, port);
         } else {
             ServentInfo nextNode = AppConfig.chordState.getNextNodeForKey(toFindHash);
 

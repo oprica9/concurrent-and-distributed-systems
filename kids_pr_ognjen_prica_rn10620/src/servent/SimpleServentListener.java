@@ -2,8 +2,9 @@ package servent;
 
 import app.AppConfig;
 import app.Cancellable;
-import app.FileManager;
 import app.failure_detection.FailureDetector;
+import app.file_manager.FileManager;
+import app.friend_manager.FriendManager;
 import servent.handler.*;
 import servent.handler.dht.AskGetHandler;
 import servent.handler.dht.PutHandler;
@@ -33,10 +34,12 @@ public class SimpleServentListener implements Runnable, Cancellable {
     private final ExecutorService threadPool = Executors.newWorkStealingPool();
 
     private final FailureDetector failureDetector;
+    private final FriendManager friendManager;
     private final FileManager fileManager;
 
-    public SimpleServentListener(FailureDetector failureDetector, FileManager fileManager) {
+    public SimpleServentListener(FailureDetector failureDetector, FriendManager friendManager, FileManager fileManager) {
         this.failureDetector = failureDetector;
+        this.friendManager = friendManager;
         this.fileManager = fileManager;
     }
 
@@ -89,7 +92,7 @@ public class SimpleServentListener implements Runnable, Cancellable {
                             messageHandler = new AskViewFilesHandler(clientMessage, fileManager);
                             break;
                         case TELL_VIEW_FILES:
-                            messageHandler = new TellViewFilesHandler(clientMessage);
+                            messageHandler = new TellViewFilesHandler(clientMessage, fileManager);
                             break;
                         case ASK_REMOVE_FILE:
                             messageHandler = new AskRemoveFileHandler(clientMessage, fileManager);
@@ -98,10 +101,10 @@ public class SimpleServentListener implements Runnable, Cancellable {
                             messageHandler = new AskRemoveOriginalFileHandler(clientMessage, fileManager);
                             break;
                         case ADD_FRIEND_REQUEST:
-                            messageHandler = new AddFriendRequestHandler(clientMessage);
+                            messageHandler = new AddFriendRequestHandler(clientMessage, friendManager);
                             break;
                         case ADD_FRIEND_RESPONSE:
-                            messageHandler = new AddFriendResponseHandler(clientMessage);
+                            messageHandler = new AddFriendResponseHandler(clientMessage, friendManager);
                             break;
                         case PING:
                             messageHandler = new PingHandler(clientMessage, failureDetector);
@@ -110,7 +113,7 @@ public class SimpleServentListener implements Runnable, Cancellable {
                             messageHandler = new PongHandler(clientMessage, failureDetector);
                             break;
                         case CHECK_SUS:
-                            messageHandler = new CheckSusHandler(clientMessage, failureDetector);
+                            messageHandler = new CheckSusHandler(clientMessage);
                             break;
                         case U_ALIVE:
                             messageHandler = new UAliveHandler(clientMessage);

@@ -2,9 +2,9 @@ package cli.command.files;
 
 import app.AppConfig;
 import app.ChordState;
-import app.FileManager;
+import app.file_manager.FileManager;
 import app.model.ServentInfo;
-import app.model.StoredFileInfo;
+import app.model.FileInfo;
 import cli.command.CLICommand;
 import servent.message.Message;
 import servent.message.files.AskViewFilesMessage;
@@ -29,12 +29,12 @@ public class ViewFilesCommand implements CLICommand {
     public void execute(String args) {
         if (args == null || args.isEmpty()) {
             // List all files owned by the current node
-            Map<String, StoredFileInfo> fileMap = fileManager.getFiles();
+            Map<String, FileInfo> fileMap = fileManager.getFiles();
             if (fileMap == null || fileMap.isEmpty()) {
                 AppConfig.timestampedStandardPrint("No files stored on this node.");
             } else {
                 AppConfig.timestampedStandardPrint("Files:");
-                FileManager.printFiles(fileMap);
+                fileManager.printFiles(fileMap);
             }
         } else {
             String[] splitArgs = args.split(":");
@@ -52,7 +52,7 @@ public class ViewFilesCommand implements CLICommand {
                 return;
             }
 
-            Map<String, StoredFileInfo> fileMap = fileManager.getFilesIfIpPortMatches(ip, port, AppConfig.myServentInfo.getChordId());
+            Map<String, FileInfo> fileMap = fileManager.getFilesIfIpPortMatches(ip, port, AppConfig.myServentInfo.getChordId());
             if (fileMap == null) {
                 AppConfig.timestampedStandardPrint("Please wait...");
                 ServentInfo nextNode = AppConfig.chordState.getNextNodeForKey(ChordState.chordHash2(ip, port));
@@ -68,7 +68,7 @@ public class ViewFilesCommand implements CLICommand {
                 MessageUtil.sendMessage(askViewFilesMessage);
             } else {
                 AppConfig.timestampedStandardPrint("Files:");
-                FileManager.printFiles(fileMap);
+                fileManager.printFiles(fileMap);
             }
         }
     }

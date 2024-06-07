@@ -11,7 +11,7 @@ public class PauseCommand implements CLICommand {
 
     @Override
     public void execute(String args) {
-        int timeToSleep = -1;
+        int timeToSleep;
 
         try {
             timeToSleep = Integer.parseInt(args);
@@ -24,7 +24,7 @@ public class PauseCommand implements CLICommand {
             try {
                 Thread.sleep(timeToSleep);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                AppConfig.timestampedErrorPrint(e);
             }
 
         } catch (NumberFormatException e) {

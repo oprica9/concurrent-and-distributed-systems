@@ -1,13 +1,14 @@
 package servent.handler;
 
 import app.AppConfig;
-import app.FileManager;
+import app.file_manager.FileManager;
 import app.model.ServentInfo;
-import app.model.StoredFileInfo;
+import app.model.FileInfo;
 import app.mutex.SuzukiKasamiMutex;
 import servent.message.*;
 import servent.message.util.MessageUtil;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -71,8 +72,8 @@ public class NewNodeHandler implements MessageHandler {
 
             // Set his files
 //            AppConfig.timestampedStandardPrint("Refactoring my file map...\n" + fileManager.getFiles());
-            Map<String, StoredFileInfo> myFiles = fileManager.getFiles();
-            Map<String, StoredFileInfo> hisFiles = getHisFiles(hisPred, newNodeInfo, myFiles);
+            Map<String, FileInfo> myFiles = fileManager.getFiles();
+            Map<String, FileInfo> hisFiles = getHisFiles(hisPred, newNodeInfo, myFiles);
 //            AppConfig.timestampedStandardPrint("His file map before:\n" + hisFiles);
 
             for (String key : hisFiles.keySet()) {
@@ -111,16 +112,22 @@ public class NewNodeHandler implements MessageHandler {
         SuzukiKasamiMutex.unlock();
     }
 
-    private Map<String, StoredFileInfo> getHisFiles(ServentInfo hisPred, ServentInfo newNodeInfo, Map<String, StoredFileInfo> myFiles) {
-        Map<String, StoredFileInfo> hisFiles = new HashMap<>();
+    private Map<String, FileInfo> getHisFiles(ServentInfo hisPred, ServentInfo newNodeInfo, Map<String, FileInfo> myFiles) {
+        Map<String, FileInfo> hisFiles = new HashMap<>();
 
         int myId = AppConfig.myServentInfo.getChordId();
         int hisPredId = hisPred.getChordId();
         int newNodeId = newNodeInfo.getChordId();
 
-        for (Entry<String, StoredFileInfo> fileEntry : myFiles.entrySet()) {
-            StoredFileInfo info = fileEntry.getValue();
-            int hashValue = FileManager.fileHash(fileEntry.getKey());
+        for (Entry<String, FileInfo> fileEntry : myFiles.entrySet()) {
+            FileInfo info = fileEntry.getValue();
+            int hashValue;
+            try {
+                hashValue = fileManager.fileHash(fileEntry.getKey());
+            } catch (IOException e) {
+                AppConfig.timestampedErrorPrint("Unable to hash file: " + info.getPath() + ". Reason: " + e.getMessage());
+                continue;
+            }
 
             if (hisPredId == myId) {
                 // I am first and he is second

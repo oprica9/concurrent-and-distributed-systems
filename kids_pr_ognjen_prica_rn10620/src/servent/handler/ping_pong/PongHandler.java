@@ -7,6 +7,7 @@ import app.model.ServentInfo;
 import servent.handler.MessageHandler;
 import servent.message.Message;
 import servent.message.MessageType;
+import servent.message.ping_pong.PongMessage;
 import servent.message.ping_pong.RestructureSystemMessage;
 import servent.message.util.MessageUtil;
 
@@ -30,20 +31,22 @@ public class PongHandler implements MessageHandler {
         }
         failureDetector.updateLastResponseTime(ChordState.chordHash2(clientMessage.getSenderIpAddress(), clientMessage.getSenderPort()));
 
-        if (!clientMessage.getMessageText().isBlank() && !clientMessage.getMessageText().isEmpty()) {
+        PongMessage pongMessage = (PongMessage) clientMessage;
+        List<String> deadNodes = pongMessage.getDeadNodes();
+
+        if (!deadNodes.isEmpty()) {
             // our buddies buddy has died
-            String[] ipPortsList = clientMessage.getMessageText().split(",");
 
             List<ServentInfo> deadInfos = new ArrayList<>();
 
-            for (String ipPort : ipPortsList) {
+            for (String ipPort : deadNodes) {
                 String[] split = ipPort.split(":");
                 String ip = split[0];
                 int port;
                 try {
                     port = Integer.parseInt(split[1]);
                 } catch (NumberFormatException e) {
-                    AppConfig.timestampedErrorPrint("Pong handler could not parse text from message: " + clientMessage.getMessageText());
+                    AppConfig.timestampedErrorPrint("Pong handler could not parse element from list in message: " + ipPort);
                     return;
                 }
 

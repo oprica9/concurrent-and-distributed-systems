@@ -148,6 +148,12 @@ public class ChordState {
         }
     }
 
+    public ServentInfo getNextNode() {
+        return isFirstAndOnlyNode()
+                ? AppConfig.myServentInfo
+                : successors[0];
+    }
+
     public int getNextNodePort() {
         return isFirstAndOnlyNode()
                 ? AppConfig.myServentInfo.getListenerPort()
@@ -259,7 +265,7 @@ public class ChordState {
         allNodes.clear();
         allNodes.addAll(newList);
         allNodes.addAll(newList2);
-        if (newList2.size() > 0) {
+        if (!newList2.isEmpty()) {
             predecessorInfo = newList2.get(newList2.size() - 1);
         } else {
             if (newList.isEmpty()) {

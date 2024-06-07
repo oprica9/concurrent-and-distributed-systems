@@ -2,9 +2,9 @@ package servent.handler.files;
 
 import app.AppConfig;
 import app.ChordState;
-import app.FileManager;
+import app.file_manager.FileManager;
 import app.model.ServentInfo;
-import app.model.StoredFileInfo;
+import app.model.FileInfo;
 import servent.handler.MessageHandler;
 import servent.message.Message;
 import servent.message.MessageType;
@@ -31,21 +31,13 @@ public class AskViewFilesHandler implements MessageHandler {
             return;
         }
 
-        String[] msg = clientMessage.getMessageText().split(",");
+        AskViewFilesMessage askViewFilesMessage = (AskViewFilesMessage) clientMessage;
 
-        String[] ipPort = msg[0].split(":");
-        String ip = ipPort[0];
-        int port;
-        int ogKey;
-        try {
-            port = Integer.parseInt(ipPort[1]);
-            ogKey = Integer.parseInt(msg[1]);
-        } catch (NumberFormatException e) {
-            AppConfig.timestampedErrorPrint("Could not parse port: " + ipPort[1]);
-            return;
-        }
+        String ip = askViewFilesMessage.getIp();
+        int port = askViewFilesMessage.getPort();
+        int ogKey = askViewFilesMessage.getOgKey();
 
-        Map<String, StoredFileInfo> fileMap = fileManager.getFilesIfIpPortMatches(ip, port, ogKey);
+        Map<String, FileInfo> fileMap = fileManager.getFilesIfIpPortMatches(ip, port, ogKey);
 
         ServentInfo nextNode = fileMap != null
                 ? AppConfig.chordState.getNextNodeForKey(ogKey)

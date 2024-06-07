@@ -1,7 +1,7 @@
 package servent.handler;
 
 import app.AppConfig;
-import app.FileManager;
+import app.file_manager.FileManager;
 import servent.message.Message;
 import servent.message.MessageType;
 import servent.message.UpdateMessage;
@@ -35,9 +35,6 @@ public class WelcomeHandler implements MessageHandler {
                 AppConfig.chordState.getNextNodeIpAddress(), AppConfig.chordState.getNextNodePort(),
                 ""
         );
-
-//        System.out.println(AppConfig.myServentInfo.getIpAddress() + ":" + AppConfig.myServentInfo.getListenerPort());
-//        System.out.println(AppConfig.chordState.getNextNodeIpAddress() + ":" + AppConfig.chordState.getNextNodePort());
 
         MessageUtil.sendMessage(um);
     }

@@ -32,8 +32,6 @@ public class AppConfig {
 
     // Roughbook
     public static String ROOT;
-    private static final Set<Integer> friends = new HashSet<>();
-    private static final Set<Integer> friendRequests = new HashSet<>();
     public static final Object failLock = new Object();
 
     /**
@@ -91,12 +89,11 @@ public class AppConfig {
         try {
             ChordState.CHORD_SIZE = Integer.parseInt(properties.getProperty("chord_size"));
         } catch (NumberFormatException e) {
-            timestampedErrorPrint("Problem reading chord_size. Must be a number that is a power of 2. Exiting...");
+            timestampedErrorPrint("Problem reading Chord size. Exiting...");
             System.exit(0);
         }
 
         myServentInfo = new ServentInfo(BOOTSTRAP_IP, BOOTSTRAP_PORT);
-
     }
 
     /**
@@ -127,7 +124,13 @@ public class AppConfig {
             System.exit(0);
         }
 
-        ChordState.CHORD_SIZE = 64;
+        try {
+            ChordState.CHORD_SIZE = Integer.parseInt(properties.getProperty("chord_size"));
+        } catch (NumberFormatException e) {
+            timestampedErrorPrint("Problem reading Chord size. Exiting...");
+            System.exit(0);
+        }
+
         chordState = new ChordState();
 
         ROOT = properties.getProperty("root");
@@ -167,32 +170,4 @@ public class AppConfig {
         myServentInfo = new ServentInfo(SERVENT_IP, listenerPort, weakFailureConsistency, strongFailureConsistency);
     }
 
-    public static void addFriend(int requesterHash) {
-        friendRequests.remove(requesterHash);
-        friends.add(requesterHash);
-    }
-
-    public static boolean isFriend(int requesterHash) {
-        return friends.contains(requesterHash);
-    }
-
-    public static void addFriendRequest(int requesterHash) {
-        friendRequests.add(requesterHash);
-    }
-
-    public static boolean haveRequest(int requesterHash) {
-        return friendRequests.contains(requesterHash);
-    }
-
-    public static void printFriends() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Friends: ");
-        for (Integer friendId : friends) {
-            builder.append("\t");
-            builder.append(friendId);
-            builder.append("\n");
-        }
-        builder.deleteCharAt(builder.length() - 1);
-        System.out.println(builder);
-    }
 }

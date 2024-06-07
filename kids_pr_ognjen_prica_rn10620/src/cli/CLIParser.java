@@ -2,16 +2,19 @@ package cli;
 
 import app.AppConfig;
 import app.Cancellable;
-import app.FileManager;
 import app.failure_detection.FailureDetector;
+import app.file_manager.FileManager;
+import app.friend_manager.FriendManager;
 import cli.command.*;
 import cli.command.dht.DHTGetCommand;
 import cli.command.dht.DHTPutCommand;
 import cli.command.files.AddFileCommand;
+import cli.command.files.OpenFileCommand;
 import cli.command.files.RemoveFileCommand;
 import cli.command.files.ViewFilesCommand;
 import cli.command.friends.AcceptFriendRequestCommand;
 import cli.command.friends.AddFriendCommand;
+import cli.command.friends.ListFriendRequestsCommand;
 import cli.command.friends.ListFriendsCommand;
 import servent.SimpleServentListener;
 
@@ -39,12 +42,9 @@ import java.util.Scanner;
 public class CLIParser implements Runnable, Cancellable {
 
     private volatile boolean working = true;
-
     private final List<CLICommand> commandList;
-    private final FileManager fileManager;
 
-    public CLIParser(SimpleServentListener listener, FailureDetector failureDetector, FileManager fileManager) {
-        this.fileManager = fileManager;
+    public CLIParser(SimpleServentListener listener, FailureDetector failureDetector, FriendManager friendManager, FileManager fileManager) {
         this.commandList = new ArrayList<>();
 
         commandList.add(new InfoCommand());
@@ -53,12 +53,16 @@ public class CLIParser implements Runnable, Cancellable {
         commandList.add(new DHTGetCommand());
         commandList.add(new DHTPutCommand());
         commandList.add(new StopCommand(this, listener, failureDetector));
-        commandList.add(new AddFileCommand(this.fileManager));
+
+        commandList.add(new AddFileCommand(fileManager));
         commandList.add(new ViewFilesCommand(fileManager));
         commandList.add(new RemoveFileCommand(fileManager));
-        commandList.add(new AddFriendCommand());
-        commandList.add(new AcceptFriendRequestCommand());
-        commandList.add(new ListFriendsCommand());
+        commandList.add(new OpenFileCommand(fileManager));
+
+        commandList.add(new AddFriendCommand(friendManager));
+        commandList.add(new AcceptFriendRequestCommand(friendManager));
+        commandList.add(new ListFriendsCommand(friendManager));
+        commandList.add(new ListFriendRequestsCommand(friendManager));
     }
 
     @Override

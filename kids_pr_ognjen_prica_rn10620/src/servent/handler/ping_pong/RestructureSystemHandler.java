@@ -3,7 +3,6 @@ package servent.handler.ping_pong;
 import app.AppConfig;
 import app.failure_detection.FailureDetector;
 import app.model.ServentInfo;
-import app.mutex.SuzukiKasamiMutex;
 import servent.handler.MessageHandler;
 import servent.message.Message;
 import servent.message.MessageType;
@@ -30,23 +29,13 @@ public class RestructureSystemHandler implements MessageHandler {
             return;
         }
 
-        String[] args = clientMessage.getMessageText().split(":");
-        if (args.length != 2) {
-            AppConfig.timestampedErrorPrint("Invalid arguments for a system restructure request.");
-            return;
-        }
+        RestructureSystemMessage restructureSystemMessage = (RestructureSystemMessage) clientMessage;
 
-        String ip = args[0];
-        int port;
-        try {
-            port = Integer.parseInt(args[1]);
-        } catch (NumberFormatException e) {
-            AppConfig.timestampedErrorPrint("Invalid arguments for a system restructure request.");
-            return;
-        }
+        String deadIp = restructureSystemMessage.getDeadIpAddress();
+        int deadPort = restructureSystemMessage.getDeadPort();
 
         List<ServentInfo> deadServents = new ArrayList<>();
-        ServentInfo deadServent = new ServentInfo(ip, port);
+        ServentInfo deadServent = new ServentInfo(deadIp, deadPort);
 
         // I should also try to become the token holder
         // But in case that the other node was too fast and I didn't become the token holder before
@@ -65,11 +54,11 @@ public class RestructureSystemHandler implements MessageHandler {
                 clientMessage.getSenderPort() != AppConfig.myServentInfo.getListenerPort()) {
 
             for (ServentInfo succ : AppConfig.chordState.getSuccessors()) {
-                if (!succ.getIpAddress().equals(ip) || succ.getListenerPort() != port) {
+                if (!succ.getIpAddress().equals(deadIp) || succ.getListenerPort() != deadPort) {
                     MessageUtil.sendMessage(new RestructureSystemMessage(
                             clientMessage.getSenderIpAddress(), clientMessage.getSenderPort(),
                             AppConfig.chordState.getNextNodeIpAddress(), AppConfig.chordState.getNextNodePort(),
-                            ip, port
+                            deadIp, deadPort
                     ));
                     break;
                 }

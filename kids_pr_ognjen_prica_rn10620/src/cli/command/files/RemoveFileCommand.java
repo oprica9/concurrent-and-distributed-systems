@@ -1,8 +1,10 @@
 package cli.command.files;
 
 import app.AppConfig;
-import app.FileManager;
+import app.file_manager.FileManager;
 import cli.command.CLICommand;
+
+import java.io.IOException;
 
 public class RemoveFileCommand implements CLICommand {
 
@@ -24,7 +26,11 @@ public class RemoveFileCommand implements CLICommand {
             return;
         }
 
-        fileManager.removeFile(args);
+        try {
+            fileManager.removeFile(args);
+        } catch (IOException e) {
+            AppConfig.timestampedErrorPrint("Unable to remove file: " + args + ".Reason: " + e.getMessage());
+        }
 
         AppConfig.timestampedStandardPrint("Please wait...");
     }

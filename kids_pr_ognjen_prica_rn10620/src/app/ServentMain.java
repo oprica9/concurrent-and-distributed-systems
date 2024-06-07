@@ -1,6 +1,8 @@
 package app;
 
 import app.failure_detection.FailureDetector;
+import app.file_manager.FileManager;
+import app.friend_manager.FriendManager;
 import app.mutex.SuzukiKasamiMutex;
 import cli.CLIParser;
 import servent.SimpleServentListener;
@@ -25,20 +27,11 @@ public class ServentMain {
             AppConfig.timestampedErrorPrint("Please provide servent list file and id of this servent.");
         }
 
-        int serventId = -1;
-        int portNumber;
-
         String serventListFile = args[0];
-
-        try {
-            serventId = Integer.parseInt(args[1]);
-        } catch (NumberFormatException e) {
-            AppConfig.timestampedErrorPrint("Second argument should be an int. Exiting...");
-            System.exit(0);
-        }
 
         AppConfig.readServentConfig(serventListFile);
 
+        int portNumber;
         try {
             portNumber = AppConfig.myServentInfo.getListenerPort();
 
@@ -63,13 +56,15 @@ public class ServentMain {
         Thread failureDetectorThread = new Thread(failureDetector);
         failureDetectorThread.start();
 
-        FileManager fileManager = new FileManager();
+        FriendManager friendManager = new FriendManager();
 
-        SimpleServentListener simpleListener = new SimpleServentListener(failureDetector, fileManager);
+        FileManager fileManager = new FileManager(friendManager);
+
+        SimpleServentListener simpleListener = new SimpleServentListener(failureDetector, friendManager, fileManager);
         Thread listenerThread = new Thread(simpleListener);
         listenerThread.start();
 
-        CLIParser cliParser = new CLIParser(simpleListener, failureDetector, fileManager);
+        CLIParser cliParser = new CLIParser(simpleListener, failureDetector, friendManager, fileManager);
         Thread cliThread = new Thread(cliParser);
         cliThread.start();
 

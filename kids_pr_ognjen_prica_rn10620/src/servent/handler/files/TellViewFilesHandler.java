@@ -1,9 +1,9 @@
 package servent.handler.files;
 
 import app.AppConfig;
-import app.FileManager;
+import app.file_manager.FileManager;
 import app.model.ServentInfo;
-import app.model.StoredFileInfo;
+import app.model.FileInfo;
 import servent.handler.MessageHandler;
 import servent.message.Message;
 import servent.message.MessageType;
@@ -15,9 +15,11 @@ import java.util.Map;
 public class TellViewFilesHandler implements MessageHandler {
 
     private final Message clientMessage;
+    private final FileManager fileManager;
 
-    public TellViewFilesHandler(Message clientMessage) {
+    public TellViewFilesHandler(Message clientMessage, FileManager fileManager) {
         this.clientMessage = clientMessage;
+        this.fileManager = fileManager;
     }
 
     @Override
@@ -28,18 +30,12 @@ public class TellViewFilesHandler implements MessageHandler {
 
         TellViewFilesMessage tellViewFilesMessage = (TellViewFilesMessage) clientMessage;
 
-        int ogKey;
-        try {
-            ogKey = Integer.parseInt(tellViewFilesMessage.getMessageText());
-        } catch (NumberFormatException e) {
-            AppConfig.timestampedErrorPrint("Error parsing the original sender key: " + e);
-            return;
-        }
+        int ogKey = tellViewFilesMessage.getOgKey();
 
         if (AppConfig.chordState.isKeyMine(ogKey)) {
-            Map<String, StoredFileInfo> fileMap = tellViewFilesMessage.getFileMap();
+            Map<String, FileInfo> fileMap = tellViewFilesMessage.getFileMap();
             AppConfig.timestampedStandardPrint("Received file data from: " + clientMessage.getSenderIpAddress() + ":" + clientMessage.getSenderPort());
-            FileManager.printFiles(fileMap);
+            fileManager.printFiles(fileMap);
         } else {
             ServentInfo nextNode = AppConfig.chordState.getNextNodeForKey(ogKey);
             Message tell = new TellViewFilesMessage(

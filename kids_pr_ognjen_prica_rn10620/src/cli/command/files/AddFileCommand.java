@@ -1,11 +1,17 @@
 package cli.command.files;
 
 import app.AppConfig;
-import app.FileManager;
+import app.file_manager.FileManager;
+import app.model.FileInfo;
+import app.model.FileType;
+import app.model.ImageFileInfo;
+import app.model.TextFileInfo;
 import cli.command.CLICommand;
 
-public class AddFileCommand implements CLICommand {
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+public class AddFileCommand implements CLICommand {
 
     private final FileManager fileManager;
 
@@ -34,13 +40,40 @@ public class AddFileCommand implements CLICommand {
             return;
         }
 
-        String fileContent = fileManager.readFile(AppConfig.ROOT + "/" + filePath);
-        if (fileContent == null) {
-            AppConfig.timestampedErrorPrint("Error reading file.");
+        FileType type;
+        try {
+            type = fileManager.getFileType(filePath);
+        } catch (IOException e) {
+            AppConfig.timestampedErrorPrint("Unsupported file extension " + filePath);
             return;
         }
 
-        int res = fileManager.addFile(filePath, fileContent, visibility, AppConfig.myServentInfo.getChordId());
+        FileInfo fileInfo;
+        try {
+            if (type == FileType.TEXT) {
+                fileInfo = new TextFileInfo(
+                        filePath,
+                        fileManager.getExtension(filePath),
+                        (String) fileManager.readFile(filePath),
+                        visibility,
+                        AppConfig.myServentInfo.getChordId(),
+                        0);
+            } else {
+                fileInfo = new ImageFileInfo(
+                        filePath,
+                        fileManager.getExtension(filePath),
+                        (BufferedImage) fileManager.readFile(filePath),
+                        visibility,
+                        AppConfig.myServentInfo.getChordId(),
+                        0
+                );
+            }
+        } catch (IOException e) {
+            AppConfig.timestampedErrorPrint("Error reading file content: " + filePath + ". Reason: " + e.getMessage());
+            return;
+        }
+
+        int res = fileManager.addFile(fileInfo);
         if (res == -2) {
             AppConfig.timestampedStandardPrint("Overwritten file " + filePath + " (" + visibility + ")");
         } else if (res == -1) {
@@ -49,7 +82,11 @@ public class AddFileCommand implements CLICommand {
 
         // Backup only if the file is public
         if (fileManager.getFileVisibility(filePath).equals(FileManager.PUBLIC)) {
-            fileManager.backupFile(filePath, fileContent, visibility);
+            try {
+                fileManager.backupFile(fileInfo);
+            } catch (IOException e) {
+                AppConfig.timestampedErrorPrint("Unable to backup file: " + filePath + ". Reason: " + e.getMessage());
+            }
         }
     }
 
