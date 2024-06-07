@@ -23,49 +23,6 @@ public class NewNodeHandler implements MessageHandler {
         this.fileManager = fileManager;
     }
 
-    private static Map<Integer, Integer> getHisValues(ServentInfo hisPred, ServentInfo
-            newNodeInfo, Map<Integer, Integer> myValues) {
-        Map<Integer, Integer> hisValues = new HashMap<>();
-
-        int myId = AppConfig.myServentInfo.getChordId();
-        int hisPredId = hisPred.getChordId();
-        int newNodeId = newNodeInfo.getChordId();
-
-        for (Entry<Integer, Integer> valueEntry : myValues.entrySet()) {
-            if (hisPredId == myId) {
-                // I am first and he is second
-                if (myId < newNodeId) {
-                    if (valueEntry.getKey() <= newNodeId && valueEntry.getKey() > myId) {
-                        hisValues.put(valueEntry.getKey(), valueEntry.getValue());
-                    }
-                } else {
-                    if (valueEntry.getKey() <= newNodeId || valueEntry.getKey() > myId) {
-                        hisValues.put(valueEntry.getKey(), valueEntry.getValue());
-                    }
-                }
-            }
-            if (hisPredId < myId) {
-                // My old predecessor was before me
-                if (valueEntry.getKey() <= newNodeId) {
-                    hisValues.put(valueEntry.getKey(), valueEntry.getValue());
-                }
-            } else {
-                // My old predecessor was after me
-                if (hisPredId > newNodeId) { //new node overflow
-                    if (valueEntry.getKey() <= newNodeId || valueEntry.getKey() > hisPredId) {
-                        hisValues.put(valueEntry.getKey(), valueEntry.getValue());
-                    }
-                } else {
-                    // No new node overflow
-                    if (valueEntry.getKey() <= newNodeId && valueEntry.getKey() > hisPredId) {
-                        hisValues.put(valueEntry.getKey(), valueEntry.getValue());
-                    }
-                }
-            }
-        }
-        return hisValues;
-    }
-
     @Override
     public void run() {
         if (clientMessage.getMessageType() != MessageType.NEW_NODE) {
@@ -205,5 +162,48 @@ public class NewNodeHandler implements MessageHandler {
             }
         }
         return hisFiles;
+    }
+
+    private Map<Integer, Integer> getHisValues(ServentInfo hisPred, ServentInfo
+            newNodeInfo, Map<Integer, Integer> myValues) {
+        Map<Integer, Integer> hisValues = new HashMap<>();
+
+        int myId = AppConfig.myServentInfo.getChordId();
+        int hisPredId = hisPred.getChordId();
+        int newNodeId = newNodeInfo.getChordId();
+
+        for (Entry<Integer, Integer> valueEntry : myValues.entrySet()) {
+            if (hisPredId == myId) {
+                // I am first and he is second
+                if (myId < newNodeId) {
+                    if (valueEntry.getKey() <= newNodeId && valueEntry.getKey() > myId) {
+                        hisValues.put(valueEntry.getKey(), valueEntry.getValue());
+                    }
+                } else {
+                    if (valueEntry.getKey() <= newNodeId || valueEntry.getKey() > myId) {
+                        hisValues.put(valueEntry.getKey(), valueEntry.getValue());
+                    }
+                }
+            }
+            if (hisPredId < myId) {
+                // My old predecessor was before me
+                if (valueEntry.getKey() <= newNodeId) {
+                    hisValues.put(valueEntry.getKey(), valueEntry.getValue());
+                }
+            } else {
+                // My old predecessor was after me
+                if (hisPredId > newNodeId) { //new node overflow
+                    if (valueEntry.getKey() <= newNodeId || valueEntry.getKey() > hisPredId) {
+                        hisValues.put(valueEntry.getKey(), valueEntry.getValue());
+                    }
+                } else {
+                    // No new node overflow
+                    if (valueEntry.getKey() <= newNodeId && valueEntry.getKey() > hisPredId) {
+                        hisValues.put(valueEntry.getKey(), valueEntry.getValue());
+                    }
+                }
+            }
+        }
+        return hisValues;
     }
 }
