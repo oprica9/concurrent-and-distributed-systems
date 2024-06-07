@@ -28,14 +28,12 @@ import java.util.concurrent.Executors;
 
 public class SimpleServentListener implements Runnable, Cancellable {
 
-    private volatile boolean working = true;
-
     // Thread pool for executing the handlers. Each client will get its own handler thread.
     private final ExecutorService threadPool = Executors.newWorkStealingPool();
-
     private final FailureDetector failureDetector;
     private final FriendManager friendManager;
     private final FileManager fileManager;
+    private volatile boolean working = true;
 
     public SimpleServentListener(FailureDetector failureDetector, FriendManager friendManager, FileManager fileManager) {
         this.failureDetector = failureDetector;

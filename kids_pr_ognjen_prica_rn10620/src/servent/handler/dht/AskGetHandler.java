@@ -3,9 +3,9 @@ package servent.handler.dht;
 import app.AppConfig;
 import app.model.ServentInfo;
 import servent.handler.MessageHandler;
-import servent.message.dht.AskGetMessage;
 import servent.message.Message;
 import servent.message.MessageType;
+import servent.message.dht.AskGetMessage;
 import servent.message.dht.TellGetMessage;
 import servent.message.util.MessageUtil;
 

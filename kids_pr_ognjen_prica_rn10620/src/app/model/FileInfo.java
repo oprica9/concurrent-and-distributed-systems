@@ -11,7 +11,7 @@ public abstract class FileInfo implements Serializable {
     private final String ext;
     private final String visibility;
     private final int ownerKey;
-    private int backupId;
+    private final int backupId;
 
     public FileInfo(String path, String ext, FileType type, String visibility, int ownerKey, int backupId) {
         this.path = path;

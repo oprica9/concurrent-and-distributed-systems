@@ -23,18 +23,17 @@ import java.util.concurrent.atomic.AtomicLong;
 
 public class FailureDetector implements Runnable, Cancellable {
 
-    private volatile boolean working = true;
     public static final int PING_INTERVAL = 1000;
     public static final int WEAK_FAILURE_THRESHOLD = 4000;
     public static final int STRONG_FAILURE_THRESHOLD = 10000;
-
     private final Map<Integer, Long> lastResponseTimes = new ConcurrentHashMap<>();
     private final AtomicInteger tokenHolder = new AtomicInteger(-1);
     private final AtomicLong myDeclaredTime = new AtomicLong(Long.MAX_VALUE);
-    private transient boolean shouldBeTokenHolder = false;
-    private transient boolean refactored = false;
     private final Map<Integer, ServentInfo> chordIds = new ConcurrentHashMap<>();
     private final Set<Integer> deadNodes = ConcurrentHashMap.newKeySet();
+    private volatile boolean working = true;
+    private transient boolean shouldBeTokenHolder = false;
+    private transient boolean refactored = false;
 
     public FailureDetector() {
     }

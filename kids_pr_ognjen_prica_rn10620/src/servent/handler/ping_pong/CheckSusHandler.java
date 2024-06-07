@@ -2,16 +2,12 @@ package servent.handler.ping_pong;
 
 import app.AppConfig;
 import app.ChordState;
-import app.failure_detection.FailureDetector;
 import servent.handler.MessageHandler;
 import servent.message.Message;
 import servent.message.MessageType;
 import servent.message.ping_pong.CheckSusNodeMessage;
 import servent.message.ping_pong.UAliveMessage;
 import servent.message.util.MessageUtil;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CheckSusHandler implements MessageHandler {
 

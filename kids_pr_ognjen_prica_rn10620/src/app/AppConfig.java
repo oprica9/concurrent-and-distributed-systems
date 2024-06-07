@@ -8,7 +8,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.Properties;
 
 /**
  * This class contains all the global application configuration stuff.
@@ -17,6 +19,7 @@ import java.util.*;
  */
 public class AppConfig {
 
+    public static final Object failLock = new Object();
     /**
      * Convenience access for this servent's information
      */
@@ -25,14 +28,11 @@ public class AppConfig {
     public static String BOOTSTRAP_IP;
     public static String SERVENT_IP;
     public static int BOOTSTRAP_PORT;
-
     public static int SERVENT_COUNT = 6; // TODO
     public static ChordState chordState;
     public static ServentInfo temp;
-
     // Roughbook
     public static String ROOT;
-    public static final Object failLock = new Object();
 
     /**
      * Print a message to stdout with a timestamp

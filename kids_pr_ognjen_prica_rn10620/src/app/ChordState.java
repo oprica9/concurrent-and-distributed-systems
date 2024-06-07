@@ -1,9 +1,9 @@
 package app;
 
 import app.model.ServentInfo;
+import servent.message.WelcomeMessage;
 import servent.message.dht.AskGetMessage;
 import servent.message.dht.PutMessage;
-import servent.message.WelcomeMessage;
 import servent.message.util.MessageUtil;
 
 import java.io.IOException;

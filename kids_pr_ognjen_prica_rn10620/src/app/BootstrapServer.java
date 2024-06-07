@@ -12,8 +12,8 @@ import java.util.Scanner;
 
 public class BootstrapServer {
 
-    private volatile boolean working = true;
     private final List<String> activeServents;
+    private volatile boolean working = true;
 
     public BootstrapServer() {
         activeServents = new ArrayList<>();

@@ -89,7 +89,12 @@ public class FileManager {
         if (AppConfig.chordState.isKeyMine(fileHash)) {
             // I'm the first backup
             FileInfo removed = fileMap.remove(filePath);
-            AppConfig.timestampedStandardPrint("Removing backup for file " + filePath + ", backupId: " + removed.getBackupId());
+            if (removed.getOwnerKey() == AppConfig.myServentInfo.getChordId()) {
+                AppConfig.timestampedStandardPrint("Removing original file " + filePath + ", backupId: " + removed.getBackupId());
+            } else {
+                AppConfig.timestampedStandardPrint("Removing backup for file " + filePath + ", backupId: " + removed.getBackupId());
+            }
+
 
             // Ask for removal of the original if I'm not the original owner
             if (AppConfig.myServentInfo.getChordId() != removed.getOwnerKey()) {
@@ -232,6 +237,10 @@ public class FileManager {
         return fileMap;
     }
 
+    public void setFiles(Map<String, FileInfo> myFiles) {
+        this.fileMap = myFiles;
+    }
+
     public void printFiles(Map<String, FileInfo> fileMap) {
         for (Map.Entry<String, FileInfo> entry : fileMap.entrySet()) {
             String filePath = entry.getKey();
@@ -242,10 +251,6 @@ public class FileManager {
 
     public int removeOriginalFile(String filePath) {
         return fileMap.remove(filePath) != null ? -2 : 0;
-    }
-
-    public void setFiles(Map<String, FileInfo> myFiles) {
-        this.fileMap = myFiles;
     }
 
     public void init(WelcomeMessage welcomeMsg) {

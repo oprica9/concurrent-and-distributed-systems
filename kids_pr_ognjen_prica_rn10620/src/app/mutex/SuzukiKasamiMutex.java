@@ -14,18 +14,18 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class SuzukiKasamiMutex {
 
-    private static final ReentrantLock localLock = new ReentrantLock();
     public static final AtomicBoolean inCS = new AtomicBoolean(false);
+    private static final ReentrantLock localLock = new ReentrantLock();
     private static final ReentrantLock mutex = new ReentrantLock();
     private static final Condition welcomeResponseReceived = mutex.newCondition();
-    private static boolean waitingForWelcomeResponse = false;
-
-    // Distributed
     /**
      * RNi[j] denotes the largest sequence number received in a REQUEST message so far from site Sj
      */
     public static Map<Integer, Integer> RN = new ConcurrentHashMap<>();
+
+    // Distributed
     public static Token TOKEN = null;
+    private static boolean waitingForWelcomeResponse = false;
 
     public static void initialize() {
 

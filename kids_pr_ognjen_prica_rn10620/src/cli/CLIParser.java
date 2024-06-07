@@ -41,8 +41,8 @@ import java.util.Scanner;
  */
 public class CLIParser implements Runnable, Cancellable {
 
-    private volatile boolean working = true;
     private final List<CLICommand> commandList;
+    private volatile boolean working = true;
 
     public CLIParser(SimpleServentListener listener, FailureDetector failureDetector, FriendManager friendManager, FileManager fileManager) {
         this.commandList = new ArrayList<>();

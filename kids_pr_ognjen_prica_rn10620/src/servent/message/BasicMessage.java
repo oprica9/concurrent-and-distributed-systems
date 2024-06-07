@@ -17,15 +17,14 @@ public class BasicMessage implements Message {
 
     @Serial
     private static final long serialVersionUID = -9075856313609777945L;
+    // This gives us a unique id - incremented in every natural constructor.
+    private static final AtomicInteger messageCounter = new AtomicInteger(0);
     private final MessageType type;
     private final String senderIpAddress;
     private final int senderPort;
     private final String receiverIpAddress;
     private final int receiverPort;
     private final String messageText;
-
-    // This gives us a unique id - incremented in every natural constructor.
-    private static final AtomicInteger messageCounter = new AtomicInteger(0);
     private final int messageId;
 
     public BasicMessage(MessageType type, String senderIpAddress, int senderPort, String receiverIpAddress, int receiverPort) {

@@ -26,7 +26,7 @@ public class UAliveHandler implements MessageHandler {
         MessageUtil.sendMessage(new AmAliveMessage(
                 AppConfig.myServentInfo.getIpAddress(), AppConfig.myServentInfo.getListenerPort(),
                 clientMessage.getSenderIpAddress(), clientMessage.getSenderPort(),
-                ((UAliveMessage)clientMessage).getConcernedId()
+                ((UAliveMessage) clientMessage).getConcernedId()
         ));
     }
 }

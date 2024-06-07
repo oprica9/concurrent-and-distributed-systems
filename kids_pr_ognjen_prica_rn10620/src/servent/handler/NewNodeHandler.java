@@ -2,8 +2,8 @@ package servent.handler;
 
 import app.AppConfig;
 import app.file_manager.FileManager;
-import app.model.ServentInfo;
 import app.model.FileInfo;
+import app.model.ServentInfo;
 import app.mutex.SuzukiKasamiMutex;
 import servent.message.*;
 import servent.message.util.MessageUtil;
@@ -21,6 +21,49 @@ public class NewNodeHandler implements MessageHandler {
     public NewNodeHandler(Message clientMessage, FileManager fileManager) {
         this.clientMessage = clientMessage;
         this.fileManager = fileManager;
+    }
+
+    private static Map<Integer, Integer> getHisValues(ServentInfo hisPred, ServentInfo
+            newNodeInfo, Map<Integer, Integer> myValues) {
+        Map<Integer, Integer> hisValues = new HashMap<>();
+
+        int myId = AppConfig.myServentInfo.getChordId();
+        int hisPredId = hisPred.getChordId();
+        int newNodeId = newNodeInfo.getChordId();
+
+        for (Entry<Integer, Integer> valueEntry : myValues.entrySet()) {
+            if (hisPredId == myId) {
+                // I am first and he is second
+                if (myId < newNodeId) {
+                    if (valueEntry.getKey() <= newNodeId && valueEntry.getKey() > myId) {
+                        hisValues.put(valueEntry.getKey(), valueEntry.getValue());
+                    }
+                } else {
+                    if (valueEntry.getKey() <= newNodeId || valueEntry.getKey() > myId) {
+                        hisValues.put(valueEntry.getKey(), valueEntry.getValue());
+                    }
+                }
+            }
+            if (hisPredId < myId) {
+                // My old predecessor was before me
+                if (valueEntry.getKey() <= newNodeId) {
+                    hisValues.put(valueEntry.getKey(), valueEntry.getValue());
+                }
+            } else {
+                // My old predecessor was after me
+                if (hisPredId > newNodeId) { //new node overflow
+                    if (valueEntry.getKey() <= newNodeId || valueEntry.getKey() > hisPredId) {
+                        hisValues.put(valueEntry.getKey(), valueEntry.getValue());
+                    }
+                } else {
+                    // No new node overflow
+                    if (valueEntry.getKey() <= newNodeId && valueEntry.getKey() > hisPredId) {
+                        hisValues.put(valueEntry.getKey(), valueEntry.getValue());
+                    }
+                }
+            }
+        }
+        return hisValues;
     }
 
     @Override
@@ -71,18 +114,18 @@ public class NewNodeHandler implements MessageHandler {
             AppConfig.chordState.setValueMap(myValues);
 
             // Set his files
-//            AppConfig.timestampedStandardPrint("Refactoring my file map...\n" + fileManager.getFiles());
+            // AppConfig.timestampedStandardPrint("Refactoring my file map...\n" + fileManager.getFiles());
             Map<String, FileInfo> myFiles = fileManager.getFiles();
             Map<String, FileInfo> hisFiles = getHisFiles(hisPred, newNodeInfo, myFiles);
-//            AppConfig.timestampedStandardPrint("His file map before:\n" + hisFiles);
+            // AppConfig.timestampedStandardPrint("His file map before:\n" + hisFiles);
 
             for (String key : hisFiles.keySet()) {
                 myFiles.remove(key);
             }
 
             fileManager.setFiles(myFiles);
-//            AppConfig.timestampedStandardPrint("My new file map:\n" + fileManager.getFiles());
-//            AppConfig.timestampedStandardPrint("His file map after:\n" + hisFiles);
+            // AppConfig.timestampedStandardPrint("My new file map:\n" + fileManager.getFiles());
+            // AppConfig.timestampedStandardPrint("His file map after:\n" + hisFiles);
 
             // Send the info
             WelcomeMessage wm = new WelcomeMessage(
@@ -162,48 +205,5 @@ public class NewNodeHandler implements MessageHandler {
             }
         }
         return hisFiles;
-    }
-
-    private static Map<Integer, Integer> getHisValues(ServentInfo hisPred, ServentInfo
-            newNodeInfo, Map<Integer, Integer> myValues) {
-        Map<Integer, Integer> hisValues = new HashMap<>();
-
-        int myId = AppConfig.myServentInfo.getChordId();
-        int hisPredId = hisPred.getChordId();
-        int newNodeId = newNodeInfo.getChordId();
-
-        for (Entry<Integer, Integer> valueEntry : myValues.entrySet()) {
-            if (hisPredId == myId) {
-                // I am first and he is second
-                if (myId < newNodeId) {
-                    if (valueEntry.getKey() <= newNodeId && valueEntry.getKey() > myId) {
-                        hisValues.put(valueEntry.getKey(), valueEntry.getValue());
-                    }
-                } else {
-                    if (valueEntry.getKey() <= newNodeId || valueEntry.getKey() > myId) {
-                        hisValues.put(valueEntry.getKey(), valueEntry.getValue());
-                    }
-                }
-            }
-            if (hisPredId < myId) {
-                // My old predecessor was before me
-                if (valueEntry.getKey() <= newNodeId) {
-                    hisValues.put(valueEntry.getKey(), valueEntry.getValue());
-                }
-            } else {
-                // My old predecessor was after me
-                if (hisPredId > newNodeId) { //new node overflow
-                    if (valueEntry.getKey() <= newNodeId || valueEntry.getKey() > hisPredId) {
-                        hisValues.put(valueEntry.getKey(), valueEntry.getValue());
-                    }
-                } else {
-                    // No new node overflow
-                    if (valueEntry.getKey() <= newNodeId && valueEntry.getKey() > hisPredId) {
-                        hisValues.put(valueEntry.getKey(), valueEntry.getValue());
-                    }
-                }
-            }
-        }
-        return hisValues;
     }
 }

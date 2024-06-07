@@ -1,8 +1,8 @@
 package servent.handler;
 
 import app.AppConfig;
-import app.file_manager.FileManager;
 import app.failure_detection.FailureDetector;
+import app.file_manager.FileManager;
 import app.model.ServentInfo;
 import servent.message.Message;
 import servent.message.MessageType;

@@ -5,23 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bfc1f4d-25df-485b-b554-52cb64c30d88" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/root/s0/0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root/s1/1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root/s1/test_file1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root/s2/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root/s3/2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root/s3/3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root/s4/4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root/s5/5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/root/s5/test_file5.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/file_manager/FileOpener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/friend_manager/FriendManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/model/FileInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/model/FileType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/model/ImageFileInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/model/TextFileInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cli/command/files/OpenFileCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/cli/command/friends/ListFriendRequestsCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/AppConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/snapshot_bitcake/NullSnapshotCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/snapshot_bitcake/NullSnapshotCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/snapshot_bitcake/SnapshotCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/app/snapshot_bitcake/SnapshotCollector.java" afterDir="false" />
@@ -34,57 +17,27 @@
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/MessageType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/util/DelayedMessageSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/util/DelayedMessageSender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/test_file.txt" beforeDir="false" afterPath="$PROJECT_DIR$/root/s0/test_file0.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/test_file2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/root/s2/test_file2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/test_file3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/root/s3/test_file3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/root/test_file4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/root/s4/test_file4.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/roughbook/output/bootstrap_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/roughbook/output/bootstrap_out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roughbook/servent/servent0.properties" beforeDir="false" afterPath="$PROJECT_DIR$/roughbook/servent/servent0.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roughbook/servent/servent1.properties" beforeDir="false" afterPath="$PROJECT_DIR$/roughbook/servent/servent1.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roughbook/servent/servent2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/roughbook/servent/servent2.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roughbook/servent/servent3.properties" beforeDir="false" afterPath="$PROJECT_DIR$/roughbook/servent/servent3.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roughbook/servent/servent4.properties" beforeDir="false" afterPath="$PROJECT_DIR$/roughbook/servent/servent4.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roughbook/servent/servent5.properties" beforeDir="false" afterPath="$PROJECT_DIR$/roughbook/servent/servent5.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/AppConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/BootstrapServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/BootstrapServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/ChordState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/ChordState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/file_manager/FileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/MultipleServentStarter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/MultipleServentStarter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/ServentMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/ServentMain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/failure_detection/FailureDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/failure_detection/FailureDetector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/model/StoredFileInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/file_manager/FileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/file_manager/FileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/model/FileInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/model/FileInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/mutex/SuzukiKasamiMutex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/mutex/SuzukiKasamiMutex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cli/CLIParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/CLIParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli/command/PauseCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/command/PauseCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli/command/files/AddFileCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/command/files/AddFileCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli/command/files/RemoveFileCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/command/files/RemoveFileCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/cli/command/files/ViewFilesCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/command/files/ViewFilesCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli/command/friends/AcceptFriendRequestCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/command/friends/AcceptFriendRequestCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli/command/friends/AddFriendCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/command/friends/AddFriendCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cli/command/friends/ListFriendsCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/cli/command/friends/ListFriendsCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/servent/SimpleServentListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/SimpleServentListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/servent/handler/NewNodeHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/NewNodeHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/servent/handler/UpdateHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/UpdateHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/handler/WelcomeHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/WelcomeHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/handler/files/AskRemoveFileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/files/AskRemoveFileHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/handler/files/AskRemoveOriginalFileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/files/AskRemoveOriginalFileHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servent/handler/dht/AskGetHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/dht/AskGetHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/servent/handler/files/AskViewFilesHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/files/AskViewFilesHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/handler/files/BackupFileHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/files/BackupFileHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/servent/handler/files/TellViewFilesHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/files/TellViewFilesHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/handler/friends/AddFriendRequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/friends/AddFriendRequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/handler/friends/AddFriendResponseHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/friends/AddFriendResponseHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/servent/handler/ping_pong/CheckSusHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/CheckSusHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/handler/ping_pong/PongHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/PongHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/handler/ping_pong/RestructureSystemHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/RestructureSystemHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/message/WelcomeMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/WelcomeMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/message/files/AskRemoveFileMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/files/AskRemoveFileMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/message/files/AskRemoveOriginalFileMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/files/AskRemoveOriginalFileMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/message/files/AskViewFilesMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/files/AskViewFilesMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/message/files/BackupFileMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/files/BackupFileMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/message/files/TellViewFilesMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/files/TellViewFilesMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/message/friends/AddFriendRequestMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/friends/AddFriendRequestMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/message/friends/AddFriendResponseMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/friends/AddFriendResponseMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/message/ping_pong/PongMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/ping_pong/PongMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/message/ping_pong/RestructureSystemMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/ping_pong/RestructureSystemMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servent/handler/ping_pong/UAliveHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/UAliveHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servent/message/BasicMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/BasicMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servent/message/dht/PutMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/dht/PutMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servent/message/dht/TellGetMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/dht/TellGetMessage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,7 +150,7 @@
       <workItem from="1717493280758" duration="28595000" />
       <workItem from="1717571938039" duration="23519000" />
       <workItem from="1717657040803" duration="30810000" />
-      <workItem from="1717739536981" duration="26214000" />
+      <workItem from="1717739536981" duration="27088000" />
     </task>
     <servers />
   </component>
