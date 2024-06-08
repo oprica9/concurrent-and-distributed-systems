@@ -32,14 +32,14 @@ public class PongHandler implements MessageHandler {
         failureDetector.updateLastResponseTime(ChordState.chordHash2(clientMessage.getSenderIpAddress(), clientMessage.getSenderPort()));
 
         PongMessage pongMessage = (PongMessage) clientMessage;
-        List<String> deadNodes = pongMessage.getDeadNodes();
+        List<String> deadServents = pongMessage.getDeadServents();
 
-        if (!deadNodes.isEmpty()) {
+        if (!deadServents.isEmpty()) {
             // our buddies buddy has died
 
             List<ServentInfo> deadInfos = new ArrayList<>();
 
-            for (String ipPort : deadNodes) {
+            for (String ipPort : deadServents) {
                 String[] split = ipPort.split(":");
                 String ip = split[0];
                 int port;

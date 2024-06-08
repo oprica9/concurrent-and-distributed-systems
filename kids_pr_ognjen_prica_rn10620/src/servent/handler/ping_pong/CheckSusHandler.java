@@ -5,7 +5,7 @@ import app.ChordState;
 import servent.handler.MessageHandler;
 import servent.message.Message;
 import servent.message.MessageType;
-import servent.message.ping_pong.CheckSusNodeMessage;
+import servent.message.ping_pong.CheckSusMessage;
 import servent.message.ping_pong.UAliveMessage;
 import servent.message.util.MessageUtil;
 
@@ -24,9 +24,9 @@ public class CheckSusHandler implements MessageHandler {
             return;
         }
 
-        CheckSusNodeMessage checkSusNodeMessage = (CheckSusNodeMessage) clientMessage;
-        String susIp = checkSusNodeMessage.getSusIp();
-        int susPort = checkSusNodeMessage.getSusPort();
+        CheckSusMessage checkSusMessage = (CheckSusMessage) clientMessage;
+        String susIp = checkSusMessage.getSusIp();
+        int susPort = checkSusMessage.getSusPort();
 
         int concernedId = ChordState.chordHash2(clientMessage.getSenderIpAddress(), clientMessage.getSenderPort());
 

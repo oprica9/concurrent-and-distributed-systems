@@ -37,7 +37,7 @@ public class PingHandler implements MessageHandler {
         PongMessage pongMessage = new PongMessage(
                 AppConfig.myServentInfo.getIpAddress(), AppConfig.myServentInfo.getListenerPort(),
                 clientMessage.getSenderIpAddress(), clientMessage.getSenderPort(),
-                failureDetector.getDeadNodes()
+                failureDetector.getDeadServents()
         );
         MessageUtil.sendMessage(pongMessage);
     }

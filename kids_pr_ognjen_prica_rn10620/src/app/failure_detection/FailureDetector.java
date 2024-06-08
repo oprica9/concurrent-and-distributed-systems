@@ -4,7 +4,7 @@ import app.AppConfig;
 import app.Cancellable;
 import app.model.ServentInfo;
 import app.mutex.SuzukiKasamiMutex;
-import servent.message.ping_pong.CheckSusNodeMessage;
+import servent.message.ping_pong.CheckSusMessage;
 import servent.message.ping_pong.NewTokenHolderMessage;
 import servent.message.ping_pong.PingMessage;
 import servent.message.ping_pong.RestructureSystemMessage;
@@ -30,7 +30,7 @@ public class FailureDetector implements Runnable, Cancellable {
     private final AtomicInteger tokenHolder = new AtomicInteger(-1);
     private final AtomicLong myDeclaredTime = new AtomicLong(Long.MAX_VALUE);
     private final Map<Integer, ServentInfo> chordIds = new ConcurrentHashMap<>();
-    private final Set<Integer> deadNodes = ConcurrentHashMap.newKeySet();
+    private final Set<Integer> deadServents = ConcurrentHashMap.newKeySet();
     private volatile boolean working = true;
     private transient boolean shouldBeTokenHolder = false;
     private transient boolean refactored = false;
@@ -49,7 +49,7 @@ public class FailureDetector implements Runnable, Cancellable {
 
             // Send PING messages to buddies
             for (int chordId : chordIds.keySet()) {
-                if (!deadNodes.contains(chordId)) {
+                if (!deadServents.contains(chordId)) {
                     ServentInfo buddy = chordIds.get(chordId);
                     MessageUtil.sendMessage(new PingMessage(
                             AppConfig.myServentInfo.getIpAddress(), AppConfig.myServentInfo.getListenerPort(),
@@ -101,13 +101,13 @@ public class FailureDetector implements Runnable, Cancellable {
 //        AppConfig.timestampedStandardPrint("Updating my buddies...");
         lastResponseTimes.clear();
         chordIds.clear();
-        deadNodes.clear();
+        deadServents.clear();
         setUpBuddies();
     }
 
-    public List<String> getDeadNodes() {
+    public List<String> getDeadServents() {
         List<String> deadNodeList = new ArrayList<>();
-        for (int i : deadNodes) {
+        for (int i : deadServents) {
             ServentInfo deadServent = chordIds.get(i);
             deadNodeList.add(deadServent.getIpAddress() + ":" + deadServent.getListenerPort());
         }
@@ -136,14 +136,14 @@ public class FailureDetector implements Runnable, Cancellable {
                     int chordId = entry.getKey();
                     long lastResponse = entry.getValue();
 
-                    if (!deadNodes.contains(chordId) && currentTime - lastResponse > STRONG_FAILURE_THRESHOLD) {
+                    if (!deadServents.contains(chordId) && currentTime - lastResponse > STRONG_FAILURE_THRESHOLD) {
                         // it's dead fr fr
                         AppConfig.timestampedStandardPrint("Node " + chordId + " is dead." + " Time passed since response: " + (currentTime - lastResponse) / 1000.0 + "s");
                         AppConfig.timestampedStandardPrint("Starting system restructuring...");
 
                         tellBootstrapNodeIsDead(chordIds.get(chordId));
 
-                        deadNodes.add(chordId);
+                        deadServents.add(chordId);
 
                         List<ServentInfo> died = new ArrayList<>();
                         died.add(chordIds.get(chordId));
@@ -196,7 +196,7 @@ public class FailureDetector implements Runnable, Cancellable {
                         }
 
                         updateNodeList();
-                    } else if (!deadNodes.contains(chordId) && currentTime - lastResponse > WEAK_FAILURE_THRESHOLD) {
+                    } else if (!deadServents.contains(chordId) && currentTime - lastResponse > WEAK_FAILURE_THRESHOLD) {
                         // it's sus
                         AppConfig.timestampedStandardPrint("Node " + chordId + " is suspicious." + " Time passed since last response: " + (currentTime - lastResponse) / 1000.0 + "s");
 
@@ -206,7 +206,7 @@ public class FailureDetector implements Runnable, Cancellable {
 
                         AppConfig.timestampedStandardPrint("Asking " + checkHelpNode.getChordId() + " to check on " + chordId);
 
-                        MessageUtil.sendMessage(new CheckSusNodeMessage(
+                        MessageUtil.sendMessage(new CheckSusMessage(
                                 AppConfig.myServentInfo.getIpAddress(), AppConfig.myServentInfo.getListenerPort(),
                                 checkHelpNode.getIpAddress(), checkHelpNode.getListenerPort(),
                                 chordIds.get(chordId).getIpAddress(), chordIds.get(chordId).getListenerPort()

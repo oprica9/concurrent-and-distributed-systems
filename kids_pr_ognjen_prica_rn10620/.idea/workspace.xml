@@ -17,7 +17,15 @@
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/MessageType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/util/DelayedMessageSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/util/DelayedMessageSender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/handler/NewNodeHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/NewNodeHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roughbook/output/bootstrap_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/roughbook/output/bootstrap_out.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/failure_detection/FailureDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/failure_detection/FailureDetector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servent/SimpleServentListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/SimpleServentListener.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servent/handler/UpdateHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/UpdateHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servent/handler/ping_pong/CheckSusHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/CheckSusHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servent/handler/ping_pong/PingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/PingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servent/handler/ping_pong/PongHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/PongHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servent/message/ping_pong/CheckSusNodeMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/ping_pong/CheckSusMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/servent/message/ping_pong/PongMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/ping_pong/PongMessage.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,23 +51,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "extract.method.default.visibility": "private",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/Ognjen/Desktop/domaci/kids_pr_ognjen_prica_rn10620/root/s3",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "Errors",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;extract.method.default.visibility&quot;: &quot;private&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Ognjen/Desktop/domaci/kids_pr_ognjen_prica_rn10620/root/s3&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Ognjen\Desktop\domaci\kids_pr_ognjen_prica_rn10620\root\s3" />
@@ -130,7 +138,8 @@
       <workItem from="1717493280758" duration="28595000" />
       <workItem from="1717571938039" duration="23519000" />
       <workItem from="1717657040803" duration="30810000" />
-      <workItem from="1717739536981" duration="27254000" />
+      <workItem from="1717739536981" duration="35542000" />
+      <workItem from="1717833375917" duration="6666000" />
     </task>
     <servers />
   </component>

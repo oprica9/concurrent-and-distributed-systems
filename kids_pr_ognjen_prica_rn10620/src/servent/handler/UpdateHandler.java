@@ -18,7 +18,7 @@ public class UpdateHandler implements MessageHandler {
     private final Message updateMessage;
     private final FailureDetector failureDetector;
 
-    public UpdateHandler(Message updateMessage, FailureDetector failureDetector, FileManager fileManager) {
+    public UpdateHandler(Message updateMessage, FailureDetector failureDetector) {
         this.updateMessage = updateMessage;
         this.failureDetector = failureDetector;
     }

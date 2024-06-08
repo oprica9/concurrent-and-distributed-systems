@@ -70,7 +70,7 @@ public class SimpleServentListener implements Runnable, Cancellable {
                             messageHandler = new SorryHandler(clientMessage);
                             break;
                         case UPDATE:
-                            messageHandler = new UpdateHandler(clientMessage, failureDetector, fileManager);
+                            messageHandler = new UpdateHandler(clientMessage, failureDetector);
                             break;
                         case PUT:
                             messageHandler = new PutHandler(clientMessage);
