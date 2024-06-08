@@ -16,17 +16,7 @@
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/MessageType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/util/DelayedMessageSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/util/DelayedMessageSender.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roughbook/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rafbook/bootstrap.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roughbook/error/bootstrap_err.txt" beforeDir="false" afterPath="$PROJECT_DIR$/rafbook/error/bootstrap_err.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roughbook/output/bootstrap_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/rafbook/output/bootstrap_out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roughbook/servent/servent0.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rafbook/servent/servent0.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roughbook/servent/servent1.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rafbook/servent/servent1.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roughbook/servent/servent2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rafbook/servent/servent2.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roughbook/servent/servent3.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rafbook/servent/servent3.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roughbook/servent/servent4.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rafbook/servent/servent4.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roughbook/servent/servent5.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rafbook/servent/servent5.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/AppConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rafbook/output/bootstrap_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/rafbook/output/bootstrap_out.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,9 +112,9 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.ServentMain 5" />
-      <item itemvalue="Application.ServentMain 0" />
       <item itemvalue="Application.MultipleServentStarter" />
+      <item itemvalue="Application.ServentMain 0" />
+      <item itemvalue="Application.ServentMain 5" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -140,7 +130,7 @@
       <workItem from="1717571938039" duration="23519000" />
       <workItem from="1717657040803" duration="30810000" />
       <workItem from="1717739536981" duration="35542000" />
-      <workItem from="1717833375917" duration="6775000" />
+      <workItem from="1717833375917" duration="7015000" />
     </task>
     <servers />
   </component>

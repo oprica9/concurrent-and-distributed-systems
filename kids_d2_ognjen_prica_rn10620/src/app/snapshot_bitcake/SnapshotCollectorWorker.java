@@ -1,7 +1,6 @@
 package app.snapshot_bitcake;
 
 import app.AppConfig;
-import app.snapshot_bitcake.li.LiBitcakeManger;
 import app.snapshot_bitcake.ly.LYSnapshotResult;
 import app.snapshot_bitcake.ly.LaiYangBitcakeManager;
 
@@ -31,8 +30,6 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
         this.snapshotType = snapshotType;
 
         switch (snapshotType) {
-            case LI:
-                bitcakeManager = new LiBitcakeManger();
             case LAI_YANG:
                 bitcakeManager = new LaiYangBitcakeManager();
                 break;
@@ -70,8 +67,6 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
 
             //1 send asks
             switch (snapshotType) {
-                case LI:
-                    break;
                 case LAI_YANG:
                     ((LaiYangBitcakeManager) bitcakeManager).markerEvent(AppConfig.myServentInfo.id(), this);
                     break;
@@ -84,8 +79,6 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
             boolean waiting = true;
             while (waiting) {
                 switch (snapshotType) {
-                    case LI:
-                        break;
                     case LAI_YANG:
                         if (collectedLYValues.size() == AppConfig.getServentCount()) {
                             waiting = false;
@@ -110,8 +103,6 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
             //print
             int sum;
             switch (snapshotType) {
-                case LI:
-                    break;
                 case LAI_YANG:
                     sum = 0;
                     for (Entry<Integer, LYSnapshotResult> nodeResult : collectedLYValues.entrySet()) {

@@ -133,9 +133,6 @@ public class AppConfig {
             snapshotType = "none";
         }
         switch (snapshotType) {
-            case "li":
-                SNAPSHOT_TYPE = SnapshotType.LI;
-                break;
             case "ly":
                 SNAPSHOT_TYPE = SnapshotType.LAI_YANG;
                 break;
@@ -208,4 +205,5 @@ public class AppConfig {
     public static int getServentCount() {
         return serventInfoList.size();
     }
+
 }

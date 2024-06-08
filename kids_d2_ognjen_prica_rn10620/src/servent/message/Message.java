@@ -1,9 +1,9 @@
 package servent.message;
 
+import app.ServentInfo;
+
 import java.io.Serializable;
 import java.util.List;
-
-import app.ServentInfo;
 
 /**
  * This is your basic message. It should cover most needs.

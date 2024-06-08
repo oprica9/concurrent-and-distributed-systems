@@ -1,12 +1,12 @@
 package servent.message.util;
 
-import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.net.Socket;
-
 import app.AppConfig;
 import app.ServentInfo;
 import servent.message.Message;
+
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.net.Socket;
 
 /**
  * This worker sends a message asynchronously. Doing this in a separate thread
@@ -52,6 +52,7 @@ public class DelayedMessageSender implements Runnable {
                 if (!AppConfig.isWhite.get()) {
                     messageToSend = messageToSend.setRedColor();
                 }
+
                 Socket sendSocket = new Socket(receiverInfo.ipAddress(), receiverInfo.listenerPort());
 
                 ObjectOutputStream oos = new ObjectOutputStream(sendSocket.getOutputStream());
