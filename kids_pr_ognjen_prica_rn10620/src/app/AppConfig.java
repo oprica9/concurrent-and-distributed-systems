@@ -31,7 +31,6 @@ public class AppConfig {
     public static int SERVENT_COUNT = 6; // TODO
     public static ChordState chordState;
     public static ServentInfo temp;
-    // Roughbook
     public static String ROOT;
 
     /**

@@ -17,15 +17,16 @@
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/MessageType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/util/DelayedMessageSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/src/servent/message/util/DelayedMessageSender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/roughbook/output/bootstrap_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/roughbook/output/bootstrap_out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/failure_detection/FailureDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/failure_detection/FailureDetector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/SimpleServentListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/SimpleServentListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/handler/UpdateHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/UpdateHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/handler/ping_pong/CheckSusHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/CheckSusHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/handler/ping_pong/PingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/PingHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/handler/ping_pong/PongHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/PongHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/message/ping_pong/CheckSusNodeMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/ping_pong/CheckSusMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/message/ping_pong/PongMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/ping_pong/PongMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roughbook/bootstrap.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rafbook/bootstrap.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roughbook/error/bootstrap_err.txt" beforeDir="false" afterPath="$PROJECT_DIR$/rafbook/error/bootstrap_err.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roughbook/output/bootstrap_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/rafbook/output/bootstrap_out.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roughbook/servent/servent0.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rafbook/servent/servent0.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roughbook/servent/servent1.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rafbook/servent/servent1.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roughbook/servent/servent2.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rafbook/servent/servent2.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roughbook/servent/servent3.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rafbook/servent/servent3.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roughbook/servent/servent4.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rafbook/servent/servent4.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/roughbook/servent/servent5.properties" beforeDir="false" afterPath="$PROJECT_DIR$/rafbook/servent/servent5.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/AppConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,7 +94,7 @@
     <configuration name="MultipleServentStarter" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="app.MultipleServentStarter" />
       <module name="kids_pr_ognjen_prica_rn10620" />
-      <option name="PROGRAM_PARAMETERS" value="roughbook" />
+      <option name="PROGRAM_PARAMETERS" value="rafbook" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="app.file_manager.*" />
@@ -139,7 +140,7 @@
       <workItem from="1717571938039" duration="23519000" />
       <workItem from="1717657040803" duration="30810000" />
       <workItem from="1717739536981" duration="35542000" />
-      <workItem from="1717833375917" duration="6666000" />
+      <workItem from="1717833375917" duration="6775000" />
     </task>
     <servers />
   </component>
