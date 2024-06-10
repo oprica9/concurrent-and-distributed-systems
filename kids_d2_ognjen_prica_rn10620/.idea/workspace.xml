@@ -5,12 +5,57 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="571dddc1-db95-42a1-95c6-a096f36d2576" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/servent/handler/snapshot/li/BlankHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servent/handler/snapshot/li/ExchangeHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servent/message/snapshot/li/BlankMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servent/message/snapshot/li/ExchangeMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/app/util/Node.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/error/servent0_err.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/error/servent10_err.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/error/servent11_err.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/error/servent12_err.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/error/servent13_err.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/error/servent14_err.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/error/servent15_err.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/error/servent1_err.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/error/servent2_err.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/error/servent3_err.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/error/servent4_err.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/error/servent5_err.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/error/servent6_err.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/error/servent7_err.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/error/servent8_err.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/error/servent9_err.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/input/servent0_in.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/input/servent10_in.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/input/servent11_in.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/input/servent12_in.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/input/servent13_in.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/input/servent14_in.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/input/servent15_in.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/input/servent1_in.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/input/servent2_in.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/input/servent3_in.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/input/servent4_in.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/input/servent5_in.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/input/servent6_in.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/input/servent7_in.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/input/servent8_in.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/input/servent9_in.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/output/servent0_out.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/output/servent10_out.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/output/servent11_out.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/output/servent12_out.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/output/servent13_out.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/output/servent14_out.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/output/servent15_out.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/output/servent1_out.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/output/servent2_out.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/output/servent3_out.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/output/servent4_out.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/output/servent5_out.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/output/servent6_out.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/output/servent7_out.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/output/servent8_out.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/output/servent9_out.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/servent_list.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/li_snapshot/input/servent1_in.txt" beforeDir="false" afterPath="$PROJECT_DIR$/li_snapshot/input/servent1_in.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/li_snapshot/output/servent0_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/li_snapshot/output/servent0_out.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/li_snapshot/output/servent1_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/li_snapshot/output/servent1_out.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/li_snapshot/output/servent2_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/li_snapshot/output/servent2_out.txt" afterDir="false" />
@@ -19,12 +64,8 @@
       <change beforePath="$PROJECT_DIR$/li_snapshot/output/servent5_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/li_snapshot/output/servent5_out.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/li_snapshot/output/servent6_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/li_snapshot/output/servent6_out.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/bitcake_manager/li/LiBitcakeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/bitcake_manager/li/LiBitcakeManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/snapshot_collector/NullSnapshotCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/snapshot_collector/NullSnapshotCollector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/snapshot_collector/SnapshotCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/snapshot_collector/SnapshotCollector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/bitcake_manager/li/LiSnapshotResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/bitcake_manager/li/LiSnapshotResult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/snapshot_collector/SnapshotCollectorWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/snapshot_collector/SnapshotCollectorWorker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/SimpleServentListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/SimpleServentListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/message/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/MessageType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/message/util/DelayedMessageSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/util/DelayedMessageSender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_pr_ognjen_prica_rn10620/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_pr_ognjen_prica_rn10620/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_pr_ognjen_prica_rn10620/rafbook/output/bootstrap_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_pr_ognjen_prica_rn10620/rafbook/output/bootstrap_out.txt" afterDir="false" />
     </list>
@@ -91,7 +132,7 @@
     <configuration name="MultipleServentStarter" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="app.MultipleServentStarter" />
       <module name="kids_d2_ognjen_prica_rn10620" />
-      <option name="PROGRAM_PARAMETERS" value="li_snapshot" />
+      <option name="PROGRAM_PARAMETERS" value="test" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="app.configuration.*" />
@@ -111,7 +152,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1718024490769</updated>
-      <workItem from="1718024492778" duration="16559000" />
+      <workItem from="1718024492778" duration="17803000" />
     </task>
     <servers />
   </component>

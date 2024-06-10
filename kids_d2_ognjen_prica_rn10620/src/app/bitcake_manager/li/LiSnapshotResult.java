@@ -15,15 +15,16 @@ import java.util.concurrent.ConcurrentHashMap;
  *
  * @author bmilojkovic
  */
-public record LiSnapshotResult(int serventId, int recordedAmount, Map<Integer, Integer> giveHistory,
+public record LiSnapshotResult(int serventId, int parentId, int recordedAmount, Map<Integer, Integer> giveHistory,
                                Map<Integer, Integer> getHistory) implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 8939516333227254439L;
 
-    public LiSnapshotResult(int serventId, int recordedAmount,
+    public LiSnapshotResult(int serventId, int parentId, int recordedAmount,
                             Map<Integer, Integer> giveHistory, Map<Integer, Integer> getHistory) {
         this.serventId = serventId;
+        this.parentId = parentId;
         this.recordedAmount = recordedAmount;
         this.giveHistory = new ConcurrentHashMap<>(giveHistory);
         this.getHistory = new ConcurrentHashMap<>(getHistory);

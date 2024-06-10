@@ -10,16 +10,15 @@ import app.bitcake_manager.li.LiSnapshotResult;
 import app.bitcake_manager.naive.NaiveBitcakeManager;
 import app.configuration.AppConfig;
 import app.configuration.SnapshotType;
+import app.util.Node;
 import servent.message.Message;
 import servent.message.snapshot.li.BlankMessage;
 import servent.message.snapshot.li.ExchangeMessage;
 import servent.message.snapshot.naive.NaiveAskAmountMessage;
 import servent.message.util.MessageUtil;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -183,7 +182,12 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
             if (snapshotType == SnapshotType.LI) {
                 System.out.println("STARTING ROUNDS...");
 
+                System.out.println("Spanning tree for region: " + AppConfig.myServentInfo.id());
+
+                printSpanningTree(collectedLiValues);
+
                 System.out.println("Sending: " + collectedLiValues);
+
                 // Start rounds
 
                 for (Integer adjacentInitiator : AppConfig.idBorderSet) {
@@ -195,7 +199,6 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
                 }
 
                 // Start exchanging information
-
                 waiting = true;
                 while (waiting) {
                     if (!changesMade.get() && receivedBlanks.containsAll(AppConfig.idBorderSet)) {
@@ -422,6 +425,42 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
     @Override
     public void stop() {
         working = false;
+    }
+
+    private void printSpanningTree(Map<Integer, LiSnapshotResult> liSnapshotResults) {
+        synchronized (AppConfig.colorLock) {
+            Node root = generateTree(liSnapshotResults);
+            System.out.println();
+            System.out.println(root);
+        }
+    }
+
+    private Node generateTree(Map<Integer, LiSnapshotResult> liSnapshotResults) {
+        synchronized (AppConfig.colorLock) {
+            Map<Integer, Node> nodeMap = new HashMap<>();
+            for (Map.Entry<Integer, LiSnapshotResult> entry : liSnapshotResults.entrySet()) {
+                LiSnapshotResult result = entry.getValue();
+                nodeMap.put(result.serventId(), new Node(result.serventId(), new ArrayList<>()));
+            }
+            Node root = null;
+            for (Map.Entry<Integer, LiSnapshotResult> entry : liSnapshotResults.entrySet()) {
+                LiSnapshotResult result = entry.getValue();
+                int id = result.serventId();
+                int parentId = result.parentId();
+
+                Node node = nodeMap.get(id);
+                if (parentId == id) {
+                    root = node;
+                } else {
+                    Node parentNode = nodeMap.get(parentId);
+                    parentNode.children().add(node);
+                }
+            }
+            if (root == null) {
+                throw new IllegalStateException("Invalid tree structure. No root node found.");
+            }
+            return root;
+        }
     }
 
 }

@@ -17,7 +17,7 @@ import java.util.function.BiFunction;
 
 public class LiBitcakeManager implements BitcakeManager {
 
-    private final AtomicInteger currentAmount = new AtomicInteger(1000);
+    private final AtomicInteger currentAmount = new AtomicInteger(500);
     /**
      * This value is protected by AppConfig.colorLock.
      * Access it only if you have the blessing.
@@ -157,6 +157,7 @@ public class LiBitcakeManager implements BitcakeManager {
             recordedAmount = getCurrentBitcakeAmount();
             mySnapshotResult = new LiSnapshotResult(
                     AppConfig.myServentInfo.id(),
+                    AppConfig.parent.get(),
                     recordedAmount,
                     giveHistory,
                     getHistory
