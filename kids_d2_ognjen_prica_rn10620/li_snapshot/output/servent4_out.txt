@@ -1,3 +1,182 @@
-13:09:16 - Starting servent [4|localhost|1500]
-13:09:16 - Pausing for 500 ms
-13:09:16 - Pausing for 15000 ms
+18:17:16 - Starting servent [4|localhost|1500]
+18:17:16 - Pausing for 500 ms
+18:17:16 - Pausing for 22000 ms
+18:17:18 - Got message [5|44|2|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Got message [5|70|10|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Got message [5|79|3|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Got message [5|45|10|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Got message [5|101|10|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Got message [5|113|7|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Got message [5|148|6|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Got message [5|100|7|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Got message [5|43|3|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Got message [5|73|7|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Got message [5|47|4|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Got message [5|18|10|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Got message [5|102|1|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Got message [5|131|3|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Got message [5|15|5|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Got message [5|48|4|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Got message [5|72|4|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Got message [5|19|8|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Got message [5|12|10|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Got message [5|124|7|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Got message [5|126|2|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Got message [5|10|1|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Got message [5|75|9|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:18 - Sending message [4|1||LI_MARKER|5]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [4|0||LI_MARKER|3]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Got message [5|76|7|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|139|2|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|68|8|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|96|4|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|46|10|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|127|1|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|49|1|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|105|1|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|16|3|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|128|6|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|98|4|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|143|1|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|14|6|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|42|6|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|41|9|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|11|1|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|40|3|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|109|9|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|17|9|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|130|1|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|135|10|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|83|3|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|13|9|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|94|9|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|132|2|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:18 - Got message [5|71|1|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [5|97|4|TRANSACTION|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:23 - Got message [5|152||LI_TELL|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+Got results from 5: {1=LiSnapshotResult[serventId=1, recordedAmount=545, giveHistory={0=315, 2=296, 3=276, 5=254}, getHistory={0=307, 2=259, 3=0, 5=120}], 5=LiSnapshotResult[serventId=5, recordedAmount=890, giveHistory={1=120, 4=133, 6=111}, getHistory={1=254, 4=0, 6=0}]}
+Got borderSet from 5: []
+18:17:24 - Got message [3|3||LI_TELL|4]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+Got results from 3: {0=LiSnapshotResult[serventId=0, recordedAmount=822, giveHistory={1=307, 2=257, 6=294}, getHistory={1=315, 2=269, 6=96}], 2=LiSnapshotResult[serventId=2, recordedAmount=535, giveHistory={0=269, 1=259, 3=298, 6=281}, getHistory={0=257, 1=296, 3=0, 6=89}], 3=LiSnapshotResult[serventId=3, recordedAmount=1386, giveHistory={1=0, 2=0, 4=0, 6=0}, getHistory={1=276, 2=110, 4=0, 6=0}], 6=LiSnapshotResult[serventId=6, recordedAmount=1268, giveHistory={0=96, 2=122, 3=107, 5=93}, getHistory={0=294, 2=281, 3=0, 5=111}]}
+Got borderSet from 3: []
+18:17:25 - Recorded bitcake amount for 0 = 822
+18:17:25 - Recorded bitcake amount for 1 = 545
+18:17:25 - Recorded bitcake amount for 2 = 535
+18:17:25 - Recorded bitcake amount for 3 = 1386
+18:17:25 - Recorded bitcake amount for 4 = 1000
+18:17:25 - Recorded bitcake amount for 5 = 890
+18:17:25 - Recorded bitcake amount for 6 = 1268
+18:17:25 - Unreceived bitcake amount: 188 from servent 2 to servent 3
+18:17:25 - Unreceived bitcake amount: 133 from servent 5 to servent 4
+18:17:25 - Unreceived bitcake amount: 33 from servent 6 to servent 2
+18:17:25 - Unreceived bitcake amount: 107 from servent 6 to servent 3
+18:17:25 - Unreceived bitcake amount: 93 from servent 6 to servent 5
+18:17:25 - System bitcake count: 7000

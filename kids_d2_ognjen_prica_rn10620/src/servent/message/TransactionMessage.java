@@ -3,6 +3,7 @@ package servent.message;
 import app.ServentInfo;
 import app.bitcake_manager.BitcakeManager;
 import app.bitcake_manager.lai_yang.LaiYangBitcakeManager;
+import app.bitcake_manager.li.LiBitcakeManager;
 
 import java.io.Serial;
 
@@ -35,8 +36,9 @@ public class TransactionMessage extends BasicMessage {
         bitcakeManager.takeSomeBitcakes(amount);
 
         if (bitcakeManager instanceof LaiYangBitcakeManager lyFinancialManager && isWhite()) {
-
             lyFinancialManager.recordGiveTransaction(getReceiverInfo().id(), amount);
+        } else if (bitcakeManager instanceof LiBitcakeManager liFinancialManager && !isTagged()) {
+            liFinancialManager.recordGiveTransaction(getReceiverInfo().id(), amount);
         }
     }
 }

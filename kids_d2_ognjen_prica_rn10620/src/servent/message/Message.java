@@ -1,6 +1,7 @@
 package servent.message;
 
 import app.ServentInfo;
+import servent.message.snapshot.li.Tag;
 
 import java.io.Serializable;
 import java.util.List;
@@ -102,5 +103,22 @@ public interface Message extends Serializable {
      * we are sending the message.
      */
     void sendEffect();
+
+    /**
+     * Alters the message and returns a new copy with everything intact, except
+     * the message now carries a tag.
+     */
+    Message setTag(Tag tag);
+
+    /**
+     * Returns the tag value of the message.
+     */
+    Tag getTag();
+
+    /**
+     * Message tag - not present means that the message was sent before a local snapshot
+     * was created, and if present means it is after.
+     */
+    boolean isTagged();
 
 }

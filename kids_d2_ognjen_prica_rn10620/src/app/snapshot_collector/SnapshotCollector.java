@@ -4,6 +4,9 @@ import app.Cancellable;
 import app.bitcake_manager.BitcakeManager;
 import app.bitcake_manager.chandy_lamport.CLSnapshotResult;
 import app.bitcake_manager.lai_yang.LYSnapshotResult;
+import app.bitcake_manager.li.LiSnapshotResult;
+
+import java.util.Map;
 
 /**
  * Describes a snapshot collector. Made not-so-flexibly for readability.
@@ -20,6 +23,10 @@ public interface SnapshotCollector extends Runnable, Cancellable {
 
     void addLYSnapshotInfo(int id, LYSnapshotResult lySnapshotResult);
 
-    void startCollecting();
+    void addLiSnapshotInfo(int id, LiSnapshotResult liSnapshotResult);
+    void addLiSnapshotInfos(Map<Integer, LiSnapshotResult> liSnapshotResults);
 
+    Map<Integer, LiSnapshotResult> getLiSnapshotResults();
+
+    void startCollecting();
 }

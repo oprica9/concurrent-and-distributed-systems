@@ -1,30 +1,734 @@
-13:09:16 - Starting servent [5|localhost|1600]
-13:09:16 - Pausing for 1000 ms
-13:09:16 - Got message [1|110|10|TRANSACTION|5]
-13:09:16 - Got message [1|151|7|TRANSACTION|5]
-13:09:16 - Got message [1|190|8|TRANSACTION|5]
-13:09:16 - Got message [1|34|8|TRANSACTION|5]
-13:09:16 - Got message [1|165|7|TRANSACTION|5]
-13:09:16 - Got message [1|30|5|TRANSACTION|5]
-13:09:16 - Got message [1|73|3|TRANSACTION|5]
-13:09:16 - Got message [1|177|9|TRANSACTION|5]
-13:09:16 - Got message [1|96|8|TRANSACTION|5]
-13:09:16 - Got message [1|28|3|TRANSACTION|5]
-13:09:16 - Got message [1|176|7|TRANSACTION|5]
-13:09:16 - Got message [1|97|3|TRANSACTION|5]
-13:09:16 - Got message [1|41|2|TRANSACTION|5]
-13:09:17 - Got message [1|139|10|TRANSACTION|5]
-13:09:17 - Got message [1|189|9|TRANSACTION|5]
-13:09:17 - Pausing for 15000 ms
-13:09:17 - Got message [1|137|2|TRANSACTION|5]
-13:09:17 - Got message [1|74|3|TRANSACTION|5]
-13:09:17 - Got message [1|160|8|TRANSACTION|5]
-13:09:17 - Got message [1|72|2|TRANSACTION|5]
-13:09:17 - Got message [1|142|4|TRANSACTION|5]
-13:09:17 - Got message [1|85|5|TRANSACTION|5]
-13:09:17 - Got message [1|113|6|TRANSACTION|5]
-13:09:17 - Got message [1|79|1|TRANSACTION|5]
-13:09:17 - Got message [1|187|6|TRANSACTION|5]
-13:09:17 - Got message [1|125|8|TRANSACTION|5]
-13:09:17 - Got message [1|168|1|TRANSACTION|5]
-13:09:17 - Got message [1|196|9|TRANSACTION|5]
+18:17:16 - Starting servent [5|localhost|1600]
+18:17:16 - Pausing for 1000 ms
+18:17:17 - Got message [1|90|5|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|91|3|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|77|2|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|38|3|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|29|10|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|19|4|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|173|2|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|121|6|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|106|7|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|183|3|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|57|6|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|127|10|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|154|9|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|161|8|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|26|1|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|186|2|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|141|6|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|197|7|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|85|6|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|172|5|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|119|5|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|35|8|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|179|4|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|62|4|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|66|4|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|49|1|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|151|6|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|53|3|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|196|7|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Pausing for 22000 ms
+18:17:17 - Got message [1|147|2|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|24|9|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|140|6|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|199|4|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|184|4|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|113|7|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|129|2|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|61|2|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|36|5|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|32|1|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|126|8|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|89|1|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|93|9|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|125|4|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|43|7|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|152|4|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|166|8|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|194|3|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|105|10|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|70|2|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:17 - Got message [1|191|9|TRANSACTION|5]
+GOT 1
+Snapshot in progress: false, is message tagged: false
+18:17:18 - Sending message [5|146|1|TRANSACTION|6]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|44|2|TRANSACTION|4]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|70|10|TRANSACTION|4]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|56|3|TRANSACTION|6]
+18:17:18 - Sending message [5|79|3|TRANSACTION|4]
+Is snapshot in progress: false
+Is snapshot in progress: false
+18:17:18 - Sending message [5|125|7|TRANSACTION|1]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|45|10|TRANSACTION|4]
+18:17:18 - Sending message [5|101|10|TRANSACTION|4]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|50|1|TRANSACTION|6]
+Is snapshot in progress: false
+Is snapshot in progress: false
+18:17:18 - Sending message [5|113|7|TRANSACTION|4]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|148|6|TRANSACTION|4]
+18:17:18 - Sending message [5|43|3|TRANSACTION|4]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|100|7|TRANSACTION|4]
+Is snapshot in progress: false
+Is snapshot in progress: false
+18:17:18 - Sending message [5|60|6|TRANSACTION|1]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|103|2|TRANSACTION|1]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|30|6|TRANSACTION|1]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|73|7|TRANSACTION|4]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|104|6|TRANSACTION|6]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|52|8|TRANSACTION|6]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|47|4|TRANSACTION|4]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|138|1|TRANSACTION|6]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|18|10|TRANSACTION|4]
+18:17:18 - Sending message [5|39|10|TRANSACTION|1]
+Is snapshot in progress: false
+Is snapshot in progress: false
+18:17:18 - Sending message [5|25|2|TRANSACTION|6]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|102|1|TRANSACTION|4]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|6|10|TRANSACTION|1]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|33|7|TRANSACTION|1]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|131|3|TRANSACTION|4]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|24|8|TRANSACTION|6]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|67|6|TRANSACTION|1]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|51|4|TRANSACTION|6]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|77|10|TRANSACTION|1]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|36|8|TRANSACTION|1]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|15|5|TRANSACTION|4]
+18:17:18 - Sending message [5|64|10|TRANSACTION|1]
+18:17:18 - Sending message [5|48|4|TRANSACTION|4]
+18:17:18 - Sending message [5|140|5|TRANSACTION|6]
+Is snapshot in progress: false
+Is snapshot in progress: false
+18:17:18 - Sending message [5|3|9|TRANSACTION|1]
+Is snapshot in progress: false
+Is snapshot in progress: false
+Is snapshot in progress: false
+18:17:18 - Sending message [5|72|4|TRANSACTION|4]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|120|1|TRANSACTION|1]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|59|3|TRANSACTION|6]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|81|9|TRANSACTION|6]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|19|8|TRANSACTION|4]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|12|10|TRANSACTION|4]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|86|9|TRANSACTION|6]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|80|3|TRANSACTION|6]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|27|3|TRANSACTION|6]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|111|6|TRANSACTION|6]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|124|7|TRANSACTION|4]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|126|2|TRANSACTION|4]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|129|5|TRANSACTION|1]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|66|9|TRANSACTION|1]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|10|1|TRANSACTION|4]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|75|9|TRANSACTION|4]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|112|9|TRANSACTION|6]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|89|2|TRANSACTION|6]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|123|9|TRANSACTION|6]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|23|10|TRANSACTION|6]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|26|7|TRANSACTION|6]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|5|4|TRANSACTION|1]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|69|10|TRANSACTION|1]
+18:17:18 - Got message [4|1||LI_MARKER|5]
+Is snapshot in progress: false
+18:17:18 - Sending message [5|107|2|TRANSACTION|6]
+Is snapshot in progress: false
+IS LI_MARKER AND TAG IS: Tag[initId=4, mkno=0]
+GOT 1
+Snapshot in progress: false, is message tagged: true
+GOT 2
+GOT 4
+HERE 1
+HERE 2
+HERE 3
+My parent: 4, my master: 4
+18:17:18 - Sending message [5|143|1|TRANSACTION|4]
+18:17:18 - Sending message [5|61|7|TRANSACTION|1]
+18:17:18 - Sending message [5|141|3|TRANSACTION|6]
+18:17:18 - Sending message [5|136|1|TRANSACTION|6]
+18:17:18 - Sending message [5|98|4|TRANSACTION|4]
+18:17:18 - Sending message [5|8|10|TRANSACTION|1]
+18:17:18 - Sending message [5|115|5|TRANSACTION|6]
+18:17:18 - Sending message [5|9|1|TRANSACTION|1]
+18:17:18 - Sending message [5|57|1|TRANSACTION|6]
+18:17:18 - Sending message [5|65|3|TRANSACTION|1]
+18:17:18 - Sending message [5|22|9|TRANSACTION|6]
+18:17:18 - Sending message [5|88|1|TRANSACTION|1]
+18:17:18 - Sending message [5|128|6|TRANSACTION|4]
+18:17:18 - Sending message [5|144|7|TRANSACTION|6]
+18:17:18 - Sending message [5|142|1|TRANSACTION|6]
+18:17:18 - Sending message [5|110|4|TRANSACTION|6]
+18:17:18 - Sending message [5|78|2|TRANSACTION|6]
+18:17:18 - Sending message [5|21|10|TRANSACTION|6]
+18:17:18 - Sending message [5|16|3|TRANSACTION|4]
+18:17:18 - Sending message [5|2|3|TRANSACTION|1]
+18:17:18 - Sending message [5|105|1|TRANSACTION|4]
+18:17:18 - Sending message [5|99|6|TRANSACTION|1]
+18:17:18 - Sending message [5|49|1|TRANSACTION|4]
+18:17:18 - Sending message [5|127|1|TRANSACTION|4]
+18:17:18 - Sending message [5|29|8|TRANSACTION|6]
+18:17:18 - Sending message [5|122|5|TRANSACTION|1]
+18:17:18 - Sending message [5|46|10|TRANSACTION|4]
+18:17:18 - Sending message [5|96|4|TRANSACTION|4]
+18:17:18 - Sending message [5|93|6|TRANSACTION|6]
+18:17:18 - Sending message [5|68|8|TRANSACTION|4]
+18:17:18 - Sending message [5|0|10|TRANSACTION|1]
+18:17:18 - Sending message [5|28|9|TRANSACTION|6]
+18:17:18 - Sending message [5|139|2|TRANSACTION|4]
+18:17:18 - Sending message [5|38|1|TRANSACTION|1]
+18:17:18 - Sending message [5|34|10|TRANSACTION|1]
+18:17:18 - Sending message [5|7|5|TRANSACTION|1]
+18:17:18 - Sending message [5|54|3|TRANSACTION|6]
+18:17:18 - Sending message [5|63|4|TRANSACTION|1]
+18:17:18 - Sending message [5|58|7|TRANSACTION|6]
+18:17:18 - Sending message [5|76|7|TRANSACTION|4]
+18:17:18 - Sending message [5|92|5|TRANSACTION|1]
+HERE 4
+HERE 6: [4] and should receive from: [1, 4, 6]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|108|9|TRANSACTION|6]
+18:17:18 - Sending message [5|11|1|TRANSACTION|4]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|41|9|TRANSACTION|4]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|118|3|TRANSACTION|1]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|42|6|TRANSACTION|4]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|116|4|TRANSACTION|1]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|137|1|TRANSACTION|6]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|119|7|TRANSACTION|6]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|20|5|TRANSACTION|6]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|84|8|TRANSACTION|1]
+18:17:18 - Sending message [5|145|5|TRANSACTION|6]
+18:17:18 - Sending message [5|82|3|TRANSACTION|6]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|55|8|TRANSACTION|6]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|14|6|TRANSACTION|4]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|74|1|TRANSACTION|6]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|109|9|TRANSACTION|4]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|40|3|TRANSACTION|4]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+HERE 1
+HERE 2
+HERE 4
+HERE 6: [4] and should receive from: [1, 4, 6]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|32|2|TRANSACTION|1]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|114|3|TRANSACTION|1]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|35|3|TRANSACTION|1]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|4|2|TRANSACTION|1]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|17|9|TRANSACTION|4]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|130|1|TRANSACTION|4]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|135|10|TRANSACTION|4]
+Is snapshot in progress: true
+18:17:18 - Sending message [5|83|3|TRANSACTION|4]
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|37|1|TRANSACTION|1]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|53|5|TRANSACTION|6]
+Is snapshot in progress: true
+18:17:18 - Sending message [5|13|9|TRANSACTION|4]
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|85|1|TRANSACTION|6]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|94|9|TRANSACTION|4]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|95|8|TRANSACTION|1]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|1|8|TRANSACTION|1]
+Is snapshot in progress: true
+18:17:18 - Sending message [5|106|4|TRANSACTION|6]
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|117|7|TRANSACTION|1]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|132|2|TRANSACTION|4]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|31|9|TRANSACTION|1]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|121|7|TRANSACTION|1]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|71|1|TRANSACTION|4]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:18 - Sending message [5|62|3|TRANSACTION|1]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:19 - Sending message [5|91|1|TRANSACTION|1]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:19 - Sending message [5|90|10|TRANSACTION|1]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:19 - Sending message [5|149|6|TRANSACTION|6]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:19 - Sending message [5|147|6|TRANSACTION|1]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:19 - Sending message [5|97|4|TRANSACTION|4]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:19 - Sending message [5|134|9|TRANSACTION|6]
+18:17:19 - Sending message [5|87|5|TRANSACTION|1]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:19 - Sending message [5|133|2|TRANSACTION|1]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:19 - Got message [6|30|5|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:19 - Got message [6|91|10|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:19 - Got message [6|163|1|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:19 - Got message [6|88|9|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:19 - Got message [6|157|4|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:19 - Got message [6|161|6|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:19 - Got message [6|122|4|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:19 - Got message [6|51|8|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:19 - Got message [6|115|6|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:19 - Got message [6|31|2|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:19 - Got message [6|85|6|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:19 - Got message [6|197|3|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:19 - Got message [6|191|5|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:19 - Got message [6|127|6|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:19 - Got message [6|151|9|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:19 - Got message [6|49|9|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: false
+18:17:19 - Sending message [5|150||LI_MARKER|1]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:19 - Got message [6|84|2|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|81|8|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|50|6|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|121|5|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|158|6|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|53|3|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|86|6|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|168|2|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|44|7|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|193|5|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|98|4|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|156|9|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|155|5|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|187|3|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|32|4|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|55|3|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|196|6|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|62|1|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|132|2|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|87|9|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|194|10|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|117|2|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|40|7|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|134|2|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|48|10|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|52|7|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|162|2|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|192|5|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|198|4|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|36|3|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|120|7|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|199|6|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|119|8|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:19 - Got message [6|83|2|TRANSACTION|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+18:17:20 - Sending message [5|151||LI_MARKER|6]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]
+18:17:21 - Got message [6|202||LI_MARKER|5]
+IS LI_MARKER AND TAG IS: Tag[initId=4, mkno=0]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+HERE 1
+HERE 2
+HERE 4
+HERE 6: [4, 6] and should receive from: [1, 4, 6]
+18:17:22 - Got message [1|203||LI_TELL|5]
+GOT 1
+Snapshot in progress: true, is message tagged: true
+HERE 1
+HERE 2
+HERE 4
+HERE 6: [1, 4, 6] and should receive from: [1, 4, 6]
+HERE 7
+Got results from 1: {1=LiSnapshotResult[serventId=1, recordedAmount=545, giveHistory={0=315, 2=296, 3=276, 5=254}, getHistory={0=307, 2=259, 3=0, 5=120}]}
+Got borderSet from 1: []
+18:17:23 - Sending message [5|152||LI_TELL|4]
+Is snapshot in progress: true
+Tagging message with: Tag[initId=4, mkno=0]

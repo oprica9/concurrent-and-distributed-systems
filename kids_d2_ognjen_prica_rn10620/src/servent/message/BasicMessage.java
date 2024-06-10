@@ -1,7 +1,8 @@
 package servent.message;
 
-import app.configuration.AppConfig;
 import app.ServentInfo;
+import app.configuration.AppConfig;
+import servent.message.snapshot.li.Tag;
 
 import java.io.Serial;
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class BasicMessage implements Message {
     private final List<ServentInfo> routeList;
     private final String messageText;
     private final boolean white;
+    private final Tag tag;
     private final int messageId;
 
     public BasicMessage(MessageType type, ServentInfo originalSenderInfo, ServentInfo receiverInfo) {
@@ -37,6 +39,7 @@ public class BasicMessage implements Message {
         this.white = AppConfig.isWhite.get();
         this.routeList = new ArrayList<>();
         this.messageText = "";
+        this.tag = null;
 
         this.messageId = messageCounter.getAndIncrement();
     }
@@ -49,6 +52,7 @@ public class BasicMessage implements Message {
         this.white = AppConfig.isWhite.get();
         this.routeList = new ArrayList<>();
         this.messageText = messageText;
+        this.tag = null;
 
         this.messageId = messageCounter.getAndIncrement();
     }
@@ -61,6 +65,20 @@ public class BasicMessage implements Message {
         this.white = white;
         this.routeList = routeList;
         this.messageText = messageText;
+        this.tag = null;
+
+        this.messageId = messageId;
+    }
+
+    protected BasicMessage(MessageType type, ServentInfo originalSenderInfo, ServentInfo receiverInfo,
+                           List<ServentInfo> routeList, String messageText, int messageId, Tag tag) {
+        this.type = type;
+        this.originalSenderInfo = originalSenderInfo;
+        this.receiverInfo = receiverInfo;
+        this.white = AppConfig.isWhite.get();
+        this.routeList = routeList;
+        this.messageText = messageText;
+        this.tag = tag;
 
         this.messageId = messageId;
     }
@@ -186,5 +204,21 @@ public class BasicMessage implements Message {
     @Override
     public void sendEffect() {
 
+    }
+
+    @Override
+    public Message setTag(Tag tag) {
+        return new BasicMessage(getMessageType(), getOriginalSenderInfo(),
+                getReceiverInfo(), getRoute(), getMessageText(), getMessageId(), tag);
+    }
+
+    @Override
+    public Tag getTag() {
+        return tag;
+    }
+
+    @Override
+    public boolean isTagged() {
+        return tag != null;
     }
 }

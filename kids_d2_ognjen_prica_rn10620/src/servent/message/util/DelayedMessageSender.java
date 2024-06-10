@@ -1,8 +1,9 @@
 package servent.message.util;
 
-import app.configuration.AppConfig;
 import app.ServentInfo;
+import app.configuration.AppConfig;
 import servent.message.Message;
+import servent.message.snapshot.li.Tag;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -40,18 +41,29 @@ public class DelayedMessageSender implements Runnable {
         }
 
         try {
-            /*
-             * Similar sync block to the one in FifoSenderWorker, except this one is
-             * related to Lai-Yang. We want to be sure that message color is red if we
-             * are red. Just setting the attribute when we were making the message may
-             * have been too early.
-             * All messages that declare their own stuff (e.g. LYTellMessage) will have
-             * to override setRedColor() because of this.
-             */
+            // Similar sync block to the one in FifoSenderWorker, except this one is
+            // related to Lai-Yang. We want to be sure that message color is red if we
+            // are red. Just setting the attribute when we were making the message may
+            // have been too early.
+            // All messages that declare their own stuff (e.g. LYTellMessage) will have
+            // to override setRedColor() because of this.
             synchronized (AppConfig.colorLock) {
                 if (!AppConfig.isWhite.get()) {
                     messageToSend = messageToSend.setRedColor();
                 }
+
+                System.out.println("Is snapshot in progress: " + AppConfig.snapshotInProgress.get());
+                if (AppConfig.snapshotInProgress.get()) {
+                    int currentInitId = AppConfig.currentInitId.get();
+                    int currentMKNO = AppConfig.initIdMKNOs.get(currentInitId);
+
+                    Tag tag = new Tag(currentInitId, currentMKNO);
+
+                    System.out.println("Tagging message with: " + tag);
+
+                    messageToSend = messageToSend.setTag(tag);
+                }
+
                 Socket sendSocket = new Socket(receiverInfo.ipAddress(), receiverInfo.listenerPort());
 
                 ObjectOutputStream oos = new ObjectOutputStream(sendSocket.getOutputStream());

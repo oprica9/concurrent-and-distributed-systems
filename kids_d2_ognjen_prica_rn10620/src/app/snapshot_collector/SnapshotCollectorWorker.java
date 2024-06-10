@@ -5,6 +5,8 @@ import app.bitcake_manager.chandy_lamport.CLSnapshotResult;
 import app.bitcake_manager.chandy_lamport.ChandyLamportBitcakeManager;
 import app.bitcake_manager.lai_yang.LYSnapshotResult;
 import app.bitcake_manager.lai_yang.LaiYangBitcakeManager;
+import app.bitcake_manager.li.LiBitcakeManager;
+import app.bitcake_manager.li.LiSnapshotResult;
 import app.bitcake_manager.naive.NaiveBitcakeManager;
 import app.configuration.AppConfig;
 import app.configuration.SnapshotType;
@@ -27,13 +29,12 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class SnapshotCollectorWorker implements SnapshotCollector {
 
     private volatile boolean working = true;
-
     private final AtomicBoolean collecting = new AtomicBoolean(false);
 
     private final Map<String, Integer> collectedNaiveValues = new ConcurrentHashMap<>();
-
     private final Map<Integer, CLSnapshotResult> collectedCLValues = new ConcurrentHashMap<>();
     private final Map<Integer, LYSnapshotResult> collectedLYValues = new ConcurrentHashMap<>();
+    private final Map<Integer, LiSnapshotResult> collectedLiValues = new ConcurrentHashMap<>();
 
     private final SnapshotType snapshotType;
 
@@ -51,6 +52,9 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
                 break;
             case LAI_YANG:
                 bitcakeManager = new LaiYangBitcakeManager();
+                break;
+            case LI:
+                bitcakeManager = new LiBitcakeManager();
                 break;
             case NONE:
                 AppConfig.timestampedErrorPrint("Making snapshot collector without specifying type. Exiting...");
@@ -89,7 +93,7 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
              * 3. Print result
              */
 
-            //1 send asks
+            // 1 send asks
             switch (snapshotType) {
                 case NAIVE:
                     Message askMessage = new NaiveAskAmountMessage(AppConfig.myServentInfo, null);
@@ -111,6 +115,11 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
                 case LAI_YANG:
                     ((LaiYangBitcakeManager) bitcakeManager).markerEvent(AppConfig.myServentInfo.id(), this);
                     break;
+
+                case LI:
+                    ((LiBitcakeManager) bitcakeManager).initSnapshot(this);
+                    break;
+
                 case NONE:
                     //Shouldn't be able to come here. See constructor.
                     break;
@@ -139,6 +148,13 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
                             waiting = false;
                         }
                         break;
+
+                    case LI:
+                        if (collectedLiValues.size() == AppConfig.getServentCount()) {
+                            waiting = false;
+                        }
+                        break;
+
                     case NONE:
                         //Shouldn't be able to come here. See constructor.
                         break;
@@ -171,7 +187,6 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
                     collectedNaiveValues.clear(); //reset for next invocation
                     break;
 
-
                 case CHANDY_LAMPORT:
                     sum = 0;
                     for (Entry<Integer, CLSnapshotResult> nodeResult : collectedCLValues.entrySet()) {
@@ -196,9 +211,8 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
 
                     AppConfig.timestampedStandardPrint("System bitcake count: " + sum);
 
-                    collectedCLValues.clear(); //reset for next invocation
+                    collectedCLValues.clear();
                     break;
-
 
                 case LAI_YANG:
                     sum = 0;
@@ -229,15 +243,43 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
 
                     AppConfig.timestampedStandardPrint("System bitcake count: " + sum);
 
-                    collectedLYValues.clear(); //reset for next invocation
+                    collectedLYValues.clear();
                     break;
-                case NONE:
-                    //Shouldn't be able to come here. See constructor.
+
+                case LI:
+                    sum = 0;
+                    for (Entry<Integer, LiSnapshotResult> nodeResult : collectedLiValues.entrySet()) {
+                        sum += nodeResult.getValue().recordedAmount();
+                        AppConfig.timestampedStandardPrint(
+                                "Recorded bitcake amount for " + nodeResult.getKey() + " = " + nodeResult.getValue().recordedAmount());
+                    }
+                    for (int i = 0; i < AppConfig.getServentCount(); i++) {
+                        for (int j = 0; j < AppConfig.getServentCount(); j++) {
+                            if (i != j) {
+                                if (AppConfig.getInfoById(i).neighbors().contains(j) &&
+                                        AppConfig.getInfoById(j).neighbors().contains(i)) {
+                                    int ijAmount = collectedLiValues.get(i).giveHistory().get(j);
+                                    int jiAmount = collectedLiValues.get(j).getHistory().get(i);
+
+                                    if (ijAmount != jiAmount) {
+                                        String outputString = String.format(
+                                                "Unreceived bitcake amount: %d from servent %d to servent %d",
+                                                ijAmount - jiAmount, i, j);
+                                        AppConfig.timestampedStandardPrint(outputString);
+                                        sum += ijAmount - jiAmount;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    AppConfig.timestampedStandardPrint("System bitcake count: " + sum);
+
+                    collectedLiValues.clear(); //reset for next invocation
                     break;
             }
             collecting.set(false);
         }
-
     }
 
     @Override
@@ -253,6 +295,21 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
     @Override
     public void addLYSnapshotInfo(int id, LYSnapshotResult lySnapshotResult) {
         collectedLYValues.put(id, lySnapshotResult);
+    }
+
+    @Override
+    public void addLiSnapshotInfo(int id, LiSnapshotResult liSnapshotResult) {
+        collectedLiValues.put(id, liSnapshotResult);
+    }
+
+    @Override
+    public void addLiSnapshotInfos(Map<Integer, LiSnapshotResult> liSnapshotResults) {
+        collectedLiValues.putAll(liSnapshotResults);
+    }
+
+    @Override
+    public Map<Integer, LiSnapshotResult> getLiSnapshotResults() {
+        return collectedLiValues;
     }
 
     @Override

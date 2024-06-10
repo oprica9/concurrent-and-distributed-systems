@@ -6,11 +6,10 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * This class contains all the global application configuration stuff.
@@ -46,6 +45,34 @@ public class AppConfig {
     public static AtomicBoolean isWhite = new AtomicBoolean(true);
     public static final Object colorLock = new Object();
     private static final List<ServentInfo> serventInfoList = new ArrayList<>();
+
+    // Li et al.
+    private static final List<Integer> initiators = new ArrayList<>();
+    /**
+     * Snapshots initiated by an initiator are assigned a sequence number.
+     * MKNO is the sequence number of the algorithm’s most recent invocation by an initiator.
+     */
+    public static final AtomicInteger mkno = new AtomicInteger(-1);
+    public static final Map<Integer, Integer> initIdMKNOs = new ConcurrentHashMap<>();
+    public static final AtomicInteger currentInitId = new AtomicInteger(-1);
+    public static final AtomicBoolean snapshotInProgress = new AtomicBoolean(false);
+
+    // Spezialetti-Kearns
+    /**
+     * If process pi executed the “marker sending rule” because it received its first marker
+     * from process pj, then process pj is the parent of process pi in the spanning tree.
+     */
+    public static final AtomicInteger parent = new AtomicInteger(-1);
+    /**
+     * When a process executes the “marker sending rule” on the receipt of its first marker,
+     * it records the initiator’s identifier carried in the received marker in the master variable.
+     * A process that initiates the algorithm records its own identifier in the master variable.
+     */
+    public static final AtomicInteger master = new AtomicInteger(-1);
+    /**
+     * The variable idBorderSet at a process contains the identifiers of the neighboring regions.
+     */
+    public static final Set<Integer> idBorderSet = ConcurrentHashMap.newKeySet();
 
     /**
      * Print a message to stdout with a timestamp
@@ -137,6 +164,9 @@ public class AppConfig {
             case "ly":
                 SNAPSHOT_TYPE = SnapshotType.LAI_YANG;
                 break;
+            case "li":
+                SNAPSHOT_TYPE = SnapshotType.LI;
+                break;
             default:
                 timestampedErrorPrint("Problem reading snapshot algorithm. Defaulting to NONE.");
                 SNAPSHOT_TYPE = SnapshotType.NONE;
@@ -181,6 +211,23 @@ public class AppConfig {
                 }
             }
 
+            String initiatorsListProp = properties.getProperty("initiators");
+
+            if (initiatorsListProp == null) {
+                timestampedErrorPrint("Warning: no initiators specified");
+            } else {
+                String[] initiatorListArr = initiatorsListProp.split(",");
+
+                try {
+                    for (String initiator : initiatorListArr) {
+                        initiators.add(Integer.parseInt(initiator));
+                    }
+                } catch (NumberFormatException e) {
+                    timestampedErrorPrint("Could not parse initiator values.");
+                    System.exit(0);
+                }
+            }
+
             ServentInfo newInfo = new ServentInfo("localhost", i, serventPort, neighborList);
             serventInfoList.add(newInfo);
         }
@@ -205,6 +252,10 @@ public class AppConfig {
      */
     public static int getServentCount() {
         return serventInfoList.size();
+    }
+
+    public static List<Integer> getInitiators() {
+        return initiators;
     }
 
 }
