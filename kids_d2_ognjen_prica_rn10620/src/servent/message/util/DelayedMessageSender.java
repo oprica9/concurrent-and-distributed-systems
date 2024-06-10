@@ -52,14 +52,11 @@ public class DelayedMessageSender implements Runnable {
                     messageToSend = messageToSend.setRedColor();
                 }
 
-                System.out.println("Is snapshot in progress: " + AppConfig.snapshotInProgress.get());
                 if (AppConfig.snapshotInProgress.get()) {
                     int currentInitId = AppConfig.currentInitId.get();
                     int currentMKNO = AppConfig.initIdMKNOs.get(currentInitId);
 
                     Tag tag = new Tag(currentInitId, currentMKNO);
-
-                    System.out.println("Tagging message with: " + tag);
 
                     messageToSend = messageToSend.setTag(tag);
                 }

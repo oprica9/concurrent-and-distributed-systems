@@ -50,6 +50,22 @@ public class NullSnapshotCollector implements SnapshotCollector {
     }
 
     @Override
+    public void setCompletedRegion(boolean completed) {
+
+    }
+
+    @Override
+    public void addReceivedRegionResults(int regionMasterId, Map<Integer, LiSnapshotResult> regionResults) {
+
+    }
+
+
+    @Override
+    public void addReceivedBlank(int id) {
+
+    }
+
+    @Override
     public Map<Integer, LiSnapshotResult> getLiSnapshotResults() {
         return null;
     }

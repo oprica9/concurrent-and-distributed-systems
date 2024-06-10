@@ -5,23 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="571dddc1-db95-42a1-95c6-a096f36d2576" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/bitcake_manager/li/LiBitcakeManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/bitcake_manager/li/LiSnapshotResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servent/handler/snapshot/li/LiMarkerHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servent/handler/snapshot/li/LiTellHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servent/handler/snapshot/li/TagMiddlewareHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servent/message/snapshot/li/LiMarkerMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servent/message/snapshot/li/LiTellMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servent/message/snapshot/li/Tag.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/servent/handler/snapshot/li/BlankHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/servent/handler/snapshot/li/ExchangeHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/servent/message/snapshot/li/BlankMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/servent/message/snapshot/li/ExchangeMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/li_snapshot/input/servent0_in.txt" beforeDir="false" afterPath="$PROJECT_DIR$/li_snapshot/input/servent0_in.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/li_snapshot/input/servent1_in.txt" beforeDir="false" afterPath="$PROJECT_DIR$/li_snapshot/input/servent1_in.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/li_snapshot/input/servent2_in.txt" beforeDir="false" afterPath="$PROJECT_DIR$/li_snapshot/input/servent2_in.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/li_snapshot/input/servent3_in.txt" beforeDir="false" afterPath="$PROJECT_DIR$/li_snapshot/input/servent3_in.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/li_snapshot/input/servent4_in.txt" beforeDir="false" afterPath="$PROJECT_DIR$/li_snapshot/input/servent4_in.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/li_snapshot/input/servent5_in.txt" beforeDir="false" afterPath="$PROJECT_DIR$/li_snapshot/input/servent5_in.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/li_snapshot/input/servent6_in.txt" beforeDir="false" afterPath="$PROJECT_DIR$/li_snapshot/input/servent6_in.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/li_snapshot/output/servent0_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/li_snapshot/output/servent0_out.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/li_snapshot/output/servent1_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/li_snapshot/output/servent1_out.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/li_snapshot/output/servent2_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/li_snapshot/output/servent2_out.txt" afterDir="false" />
@@ -29,40 +18,12 @@
       <change beforePath="$PROJECT_DIR$/li_snapshot/output/servent4_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/li_snapshot/output/servent4_out.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/li_snapshot/output/servent5_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/li_snapshot/output/servent5_out.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/li_snapshot/output/servent6_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/li_snapshot/output/servent6_out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/li_snapshot/servent_list.properties" beforeDir="false" afterPath="$PROJECT_DIR$/li_snapshot/servent_list.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ly_snapshot/error/servent0_err.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ly_snapshot/error/servent1_err.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ly_snapshot/error/servent2_err.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ly_snapshot/error/servent3_err.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ly_snapshot/error/servent4_err.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ly_snapshot/error/servent5_err.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ly_snapshot/error/servent6_err.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ly_snapshot/input/servent0_in.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ly_snapshot/input/servent1_in.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ly_snapshot/input/servent2_in.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ly_snapshot/input/servent3_in.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ly_snapshot/input/servent4_in.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ly_snapshot/input/servent5_in.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ly_snapshot/input/servent6_in.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ly_snapshot/output/servent0_out.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ly_snapshot/output/servent1_out.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ly_snapshot/output/servent2_out.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ly_snapshot/output/servent3_out.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ly_snapshot/output/servent4_out.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ly_snapshot/output/servent5_out.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ly_snapshot/output/servent6_out.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ly_snapshot/servent_list.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/configuration/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/configuration/AppConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/configuration/SnapshotType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/configuration/SnapshotType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/bitcake_manager/li/LiBitcakeManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/bitcake_manager/li/LiBitcakeManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/snapshot_collector/NullSnapshotCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/snapshot_collector/NullSnapshotCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/snapshot_collector/SnapshotCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/snapshot_collector/SnapshotCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/snapshot_collector/SnapshotCollectorWorker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/snapshot_collector/SnapshotCollectorWorker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/servent/SimpleServentListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/SimpleServentListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/handler/TransactionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/TransactionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/message/BasicMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/BasicMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/message/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/Message.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/servent/message/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/MessageType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/message/TransactionMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/TransactionMessage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/servent/message/util/DelayedMessageSender.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/util/DelayedMessageSender.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_pr_ognjen_prica_rn10620/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_pr_ognjen_prica_rn10620/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../kids_pr_ognjen_prica_rn10620/rafbook/output/bootstrap_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_pr_ognjen_prica_rn10620/rafbook/output/bootstrap_out.txt" afterDir="false" />
@@ -102,7 +63,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/Ognjen/Desktop/domaci/kids_d2_ognjen_prica_rn10620/src/servent/message/snapshot/li",
+    "last_opened_file_path": "C:/Users/Ognjen/Desktop/domaci/kids_d2_ognjen_prica_rn10620",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -113,10 +74,17 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Ognjen\Desktop\domaci\kids_d2_ognjen_prica_rn10620" />
       <recent name="C:\Users\Ognjen\Desktop\domaci\kids_d2_ognjen_prica_rn10620\src\servent\message\snapshot\li" />
       <recent name="C:\Users\Ognjen\Desktop\domaci\kids_d2_ognjen_prica_rn10620\src\servent\handler\snapshot\li" />
       <recent name="C:\Users\Ognjen\Desktop\domaci\kids_d2_ognjen_prica_rn10620\src\app\bitcake_manager\li" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Ognjen\Desktop\domaci\kids_d2_ognjen_prica_rn10620" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="servent.handler.snapshot.li" />
+      <recent name="servent.message.snapshot.li" />
     </key>
   </component>
   <component name="RunManager">
@@ -143,7 +111,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1718024490769</updated>
-      <workItem from="1718024492778" duration="10070000" />
+      <workItem from="1718024492778" duration="16559000" />
     </task>
     <servers />
   </component>

@@ -11,12 +11,15 @@ import app.bitcake_manager.naive.NaiveBitcakeManager;
 import app.configuration.AppConfig;
 import app.configuration.SnapshotType;
 import servent.message.Message;
+import servent.message.snapshot.li.BlankMessage;
+import servent.message.snapshot.li.ExchangeMessage;
 import servent.message.snapshot.naive.NaiveAskAmountMessage;
 import servent.message.util.MessageUtil;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -35,6 +38,12 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
     private final Map<Integer, CLSnapshotResult> collectedCLValues = new ConcurrentHashMap<>();
     private final Map<Integer, LYSnapshotResult> collectedLYValues = new ConcurrentHashMap<>();
     private final Map<Integer, LiSnapshotResult> collectedLiValues = new ConcurrentHashMap<>();
+    private final AtomicBoolean completedRegion = new AtomicBoolean(false);
+    private final Map<Integer, LiSnapshotResult> receivedRegionResults = new ConcurrentHashMap<>();
+    private final Set<Integer> receivedResultsFrom = ConcurrentHashMap.newKeySet();
+    private final Set<Integer> receivedBlanks = ConcurrentHashMap.newKeySet();
+    private final Set<Integer> gotExchangeMessage = ConcurrentHashMap.newKeySet();
+    private final AtomicBoolean changesMade = new AtomicBoolean(false);
 
     private final SnapshotType snapshotType;
 
@@ -150,7 +159,7 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
                         break;
 
                     case LI:
-                        if (collectedLiValues.size() == AppConfig.getServentCount()) {
+                        if (completedRegion.get()) {
                             waiting = false;
                         }
                         break;
@@ -169,6 +178,71 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
                 if (!working) {
                     return;
                 }
+            }
+
+            if (snapshotType == SnapshotType.LI) {
+                System.out.println("STARTING ROUNDS...");
+
+                System.out.println("Sending: " + collectedLiValues);
+                // Start rounds
+
+                for (Integer adjacentInitiator : AppConfig.idBorderSet) {
+                    Message exchangeMessage = new ExchangeMessage(
+                            AppConfig.myServentInfo, AppConfig.getInfoById(adjacentInitiator),
+                            collectedLiValues
+                    );
+                    MessageUtil.sendMessage(exchangeMessage);
+                }
+
+                // Start exchanging information
+
+                waiting = true;
+                while (waiting) {
+                    if (!changesMade.get() && receivedBlanks.containsAll(AppConfig.idBorderSet)) {
+                        waiting = false;
+                    }
+
+                    // Start next round
+                    if (gotExchangeMessage.containsAll(AppConfig.idBorderSet)) {
+                        if (receivedRegionResults.isEmpty()) {
+                            // Nothing changed
+                            changesMade.set(false);
+
+                            for (Integer adjacentInitiator : AppConfig.idBorderSet) {
+                                Message blankMessage = new BlankMessage(
+                                        AppConfig.myServentInfo, AppConfig.getInfoById(adjacentInitiator)
+                                );
+                                MessageUtil.sendMessage(blankMessage);
+                            }
+                        } else {
+                            // There were changes
+                            changesMade.set(true);
+
+                            for (Integer adjacentInitiator : AppConfig.idBorderSet) {
+                                Message exchangeMessage = new ExchangeMessage(
+                                        AppConfig.myServentInfo, AppConfig.getInfoById(adjacentInitiator),
+                                        receivedRegionResults
+                                );
+                                MessageUtil.sendMessage(exchangeMessage);
+                            }
+
+                            collectedLiValues.putAll(receivedRegionResults);
+                        }
+                        receivedRegionResults.clear();
+                        receivedBlanks.clear();
+                    }
+
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        AppConfig.timestampedErrorPrint(e);
+                    }
+
+                    if (!working) {
+                        return;
+                    }
+                }
+                System.out.println("Final snapshot: " + collectedLiValues);
             }
 
             //print
@@ -280,6 +354,30 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
             }
             collecting.set(false);
         }
+    }
+
+
+    @Override
+    public void setCompletedRegion(boolean value) {
+        completedRegion.set(value);
+    }
+
+    @Override
+    public void addReceivedRegionResults(int regionMasterId, Map<Integer, LiSnapshotResult> regionResults) {
+        gotExchangeMessage.add(regionMasterId);
+
+        for (Map.Entry<Integer, LiSnapshotResult> entry : regionResults.entrySet()) {
+            if (!receivedResultsFrom.contains(entry.getKey())) {
+                System.out.println("Adding: " + entry.getValue());
+                receivedResultsFrom.add(entry.getKey());
+                receivedRegionResults.put(entry.getKey(), entry.getValue());
+            }
+        }
+    }
+
+    @Override
+    public void addReceivedBlank(int id) {
+        receivedBlanks.add(id);
     }
 
     @Override

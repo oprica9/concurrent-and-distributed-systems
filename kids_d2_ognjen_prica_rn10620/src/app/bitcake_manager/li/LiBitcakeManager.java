@@ -38,23 +38,28 @@ public class LiBitcakeManager implements BitcakeManager {
 
     public void markerEvent(Tag tag, int senderId, SnapshotCollector snapshotCollector) {
         synchronized (AppConfig.colorLock) {
+            if (AppConfig.myServentInfo.id() == AppConfig.master.get()) {
+                receivedMarkers.add(senderId);
 
-            if (tag.initId() == AppConfig.myServentInfo.id()) {
+                if (tag.initId() != AppConfig.master.get()) {
+                    AppConfig.idBorderSet.add(tag.initId());
+                }
+
+                if (receivedAllMarkers()) {
+                    snapshotCollector.setCompletedRegion(true);
+                }
+
                 return;
             }
 
-            System.out.println("HERE 1");
             // We don't want to participate in a snapshot we already participated in
             if (tag.mkno() < AppConfig.initIdMKNOs.getOrDefault(tag.initId(), -1)) {
                 return;
             }
 
-            System.out.println("HERE 2");
-
             receivedMarkers.add(senderId);
 
             if (AppConfig.parent.get() == -1) {
-                System.out.println("HERE 3");
                 // If process pi executed the “marker sending rule” because it received its first marker
                 // from process pj, then process pj is the parent of process pi in the spanning tree.
                 AppConfig.parent.set(senderId);
@@ -70,13 +75,11 @@ public class LiBitcakeManager implements BitcakeManager {
                 recordMySnapshot();
 
                 System.out.println("My parent: " + AppConfig.parent.get() + ", my master: " + AppConfig.master.get());
-
+                System.out.println("PROPAGATING AFTER INITIATION");
                 propagateMarker();
             }
 
-            System.out.println("HERE 4");
             if (tag.initId() != AppConfig.master.get()) {
-                System.out.println("HERE 5");
                 // When the initiator’s identifier in a marker received along a channel is
                 // different from the value in the master variable, a concurrent initiation of the
                 // algorithm is detected and the sender of the marker lies in a different region.
@@ -92,9 +95,8 @@ public class LiBitcakeManager implements BitcakeManager {
             // all its child processes and has recorded the states of all incoming channels, it forwards
             // its locally recorded state and the locally recorded states of all its descendent
             // processes to its parent.
-            System.out.println("HERE 6: " + receivedMarkers + " and should receive from: " + AppConfig.myServentInfo.neighbors());
+            System.out.println(receivedMarkers + " and should receive from: " + AppConfig.myServentInfo.neighbors());
             if (receivedAllMarkers()) {
-                System.out.println("HERE 7");
                 Map<Integer, LiSnapshotResult> childrenResults = snapshotCollector.getLiSnapshotResults();
 
                 childrenResults.put(AppConfig.myServentInfo.id(), mySnapshotResult);
@@ -111,6 +113,7 @@ public class LiBitcakeManager implements BitcakeManager {
     }
 
     public void initSnapshot(SnapshotCollector snapshotCollector) {
+        System.out.println("GOT HERE?");
         synchronized (AppConfig.colorLock) {
             int initId = AppConfig.myServentInfo.id();
             int currMKNO = AppConfig.mkno.incrementAndGet();
@@ -118,16 +121,21 @@ public class LiBitcakeManager implements BitcakeManager {
             AppConfig.snapshotInProgress.set(true);
             AppConfig.initIdMKNOs.put(initId, currMKNO);
             AppConfig.master.set(initId);
+            AppConfig.parent.set(initId);
 
             recordMySnapshot();
 
             snapshotCollector.addLiSnapshotInfo(AppConfig.myServentInfo.id(), mySnapshotResult);
 
+            System.out.println("PROPAGATING DURING INITIATION");
             propagateMarker();
         }
     }
 
     private void propagateMarker() {
+        if (AppConfig.myServentInfo.id() == 4) {
+            System.out.println("WHY 5");
+        }
         synchronized (AppConfig.colorLock) {
             for (Integer neighbor : AppConfig.myServentInfo.neighbors()) {
                 if (neighbor != AppConfig.parent.get()) {

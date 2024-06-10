@@ -1,182 +1,101 @@
-18:17:16 - Starting servent [4|localhost|1500]
-18:17:16 - Pausing for 500 ms
-18:17:16 - Pausing for 22000 ms
-18:17:18 - Got message [5|44|2|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Got message [5|70|10|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Got message [5|79|3|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Got message [5|45|10|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Got message [5|101|10|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Got message [5|113|7|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Got message [5|148|6|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Got message [5|100|7|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Got message [5|43|3|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Got message [5|73|7|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Got message [5|47|4|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Got message [5|18|10|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Got message [5|102|1|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Got message [5|131|3|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Got message [5|15|5|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Got message [5|48|4|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Got message [5|72|4|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Got message [5|19|8|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Got message [5|12|10|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Got message [5|124|7|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Got message [5|126|2|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Got message [5|10|1|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Got message [5|75|9|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: false
-18:17:18 - Sending message [4|1||LI_MARKER|5]
-Is snapshot in progress: true
-Tagging message with: Tag[initId=4, mkno=0]
-18:17:18 - Sending message [4|0||LI_MARKER|3]
-Is snapshot in progress: true
-Tagging message with: Tag[initId=4, mkno=0]
-18:17:18 - Got message [5|76|7|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|139|2|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|68|8|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|96|4|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|46|10|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|127|1|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|49|1|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|105|1|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|16|3|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|128|6|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|98|4|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|143|1|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|14|6|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|42|6|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|41|9|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|11|1|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|40|3|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|109|9|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|17|9|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|130|1|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|135|10|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|83|3|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|13|9|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|94|9|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|132|2|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:18 - Got message [5|71|1|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:19 - Got message [5|97|4|TRANSACTION|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-18:17:23 - Got message [5|152||LI_TELL|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-Got results from 5: {1=LiSnapshotResult[serventId=1, recordedAmount=545, giveHistory={0=315, 2=296, 3=276, 5=254}, getHistory={0=307, 2=259, 3=0, 5=120}], 5=LiSnapshotResult[serventId=5, recordedAmount=890, giveHistory={1=120, 4=133, 6=111}, getHistory={1=254, 4=0, 6=0}]}
-Got borderSet from 5: []
-18:17:24 - Got message [3|3||LI_TELL|4]
-GOT 1
-Snapshot in progress: true, is message tagged: true
-Got results from 3: {0=LiSnapshotResult[serventId=0, recordedAmount=822, giveHistory={1=307, 2=257, 6=294}, getHistory={1=315, 2=269, 6=96}], 2=LiSnapshotResult[serventId=2, recordedAmount=535, giveHistory={0=269, 1=259, 3=298, 6=281}, getHistory={0=257, 1=296, 3=0, 6=89}], 3=LiSnapshotResult[serventId=3, recordedAmount=1386, giveHistory={1=0, 2=0, 4=0, 6=0}, getHistory={1=276, 2=110, 4=0, 6=0}], 6=LiSnapshotResult[serventId=6, recordedAmount=1268, giveHistory={0=96, 2=122, 3=107, 5=93}, getHistory={0=294, 2=281, 3=0, 5=111}]}
-Got borderSet from 3: []
-18:17:25 - Recorded bitcake amount for 0 = 822
-18:17:25 - Recorded bitcake amount for 1 = 545
-18:17:25 - Recorded bitcake amount for 2 = 535
-18:17:25 - Recorded bitcake amount for 3 = 1386
-18:17:25 - Recorded bitcake amount for 4 = 1000
-18:17:25 - Recorded bitcake amount for 5 = 890
-18:17:25 - Recorded bitcake amount for 6 = 1268
-18:17:25 - Unreceived bitcake amount: 188 from servent 2 to servent 3
-18:17:25 - Unreceived bitcake amount: 133 from servent 5 to servent 4
-18:17:25 - Unreceived bitcake amount: 33 from servent 6 to servent 2
-18:17:25 - Unreceived bitcake amount: 107 from servent 6 to servent 3
-18:17:25 - Unreceived bitcake amount: 93 from servent 6 to servent 5
-18:17:25 - System bitcake count: 7000
+20:07:46 - Starting servent [4|localhost|1500]
+20:07:46 - Pausing for 500 ms
+20:07:47 - Pausing for 22000 ms
+GOT HERE?
+PROPAGATING DURING INITIATION
+WHY 5
+20:07:48 - Got message [5|37|5|TRANSACTION|4]
+20:07:48 - Got message [5|10|10|TRANSACTION|4]
+20:07:48 - Got message [5|83|8|TRANSACTION|4]
+20:07:48 - Got message [5|140|8|TRANSACTION|4]
+20:07:48 - Got message [5|45|5|TRANSACTION|4]
+20:07:48 - Got message [5|110|3|TRANSACTION|4]
+20:07:48 - Got message [5|80|8|TRANSACTION|4]
+20:07:48 - Got message [5|71|2|TRANSACTION|4]
+20:07:48 - Sending message [4|1||LI_MARKER|5]
+20:07:48 - Got message [5|41|4|TRANSACTION|4]
+20:07:48 - Got message [5|76|7|TRANSACTION|4]
+20:07:48 - Got message [5|138|2|TRANSACTION|4]
+20:07:48 - Got message [5|64|5|TRANSACTION|4]
+20:07:48 - Got message [5|143|2|TRANSACTION|4]
+20:07:48 - Got message [5|97|9|TRANSACTION|4]
+20:07:48 - Got message [5|106|1|TRANSACTION|4]
+20:07:48 - Got message [5|18|4|TRANSACTION|4]
+20:07:48 - Got message [5|127|1|TRANSACTION|4]
+20:07:48 - Got message [5|14|2|TRANSACTION|4]
+20:07:48 - Got message [5|136|7|TRANSACTION|4]
+20:07:48 - Got message [5|101|10|TRANSACTION|4]
+20:07:48 - Got message [5|15|2|TRANSACTION|4]
+20:07:48 - Got message [5|48|2|TRANSACTION|4]
+20:07:48 - Got message [5|78|5|TRANSACTION|4]
+20:07:48 - Got message [5|108|1|TRANSACTION|4]
+20:07:48 - Got message [5|53|2|TRANSACTION|4]
+20:07:48 - Got message [5|135|4|TRANSACTION|4]
+20:07:48 - Got message [5|131|7|TRANSACTION|4]
+20:07:48 - Got message [5|75|10|TRANSACTION|4]
+20:07:48 - Got message [5|16|6|TRANSACTION|4]
+20:07:48 - Got message [5|42|4|TRANSACTION|4]
+20:07:48 - Got message [5|94|9|TRANSACTION|4]
+20:07:48 - Got message [5|34|1|TRANSACTION|4]
+20:07:48 - Got message [5|12|4|TRANSACTION|4]
+20:07:48 - Sending message [4|0||LI_MARKER|3]
+20:07:48 - Got message [5|132|4|TRANSACTION|4]
+20:07:48 - Got message [5|49|9|TRANSACTION|4]
+20:07:48 - Got message [5|139|2|TRANSACTION|4]
+20:07:48 - Got message [5|20|3|TRANSACTION|4]
+20:07:49 - Got message [5|13|2|TRANSACTION|4]
+20:07:49 - Got message [5|50|10|TRANSACTION|4]
+20:07:49 - Got message [5|67|9|TRANSACTION|4]
+20:07:49 - Got message [5|109|1|TRANSACTION|4]
+20:07:49 - Got message [5|105|1|TRANSACTION|4]
+20:07:49 - Got message [5|124|5|TRANSACTION|4]
+20:07:49 - Got message [5|102|7|TRANSACTION|4]
+20:07:49 - Got message [5|11|5|TRANSACTION|4]
+20:07:49 - Got message [5|19|8|TRANSACTION|4]
+20:07:49 - Got message [5|72|4|TRANSACTION|4]
+20:07:49 - Got message [5|113|4|TRANSACTION|4]
+20:07:49 - Got message [5|46|7|TRANSACTION|4]
+20:07:49 - Got message [5|79|3|TRANSACTION|4]
+20:07:49 - Got message [3|1||LI_MARKER|4]
+20:07:51 - Got message [5|152||LI_TELL|4]
+Got results from 5: {5=LiSnapshotResult[serventId=5, recordedAmount=758, giveHistory={1=84, 4=53, 6=105}, getHistory={1=0, 4=0, 6=0}]}
+Got borderSet from 5: [1]
+STARTING ROUNDS...
+Sending: {4=LiSnapshotResult[serventId=4, recordedAmount=1000, giveHistory={3=0, 5=0}, getHistory={3=0, 5=0}], 5=LiSnapshotResult[serventId=5, recordedAmount=758, giveHistory={1=84, 4=53, 6=105}, getHistory={1=0, 4=0, 6=0}]}
+20:07:53 - Got message [1|4||EXCHANGE|4]
+20:07:53 - Got region data from 1: {0=LiSnapshotResult[serventId=0, recordedAmount=897, giveHistory={1=21, 2=54, 6=77}, getHistory={1=0, 2=49, 6=0}], 1=LiSnapshotResult[serventId=1, recordedAmount=1000, giveHistory={0=0, 2=0, 3=0, 5=0}, getHistory={0=0, 2=0, 3=0, 5=0}], 2=LiSnapshotResult[serventId=2, recordedAmount=664, giveHistory={0=113, 1=76, 3=108, 6=93}, getHistory={0=54, 1=0, 3=0, 6=0}], 3=LiSnapshotResult[serventId=3, recordedAmount=1106, giveHistory={1=0, 2=0, 4=0, 6=0}, getHistory={1=0, 2=106, 4=0, 6=0}], 6=LiSnapshotResult[serventId=6, recordedAmount=662, giveHistory={0=167, 2=166, 3=146, 5=134}, getHistory={0=77, 2=93, 3=0, 5=105}]}
+Adding: LiSnapshotResult[serventId=0, recordedAmount=897, giveHistory={1=21, 2=54, 6=77}, getHistory={1=0, 2=49, 6=0}]
+Adding: LiSnapshotResult[serventId=1, recordedAmount=1000, giveHistory={0=0, 2=0, 3=0, 5=0}, getHistory={0=0, 2=0, 3=0, 5=0}]
+Adding: LiSnapshotResult[serventId=2, recordedAmount=664, giveHistory={0=113, 1=76, 3=108, 6=93}, getHistory={0=54, 1=0, 3=0, 6=0}]
+Adding: LiSnapshotResult[serventId=3, recordedAmount=1106, giveHistory={1=0, 2=0, 4=0, 6=0}, getHistory={1=0, 2=106, 4=0, 6=0}]
+Adding: LiSnapshotResult[serventId=6, recordedAmount=662, giveHistory={0=167, 2=166, 3=146, 5=134}, getHistory={0=77, 2=93, 3=0, 5=105}]
+20:07:53 - Sending message [4|2||EXCHANGE|1]
+20:07:54 - Sending message [4|3||EXCHANGE|1]
+20:07:55 - Got message [1|5||EXCHANGE|4]
+20:07:55 - Got region data from 1: {}
+20:07:56 - Got message [1|6||BLANK|4]
+20:07:56 - Sending message [4|4||BLANK|1]
+20:07:57 - Sending message [4|5||BLANK|1]
+20:07:57 - Got message [1|7||BLANK|4]
+Final snapshot: {0=LiSnapshotResult[serventId=0, recordedAmount=897, giveHistory={1=21, 2=54, 6=77}, getHistory={1=0, 2=49, 6=0}], 1=LiSnapshotResult[serventId=1, recordedAmount=1000, giveHistory={0=0, 2=0, 3=0, 5=0}, getHistory={0=0, 2=0, 3=0, 5=0}], 2=LiSnapshotResult[serventId=2, recordedAmount=664, giveHistory={0=113, 1=76, 3=108, 6=93}, getHistory={0=54, 1=0, 3=0, 6=0}], 3=LiSnapshotResult[serventId=3, recordedAmount=1106, giveHistory={1=0, 2=0, 4=0, 6=0}, getHistory={1=0, 2=106, 4=0, 6=0}], 4=LiSnapshotResult[serventId=4, recordedAmount=1000, giveHistory={3=0, 5=0}, getHistory={3=0, 5=0}], 5=LiSnapshotResult[serventId=5, recordedAmount=758, giveHistory={1=84, 4=53, 6=105}, getHistory={1=0, 4=0, 6=0}], 6=LiSnapshotResult[serventId=6, recordedAmount=662, giveHistory={0=167, 2=166, 3=146, 5=134}, getHistory={0=77, 2=93, 3=0, 5=105}]}
+20:07:57 - Recorded bitcake amount for 0 = 897
+20:07:57 - Recorded bitcake amount for 1 = 1000
+20:07:57 - Recorded bitcake amount for 2 = 664
+20:07:57 - Recorded bitcake amount for 3 = 1106
+20:07:57 - Recorded bitcake amount for 4 = 1000
+20:07:57 - Recorded bitcake amount for 5 = 758
+20:07:57 - Recorded bitcake amount for 6 = 662
+20:07:57 - Unreceived bitcake amount: 21 from servent 0 to servent 1
+20:07:57 - Unreceived bitcake amount: 64 from servent 2 to servent 0
+20:07:57 - Unreceived bitcake amount: 76 from servent 2 to servent 1
+20:07:57 - Unreceived bitcake amount: 2 from servent 2 to servent 3
+20:07:57 - Unreceived bitcake amount: 84 from servent 5 to servent 1
+20:07:57 - Unreceived bitcake amount: 53 from servent 5 to servent 4
+20:07:57 - Got message [1|8||BLANK|4]
+20:07:57 - Unreceived bitcake amount: 167 from servent 6 to servent 0
+20:07:57 - Unreceived bitcake amount: 166 from servent 6 to servent 2
+20:07:57 - Unreceived bitcake amount: 146 from servent 6 to servent 3
+20:07:57 - Unreceived bitcake amount: 134 from servent 6 to servent 5
+20:07:57 - System bitcake count: 7000
+20:07:58 - Sending message [4|6||BLANK|1]
+20:08:09 - Stopping...

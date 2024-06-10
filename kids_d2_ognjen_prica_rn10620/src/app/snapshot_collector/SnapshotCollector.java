@@ -24,7 +24,14 @@ public interface SnapshotCollector extends Runnable, Cancellable {
     void addLYSnapshotInfo(int id, LYSnapshotResult lySnapshotResult);
 
     void addLiSnapshotInfo(int id, LiSnapshotResult liSnapshotResult);
+
     void addLiSnapshotInfos(Map<Integer, LiSnapshotResult> liSnapshotResults);
+
+    void setCompletedRegion(boolean completed);
+
+    void addReceivedRegionResults(int regionMasterId, Map<Integer, LiSnapshotResult> regionResults);
+
+    void addReceivedBlank(int id);
 
     Map<Integer, LiSnapshotResult> getLiSnapshotResults();
 

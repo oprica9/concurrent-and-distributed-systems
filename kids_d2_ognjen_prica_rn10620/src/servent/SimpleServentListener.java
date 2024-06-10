@@ -16,9 +16,7 @@ import servent.handler.snapshot.chandy_lamport.CLMarkerHandler;
 import servent.handler.snapshot.chandy_lamport.CLTellHandler;
 import servent.handler.snapshot.lai_yang.LYMarkerHandler;
 import servent.handler.snapshot.lai_yang.LYTellHandler;
-import servent.handler.snapshot.li.LiMarkerHandler;
-import servent.handler.snapshot.li.LiTellHandler;
-import servent.handler.snapshot.li.TagMiddlewareHandler;
+import servent.handler.snapshot.li.*;
 import servent.handler.snapshot.naive.NaiveAskAmountHandler;
 import servent.handler.snapshot.naive.NaiveTellAmountHandler;
 import servent.message.Message;
@@ -79,10 +77,6 @@ public class SimpleServentListener implements Runnable, Cancellable {
                         clientMessage = MessageUtil.readMessage(clientSocket);
                     }
 
-                    if (clientMessage.getMessageType() == MessageType.LI_MARKER) {
-                        System.out.println("IS LI_MARKER AND TAG IS: " + clientMessage.getTag());
-                    }
-
                     synchronized (AppConfig.colorLock) {
                         if (AppConfig.SNAPSHOT_TYPE == SnapshotType.CHANDY_LAMPORT) {
                             if (!AppConfig.isWhite.get() &&
@@ -108,21 +102,19 @@ public class SimpleServentListener implements Runnable, Cancellable {
                                 }
                             }
                         } else if (AppConfig.SNAPSHOT_TYPE == SnapshotType.LI) {
-                            System.out.println("GOT 1");
-                            System.out.println("Snapshot in progress: " + AppConfig.snapshotInProgress.get() + ", is message tagged: " + clientMessage.isTagged());
                             if (clientMessage.isTagged() && !AppConfig.snapshotInProgress.get()) {
-                                System.out.println("GOT 2");
                                 // If the message is tagged, we haven't yet taken a snapshot, and the
                                 // message isn't a marker, then store it. We will get the marker soon,
                                 // and then we will process this message. The point is, we need the
                                 // marker to know who to send our info to, so this is the simplest
                                 // way to work around that.
                                 if (clientMessage.getMessageType() != MessageType.LI_MARKER) {
-                                    System.out.println("GOT 3");
                                     buffer.add(clientMessage);
                                     continue;
                                 } else {
-                                    System.out.println("GOT 4");
+                                    if (AppConfig.myServentInfo.id() == 4) {
+                                        System.out.println("WHY 1");
+                                    }
                                     LiBitcakeManager liBitcakeManager = (LiBitcakeManager) snapshotCollector.getBitcakeManager();
                                     liBitcakeManager.markerEvent(clientMessage.getTag(), clientMessage.getOriginalSenderInfo().id(), snapshotCollector);
                                 }
@@ -191,6 +183,12 @@ public class SimpleServentListener implements Runnable, Cancellable {
                 break;
             case LI_TELL:
                 messageHandler = new LiTellHandler(clientMessage, snapshotCollector);
+                break;
+            case EXCHANGE:
+                messageHandler = new ExchangeHandler(clientMessage, snapshotCollector);
+                break;
+            case BLANK:
+                messageHandler = new BlankHandler(clientMessage, snapshotCollector);
                 break;
             case POISON:
                 break;
