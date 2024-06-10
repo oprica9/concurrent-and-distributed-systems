@@ -1,4 +1,4 @@
-package app.snapshot_bitcake;
+package app.bitcake_manager;
 
 /**
  * Describes a bitcake manager. These classes will have the methods

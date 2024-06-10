@@ -1,9 +1,18 @@
-package app.snapshot_bitcake;
+package app.snapshot_collector;
 
-import app.AppConfig;
-import app.snapshot_bitcake.ly.LYSnapshotResult;
-import app.snapshot_bitcake.ly.LaiYangBitcakeManager;
+import app.bitcake_manager.BitcakeManager;
+import app.bitcake_manager.chandy_lamport.CLSnapshotResult;
+import app.bitcake_manager.chandy_lamport.ChandyLamportBitcakeManager;
+import app.bitcake_manager.lai_yang.LYSnapshotResult;
+import app.bitcake_manager.lai_yang.LaiYangBitcakeManager;
+import app.bitcake_manager.naive.NaiveBitcakeManager;
+import app.configuration.AppConfig;
+import app.configuration.SnapshotType;
+import servent.message.Message;
+import servent.message.snapshot.naive.NaiveAskAmountMessage;
+import servent.message.util.MessageUtil;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
@@ -20,6 +29,10 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
     private volatile boolean working = true;
 
     private final AtomicBoolean collecting = new AtomicBoolean(false);
+
+    private final Map<String, Integer> collectedNaiveValues = new ConcurrentHashMap<>();
+
+    private final Map<Integer, CLSnapshotResult> collectedCLValues = new ConcurrentHashMap<>();
     private final Map<Integer, LYSnapshotResult> collectedLYValues = new ConcurrentHashMap<>();
 
     private final SnapshotType snapshotType;
@@ -30,6 +43,12 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
         this.snapshotType = snapshotType;
 
         switch (snapshotType) {
+            case NAIVE:
+                bitcakeManager = new NaiveBitcakeManager();
+                break;
+            case CHANDY_LAMPORT:
+                bitcakeManager = new ChandyLamportBitcakeManager();
+                break;
             case LAI_YANG:
                 bitcakeManager = new LaiYangBitcakeManager();
                 break;
@@ -40,8 +59,14 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
     }
 
     @Override
+    public BitcakeManager getBitcakeManager() {
+        return bitcakeManager;
+    }
+
+    @Override
     public void run() {
         while (working) {
+
             /*
              * Not collecting yet - just sleep until we start actual work, or finish
              */
@@ -49,7 +74,6 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
-                    // TODO Auto-generated catch block
                     AppConfig.timestampedErrorPrint(e);
                 }
 
@@ -67,6 +91,23 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
 
             //1 send asks
             switch (snapshotType) {
+                case NAIVE:
+                    Message askMessage = new NaiveAskAmountMessage(AppConfig.myServentInfo, null);
+
+                    for (Integer neighbor : AppConfig.myServentInfo.neighbors()) {
+                        askMessage = askMessage.changeReceiver(neighbor);
+
+                        MessageUtil.sendMessage(askMessage);
+                    }
+                    collectedNaiveValues.put("node" + AppConfig.myServentInfo.id(), bitcakeManager.getCurrentBitcakeAmount());
+                    break;
+
+
+                case CHANDY_LAMPORT:
+                    ((ChandyLamportBitcakeManager) bitcakeManager).markerEvent(AppConfig.myServentInfo.id());
+                    break;
+
+
                 case LAI_YANG:
                     ((LaiYangBitcakeManager) bitcakeManager).markerEvent(AppConfig.myServentInfo.id(), this);
                     break;
@@ -79,6 +120,20 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
             boolean waiting = true;
             while (waiting) {
                 switch (snapshotType) {
+                    case NAIVE:
+                        if (collectedNaiveValues.size() == AppConfig.getServentCount()) {
+                            waiting = false;
+                        }
+                        break;
+
+
+                    case CHANDY_LAMPORT:
+                        if (collectedCLValues.size() == AppConfig.getServentCount()) {
+                            waiting = false;
+                        }
+                        break;
+
+
                     case LAI_YANG:
                         if (collectedLYValues.size() == AppConfig.getServentCount()) {
                             waiting = false;
@@ -103,6 +158,48 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
             //print
             int sum;
             switch (snapshotType) {
+                case NAIVE:
+                    sum = 0;
+                    for (Entry<String, Integer> itemAmount : collectedNaiveValues.entrySet()) {
+                        sum += itemAmount.getValue();
+                        AppConfig.timestampedStandardPrint(
+                                "Info for " + itemAmount.getKey() + " = " + itemAmount.getValue() + " bitcake");
+                    }
+
+                    AppConfig.timestampedStandardPrint("System bitcake count: " + sum);
+
+                    collectedNaiveValues.clear(); //reset for next invocation
+                    break;
+
+
+                case CHANDY_LAMPORT:
+                    sum = 0;
+                    for (Entry<Integer, CLSnapshotResult> nodeResult : collectedCLValues.entrySet()) {
+                        sum += nodeResult.getValue().recordedAmount();
+                        AppConfig.timestampedStandardPrint(
+                                "Recorded bitcake amount for " + nodeResult.getKey() + " = " + nodeResult.getValue().recordedAmount());
+                        if (nodeResult.getValue().allChannelMessages().isEmpty()) {
+                            AppConfig.timestampedStandardPrint("No channel bitcake for " + nodeResult.getKey());
+                        } else {
+                            for (Entry<String, List<Integer>> channelMessages : nodeResult.getValue().allChannelMessages().entrySet()) {
+                                int channelSum = 0;
+                                for (Integer val : channelMessages.getValue()) {
+                                    channelSum += val;
+                                }
+                                AppConfig.timestampedStandardPrint("Channel bitcake for " + channelMessages.getKey() +
+                                        ": " + channelMessages.getValue() + " with channel bitcake sum: " + channelSum);
+
+                                sum += channelSum;
+                            }
+                        }
+                    }
+
+                    AppConfig.timestampedStandardPrint("System bitcake count: " + sum);
+
+                    collectedCLValues.clear(); //reset for next invocation
+                    break;
+
+
                 case LAI_YANG:
                     sum = 0;
                     for (Entry<Integer, LYSnapshotResult> nodeResult : collectedLYValues.entrySet()) {
@@ -134,7 +231,9 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
 
                     collectedLYValues.clear(); //reset for next invocation
                     break;
-                //Shouldn't be able to come here. See constructor.
+                case NONE:
+                    //Shouldn't be able to come here. See constructor.
+                    break;
             }
             collecting.set(false);
         }
@@ -142,8 +241,13 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
     }
 
     @Override
-    public BitcakeManager getBitcakeManager() {
-        return bitcakeManager;
+    public void addNaiveSnapshotInfo(String snapshotSubject, int amount) {
+        collectedNaiveValues.put(snapshotSubject, amount);
+    }
+
+    @Override
+    public void addCLSnapshotInfo(int id, CLSnapshotResult clSnapshotResult) {
+        collectedCLValues.put(id, clSnapshotResult);
     }
 
     @Override

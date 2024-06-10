@@ -14,7 +14,6 @@ public record ServentInfo(String ipAddress, int id, int listenerPort, List<Integ
     @Serial
     private static final long serialVersionUID = 5304170042791281555L;
 
-
     @Override
     public String toString() {
         return "[" + id + "|" + ipAddress + "|" + listenerPort + "]";

@@ -1,10 +1,11 @@
 package cli;
 
-import app.AppConfig;
+import app.configuration.AppConfig;
 import app.Cancellable;
-import app.snapshot_bitcake.SnapshotCollector;
+import app.snapshot_collector.SnapshotCollector;
 import cli.command.*;
 import servent.SimpleServentListener;
+import servent.message.util.FifoSendWorker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,18 +30,19 @@ import java.util.Scanner;
  */
 public class CLIParser implements Runnable, Cancellable {
 
+    private final List<CLICommand> commandList;
     private volatile boolean working = true;
 
-    private final List<CLICommand> commandList;
-
-    public CLIParser(SimpleServentListener listener, SnapshotCollector snapshotCollector) {
+    public CLIParser(SimpleServentListener listener, List<FifoSendWorker> senderThreads,
+                     SnapshotCollector snapshotCollector) {
         this.commandList = new ArrayList<>();
 
         commandList.add(new InfoCommand());
         commandList.add(new PauseCommand());
+        commandList.add(new PingCommand());
         commandList.add(new TransactionBurstCommand(snapshotCollector.getBitcakeManager()));
         commandList.add(new BitcakeInfoCommand(snapshotCollector));
-        commandList.add(new StopCommand(this, listener, snapshotCollector));
+        commandList.add(new StopCommand(this, listener, senderThreads, snapshotCollector));
     }
 
     @Override

@@ -1,6 +1,8 @@
-package app.snapshot_bitcake;
+package app.snapshot_collector;
 
-import app.snapshot_bitcake.ly.LYSnapshotResult;
+import app.bitcake_manager.BitcakeManager;
+import app.bitcake_manager.chandy_lamport.CLSnapshotResult;
+import app.bitcake_manager.lai_yang.LYSnapshotResult;
 
 /**
  * This class is used if the user hasn't specified a snapshot type in config.
@@ -20,6 +22,14 @@ public class NullSnapshotCollector implements SnapshotCollector {
     @Override
     public BitcakeManager getBitcakeManager() {
         return null;
+    }
+
+    @Override
+    public void addNaiveSnapshotInfo(String snapshotSubject, int amount) {
+    }
+
+    @Override
+    public void addCLSnapshotInfo(int id, CLSnapshotResult clSnapshotResult) {
     }
 
     @Override

@@ -1,6 +1,6 @@
 package cli.command;
 
-import app.AppConfig;
+import app.configuration.AppConfig;
 
 public class PauseCommand implements CLICommand {
 

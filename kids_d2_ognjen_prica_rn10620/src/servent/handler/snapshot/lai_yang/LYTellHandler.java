@@ -1,11 +1,11 @@
-package servent.handler.snapshot.ly;
+package servent.handler.snapshot.lai_yang;
 
-import app.AppConfig;
-import app.snapshot_bitcake.SnapshotCollector;
+import app.configuration.AppConfig;
+import app.snapshot_collector.SnapshotCollector;
 import servent.handler.MessageHandler;
 import servent.message.Message;
 import servent.message.MessageType;
-import servent.message.snapshot.ly.LYTellMessage;
+import servent.message.snapshot.lai_yang.LYTellMessage;
 
 public class LYTellHandler implements MessageHandler {
 
@@ -21,7 +21,6 @@ public class LYTellHandler implements MessageHandler {
     public void run() {
         if (clientMessage.getMessageType() != MessageType.LY_TELL) {
             AppConfig.timestampedErrorPrint("Tell amount handler got: " + clientMessage);
-            return;
         }
 
         LYTellMessage lyTellMessage = (LYTellMessage) clientMessage;

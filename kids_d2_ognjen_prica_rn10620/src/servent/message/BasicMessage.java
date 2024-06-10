@@ -1,6 +1,6 @@
 package servent.message;
 
-import app.AppConfig;
+import app.configuration.AppConfig;
 import app.ServentInfo;
 
 import java.io.Serial;
@@ -20,15 +20,14 @@ public class BasicMessage implements Message {
 
     @Serial
     private static final long serialVersionUID = -9075856313609777945L;
+    //This gives us a unique id - incremented in every natural constructor.
+    private static final AtomicInteger messageCounter = new AtomicInteger(0);
     private final MessageType type;
     private final ServentInfo originalSenderInfo;
     private final ServentInfo receiverInfo;
     private final List<ServentInfo> routeList;
     private final String messageText;
     private final boolean white;
-
-    //This gives us a unique id - incremented in every natural constructor.
-    private static final AtomicInteger messageCounter = new AtomicInteger(0);
     private final int messageId;
 
     public BasicMessage(MessageType type, ServentInfo originalSenderInfo, ServentInfo receiverInfo) {
@@ -52,6 +51,18 @@ public class BasicMessage implements Message {
         this.messageText = messageText;
 
         this.messageId = messageCounter.getAndIncrement();
+    }
+
+    protected BasicMessage(MessageType type, ServentInfo originalSenderInfo, ServentInfo receiverInfo,
+                           boolean white, List<ServentInfo> routeList, String messageText, int messageId) {
+        this.type = type;
+        this.originalSenderInfo = originalSenderInfo;
+        this.receiverInfo = receiverInfo;
+        this.white = white;
+        this.routeList = routeList;
+        this.messageText = messageText;
+
+        this.messageId = messageId;
     }
 
     @Override
@@ -87,18 +98,6 @@ public class BasicMessage implements Message {
     @Override
     public int getMessageId() {
         return messageId;
-    }
-
-    protected BasicMessage(MessageType type, ServentInfo originalSenderInfo, ServentInfo receiverInfo,
-                           boolean white, List<ServentInfo> routeList, String messageText, int messageId) {
-        this.type = type;
-        this.originalSenderInfo = originalSenderInfo;
-        this.receiverInfo = receiverInfo;
-        this.white = white;
-        this.routeList = routeList;
-        this.messageText = messageText;
-
-        this.messageId = messageId;
     }
 
     /**
@@ -154,6 +153,7 @@ public class BasicMessage implements Message {
     @Override
     public boolean equals(Object obj) {
         if (obj instanceof BasicMessage other) {
+
             return getMessageId() == other.getMessageId() &&
                     getOriginalSenderInfo().id() == other.getOriginalSenderInfo().id();
         }
@@ -162,7 +162,7 @@ public class BasicMessage implements Message {
     }
 
     /**
-     * Hash needs to mirror equals, especially if we are going to keep this object
+     * Hash needs to mirror equals, especially if we are going keep this object
      * in a set or a map. So, this is based on message id and original sender id also.
      */
     @Override

@@ -1,6 +1,6 @@
 package servent.message.util;
 
-import app.AppConfig;
+import app.configuration.AppConfig;
 import app.ServentInfo;
 import servent.message.Message;
 
@@ -52,7 +52,6 @@ public class DelayedMessageSender implements Runnable {
                 if (!AppConfig.isWhite.get()) {
                     messageToSend = messageToSend.setRedColor();
                 }
-
                 Socket sendSocket = new Socket(receiverInfo.ipAddress(), receiverInfo.listenerPort());
 
                 ObjectOutputStream oos = new ObjectOutputStream(sendSocket.getOutputStream());

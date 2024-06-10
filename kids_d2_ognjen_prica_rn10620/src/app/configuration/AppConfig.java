@@ -1,6 +1,6 @@
-package app;
+package app.configuration;
 
-import app.snapshot_bitcake.SnapshotType;
+import app.ServentInfo;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -23,22 +23,17 @@ public class AppConfig {
      * Convenience access for this servent's information
      */
     public static ServentInfo myServentInfo;
-
-    private static final List<ServentInfo> serventInfoList = new ArrayList<>();
-
     /**
      * If this is true, the system is a clique - all nodes are each other's
      * neighbors.
      */
     public static boolean IS_CLIQUE;
-
     /**
      * If this is true, messages will be sent purely via FIFO -
      * if message M1 is sent before message M2 from one node to another,
      * M1 will also be received before M2.
      */
     public static boolean IS_FIFO;
-
     /**
      * Snapshot algorithm selection. Possible values are:
      * <ul>
@@ -48,9 +43,9 @@ public class AppConfig {
      * </ul>
      */
     public static SnapshotType SNAPSHOT_TYPE;
-
     public static AtomicBoolean isWhite = new AtomicBoolean(true);
     public static final Object colorLock = new Object();
+    private static final List<ServentInfo> serventInfoList = new ArrayList<>();
 
     /**
      * Print a message to stdout with a timestamp
@@ -80,7 +75,7 @@ public class AppConfig {
         DateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
         Date now = new Date();
 
-        System.err.println(timeFormat.format(now) + " - " + e);
+        System.err.println(timeFormat.format(now) + " - Exception: " + e);
     }
 
     /**
@@ -133,11 +128,17 @@ public class AppConfig {
             snapshotType = "none";
         }
         switch (snapshotType) {
+            case "naive":
+                SNAPSHOT_TYPE = SnapshotType.NAIVE;
+                break;
+            case "cl":
+                SNAPSHOT_TYPE = SnapshotType.CHANDY_LAMPORT;
+                break;
             case "ly":
                 SNAPSHOT_TYPE = SnapshotType.LAI_YANG;
                 break;
             default:
-                timestampedErrorPrint("Problem reading snapshot algorithm. Defaulting to NONE. TEST1");
+                timestampedErrorPrint("Problem reading snapshot algorithm. Defaulting to NONE.");
                 SNAPSHOT_TYPE = SnapshotType.NONE;
         }
 

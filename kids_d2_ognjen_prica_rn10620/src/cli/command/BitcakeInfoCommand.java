@@ -1,23 +1,24 @@
 package cli.command;
 
-import app.snapshot_bitcake.SnapshotCollector;
+import app.snapshot_collector.SnapshotCollector;
 
 public class BitcakeInfoCommand implements CLICommand {
 
-	private final SnapshotCollector collector;
-	
-	public BitcakeInfoCommand(SnapshotCollector collector) {
-		this.collector = collector;
-	}
-	
-	@Override
-	public String commandName() {
-		return "bitcake_info";
-	}
+    private final SnapshotCollector collector;
 
-	@Override
-	public void execute(String args) {
-		collector.startCollecting();
-	}
+    public BitcakeInfoCommand(SnapshotCollector collector) {
+        this.collector = collector;
+    }
+
+    @Override
+    public String commandName() {
+        return "bitcake_info";
+    }
+
+    @Override
+    public void execute(String args) {
+        collector.startCollecting();
+
+    }
 
 }

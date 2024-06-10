@@ -1,4 +1,4 @@
-package app.snapshot_bitcake.ly;
+package app.bitcake_manager.lai_yang;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -28,6 +28,5 @@ public record LYSnapshotResult(int serventId, int recordedAmount, Map<Integer, I
         this.giveHistory = new ConcurrentHashMap<>(giveHistory);
         this.getHistory = new ConcurrentHashMap<>(getHistory);
     }
-
 
 }

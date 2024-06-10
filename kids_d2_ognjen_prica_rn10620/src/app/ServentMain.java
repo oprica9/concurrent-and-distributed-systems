@@ -1,12 +1,17 @@
 package app;
 
-import app.snapshot_bitcake.NullSnapshotCollector;
-import app.snapshot_bitcake.SnapshotCollector;
-import app.snapshot_bitcake.SnapshotCollectorWorker;
-import app.snapshot_bitcake.SnapshotType;
+import app.configuration.AppConfig;
+import app.configuration.SnapshotType;
+import app.snapshot_collector.NullSnapshotCollector;
+import app.snapshot_collector.SnapshotCollector;
+import app.snapshot_collector.SnapshotCollectorWorker;
 import cli.CLIParser;
 import servent.SimpleServentListener;
+import servent.message.util.FifoSendWorker;
 import servent.message.util.MessageUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Describes the procedure for starting a single Servent
@@ -61,11 +66,12 @@ public class ServentMain {
 
         AppConfig.timestampedStandardPrint("Starting servent " + AppConfig.myServentInfo);
 
-        Thread cliThread = getCLIThread();
+        Thread cliThread = getCliThread();
         cliThread.start();
+
     }
 
-    private static Thread getCLIThread() {
+    private static Thread getCliThread() {
         SnapshotCollector snapshotCollector;
 
         if (AppConfig.SNAPSHOT_TYPE == SnapshotType.NONE) {
@@ -85,6 +91,20 @@ public class ServentMain {
         Thread listenerThread = new Thread(simpleListener);
         listenerThread.start();
 
-        return new CLIParser(simpleListener, snapshotCollector);
+        List<FifoSendWorker> senderWorkers = new ArrayList<>();
+        if (AppConfig.IS_FIFO) {
+            for (Integer neighbor : AppConfig.myServentInfo.neighbors()) {
+                FifoSendWorker senderWorker = new FifoSendWorker(neighbor);
+
+                Thread senderThread = new Thread(senderWorker);
+
+                senderThread.start();
+
+                senderWorkers.add(senderWorker);
+            }
+
+        }
+
+        return new CLIParser(simpleListener, senderWorkers, snapshotCollector);
     }
 }

@@ -1,34 +1,26 @@
-package app.snapshot_bitcake.ly;
+package app.bitcake_manager.lai_yang;
+
+import app.configuration.AppConfig;
+import app.bitcake_manager.BitcakeManager;
+import app.snapshot_collector.SnapshotCollector;
+import servent.message.Message;
+import servent.message.snapshot.lai_yang.LYMarkerMessage;
+import servent.message.snapshot.lai_yang.LYTellMessage;
+import servent.message.util.MessageUtil;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.BiFunction;
 
-import app.AppConfig;
-import app.snapshot_bitcake.BitcakeManager;
-import app.snapshot_bitcake.SnapshotCollector;
-import servent.message.Message;
-import servent.message.snapshot.ly.LYMarkerMessage;
-import servent.message.snapshot.ly.LYTellMessage;
-import servent.message.util.MessageUtil;
-
 public class LaiYangBitcakeManager implements BitcakeManager {
 
     private final AtomicInteger currentAmount = new AtomicInteger(1000);
-
-    public void takeSomeBitcakes(int amount) {
-        currentAmount.getAndAdd(-amount);
-    }
-
-    public void addSomeBitcakes(int amount) {
-        currentAmount.getAndAdd(amount);
-    }
-
-    public int getCurrentBitcakeAmount() {
-        return currentAmount.get();
-    }
-
+    /**
+     * This value is protected by AppConfig.colorLock.
+     * Access it only if you have the blessing.
+     */
+    public int recordedAmount = 0;
     private final Map<Integer, Integer> giveHistory = new ConcurrentHashMap<>();
     private final Map<Integer, Integer> getHistory = new ConcurrentHashMap<>();
 
@@ -38,12 +30,6 @@ public class LaiYangBitcakeManager implements BitcakeManager {
             getHistory.put(neighbor, 0);
         }
     }
-
-    /*
-     * This value is protected by AppConfig.colorLock.
-     * Access it only if you have the blessing.
-     */
-    public int recordedAmount = 0;
 
     public void markerEvent(int collectorId, SnapshotCollector snapshotCollector) {
         synchronized (AppConfig.colorLock) {
@@ -69,6 +55,7 @@ public class LaiYangBitcakeManager implements BitcakeManager {
                 Message clMarker = new LYMarkerMessage(AppConfig.myServentInfo, AppConfig.getInfoById(neighbor), collectorId);
                 MessageUtil.sendMessage(clMarker);
                 try {
+                    // This sleep is here to artificially produce some white node -> red node messages
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
                     AppConfig.timestampedErrorPrint(e);
@@ -77,11 +64,19 @@ public class LaiYangBitcakeManager implements BitcakeManager {
         }
     }
 
-    private record MapValueUpdater(int valueToAdd) implements BiFunction<Integer, Integer, Integer> {
-        @Override
-        public Integer apply(Integer key, Integer oldValue) {
-            return oldValue + valueToAdd;
-        }
+    @Override
+    public void takeSomeBitcakes(int amount) {
+        currentAmount.getAndAdd(-amount);
+    }
+
+    @Override
+    public void addSomeBitcakes(int amount) {
+        currentAmount.getAndAdd(amount);
+    }
+
+    @Override
+    public int getCurrentBitcakeAmount() {
+        return currentAmount.get();
     }
 
     public void recordGiveTransaction(int neighbor, int amount) {
@@ -90,5 +85,12 @@ public class LaiYangBitcakeManager implements BitcakeManager {
 
     public void recordGetTransaction(int neighbor, int amount) {
         getHistory.compute(neighbor, new MapValueUpdater(amount));
+    }
+
+    private record MapValueUpdater(int valueToAdd) implements BiFunction<Integer, Integer, Integer> {
+        @Override
+        public Integer apply(Integer key, Integer oldValue) {
+            return oldValue + valueToAdd;
+        }
     }
 }
