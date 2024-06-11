@@ -32,6 +32,7 @@ public class AppConfig {
     public static ChordState chordState;
     public static ServentInfo temp;
     public static String ROOT;
+    public static final Object tokenLock = new Object();
 
     /**
      * Print a message to stdout with a timestamp

@@ -115,11 +115,43 @@ public class FailureDetector implements Runnable, Cancellable {
     }
 
     public boolean shouldBeTokenHolder() {
-        return shouldBeTokenHolder;
+        synchronized (AppConfig.tokenLock) {
+            return shouldBeTokenHolder;
+        }
     }
 
-    public void setShouldBeTokenHolder(boolean handledNewToken) {
-        this.shouldBeTokenHolder = handledNewToken;
+    public void setShouldBeTokenHolder(boolean handledNewToken, int deadNodeId) {
+        synchronized (AppConfig.tokenLock) {
+            this.shouldBeTokenHolder = handledNewToken;
+            // The node that died held the token, now we're the token holder (possibly)
+            System.out.println("Current token holder: " + tokenHolder.get() + ", dead node = " + deadNodeId);
+            if (tokenHolder.get() == deadNodeId) {
+                AppConfig.timestampedStandardPrint("I'm the new token holder!");
+                long declaredTime = System.currentTimeMillis();
+                myDeclaredTime.set(declaredTime);
+
+                SuzukiKasamiMutex.reset();
+                SuzukiKasamiMutex.initToken();
+
+                for (int i = 0; i < AppConfig.chordState.getSuccessors().length; i++) {
+                    ServentInfo succInfo = AppConfig.chordState.getSuccessors()[i];
+                    if (succInfo == null) {
+                        break;
+                    }
+                    int succChordId = succInfo.getChordId();
+                    if (AppConfig.myServentInfo.getChordId() != succChordId && deadNodeId != succChordId) {
+                        MessageUtil.sendMessage(new NewTokenHolderMessage(
+                                AppConfig.myServentInfo.getIpAddress(), AppConfig.myServentInfo.getListenerPort(),
+                                succInfo.getIpAddress(), succInfo.getListenerPort(),
+                                declaredTime
+                        ));
+                        break;
+                    }
+                }
+                tokenHolder.set(-1);
+            }
+        }
+
     }
 
     @Override
@@ -167,32 +199,34 @@ public class FailureDetector implements Runnable, Cancellable {
                             }
                         }
 
-                        // The node that died held the token, now we're the token holder (possibly)
-                        System.out.println("Current token holder: " + tokenHolder.get() + ", dead node = " + chordId);
-                        if (tokenHolder.get() == chordId) {
-                            AppConfig.timestampedStandardPrint("I'm the new token holder!");
-                            long declaredTime = System.currentTimeMillis();
-                            myDeclaredTime.set(declaredTime);
+                        synchronized (AppConfig.tokenLock) {
+                            // The node that died held the token, now we're the token holder (possibly)
+                            System.out.println("Current token holder: " + tokenHolder.get() + ", dead node = " + chordId);
+                            if (tokenHolder.get() == chordId) {
+                                AppConfig.timestampedStandardPrint("I'm the new token holder!");
+                                long declaredTime = System.currentTimeMillis();
+                                myDeclaredTime.set(declaredTime);
 
-                            SuzukiKasamiMutex.reset();
-                            SuzukiKasamiMutex.initToken();
+                                SuzukiKasamiMutex.reset();
+                                SuzukiKasamiMutex.initToken();
 
-                            for (int i = 0; i < AppConfig.chordState.getSuccessors().length; i++) {
-                                ServentInfo succInfo = AppConfig.chordState.getSuccessors()[i];
-                                if (succInfo == null) {
-                                    break;
+                                for (int i = 0; i < AppConfig.chordState.getSuccessors().length; i++) {
+                                    ServentInfo succInfo = AppConfig.chordState.getSuccessors()[i];
+                                    if (succInfo == null) {
+                                        break;
+                                    }
+                                    int succChordId = succInfo.getChordId();
+                                    if (myChordId != succChordId && chordId != succChordId) {
+                                        MessageUtil.sendMessage(new NewTokenHolderMessage(
+                                                AppConfig.myServentInfo.getIpAddress(), AppConfig.myServentInfo.getListenerPort(),
+                                                succInfo.getIpAddress(), succInfo.getListenerPort(),
+                                                declaredTime
+                                        ));
+                                        break;
+                                    }
                                 }
-                                int succChordId = succInfo.getChordId();
-                                if (myChordId != succChordId && chordId != succChordId) {
-                                    MessageUtil.sendMessage(new NewTokenHolderMessage(
-                                            AppConfig.myServentInfo.getIpAddress(), AppConfig.myServentInfo.getListenerPort(),
-                                            succInfo.getIpAddress(), succInfo.getListenerPort(),
-                                            declaredTime
-                                    ));
-                                    break;
-                                }
+                                tokenHolder.set(-1);
                             }
-                            tokenHolder.set(-1);
                         }
 
                         updateNodeList();

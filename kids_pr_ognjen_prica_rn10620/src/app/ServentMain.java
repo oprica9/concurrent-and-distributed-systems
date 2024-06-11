@@ -23,13 +23,14 @@ public class ServentMain {
      */
     public static void main(String[] args) {
         AppConfig.timestampedStandardPrint(Arrays.toString(args));
-        if (args.length != 2) {
-            AppConfig.timestampedErrorPrint("Please provide servent list file and id of this servent.");
+        if (args.length != 1) {
+            AppConfig.timestampedErrorPrint("Please provide servent property file.");
+            System.exit(0);
         }
 
-        String serventListFile = args[0];
+        String serventPropFile = args[0];
 
-        AppConfig.readServentConfig(serventListFile);
+        AppConfig.readServentConfig(serventPropFile);
 
         int portNumber;
         try {

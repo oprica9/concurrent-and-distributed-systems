@@ -35,42 +35,43 @@ public class PongHandler implements MessageHandler {
         List<String> deadServents = pongMessage.getDeadServents();
 
         if (!deadServents.isEmpty()) {
-            // our buddies buddy has died
-
-            List<ServentInfo> deadInfos = new ArrayList<>();
-
-            for (String ipPort : deadServents) {
-                String[] split = ipPort.split(":");
-                String ip = split[0];
-                int port;
-                try {
-                    port = Integer.parseInt(split[1]);
-                } catch (NumberFormatException e) {
-                    AppConfig.timestampedErrorPrint("Pong handler could not parse element from list in message: " + ipPort);
-                    return;
-                }
-
-                ServentInfo deadInfo = new ServentInfo(ip, port);
-                deadInfos.add(deadInfo);
-            }
-
-            AppConfig.timestampedStandardPrint("Restructuring system from PONG");
-            AppConfig.chordState.removeNodes(deadInfos);
-
-            for (ServentInfo deadInfo : deadInfos) {
-                for (ServentInfo succ : AppConfig.chordState.getSuccessors()) {
-                    if (!succ.getIpAddress().equals(deadInfo.getIpAddress()) || succ.getListenerPort() != deadInfo.getListenerPort()) {
-                        if (!succ.getIpAddress().equals(clientMessage.getSenderIpAddress()) && succ.getListenerPort() != clientMessage.getSenderPort()) {
-                            MessageUtil.sendMessage(new RestructureSystemMessage(
-                                    clientMessage.getSenderIpAddress(), clientMessage.getSenderPort(),
-                                    AppConfig.chordState.getNextNodeIpAddress(), AppConfig.chordState.getNextNodePort(),
-                                    deadInfo.getIpAddress(), deadInfo.getListenerPort()
-                            ));
-                            break;
-                        }
-                    }
-                }
-            }
+//            // our buddies buddy has died
+//
+//            List<ServentInfo> deadInfos = new ArrayList<>();
+//
+//            for (String ipPort : deadServents) {
+//                String[] split = ipPort.split(":");
+//                String ip = split[0];
+//                int port;
+//                try {
+//                    port = Integer.parseInt(split[1]);
+//                } catch (NumberFormatException e) {
+//                    AppConfig.timestampedErrorPrint("Pong handler could not parse element from list in message: " + ipPort);
+//                    return;
+//                }
+//
+//                ServentInfo deadInfo = new ServentInfo(ip, port);
+//                deadInfos.add(deadInfo);
+//            }
+//
+//            AppConfig.timestampedStandardPrint("Restructuring system from PONG");
+//            AppConfig.chordState.removeNodes(deadInfos);
+//            failureDetector.setRefactored(false);
+//
+//            for (ServentInfo deadInfo : deadInfos) {
+//                for (ServentInfo succ : AppConfig.chordState.getSuccessors()) {
+//                    if (!succ.getIpAddress().equals(deadInfo.getIpAddress()) || succ.getListenerPort() != deadInfo.getListenerPort()) {
+//                        if (!succ.getIpAddress().equals(clientMessage.getSenderIpAddress()) && succ.getListenerPort() != clientMessage.getSenderPort()) {
+//                            MessageUtil.sendMessage(new RestructureSystemMessage(
+//                                    clientMessage.getSenderIpAddress(), clientMessage.getSenderPort(),
+//                                    AppConfig.chordState.getNextNodeIpAddress(), AppConfig.chordState.getNextNodePort(),
+//                                    deadInfo.getIpAddress(), deadInfo.getListenerPort()
+//                            ));
+//                            break;
+//                        }
+//                    }
+//                }
+//            }
 
         }
 

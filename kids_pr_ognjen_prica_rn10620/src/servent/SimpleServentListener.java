@@ -128,6 +128,9 @@ public class SimpleServentListener implements Runnable, Cancellable {
                         case NEW_TOKEN_HOLDER:
                             messageHandler = new NewTokenHolderHandler(clientMessage, failureDetector);
                             break;
+                        case YOU_WERE_SLOW:
+                            messageHandler = new YouWereSlowHandler(clientMessage, failureDetector);
+                            break;
                         case TOKEN_REQUEST:
                             messageHandler = new TokenRequestHandler(clientMessage);
                             break;
