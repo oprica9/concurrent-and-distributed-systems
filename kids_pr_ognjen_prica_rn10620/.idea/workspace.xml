@@ -5,20 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4bfc1f4d-25df-485b-b554-52cb64c30d88" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/YouWereSlowHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/servent/message/ping_pong/YouWereSlowMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kids_d1_ognjen_prica_rn10620/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../kids_d2_ognjen_prica_rn10620/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/rafbook/output/bootstrap_out.txt" beforeDir="false" afterPath="$PROJECT_DIR$/rafbook/output/bootstrap_out.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/AppConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/ServentMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/ServentMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/failure_detection/FailureDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/failure_detection/FailureDetector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/mutex/SuzukiKasamiMutex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/mutex/SuzukiKasamiMutex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/SimpleServentListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/SimpleServentListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/handler/ping_pong/NewTokenHolderHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/NewTokenHolderHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/handler/ping_pong/PongHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/PongHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/handler/ping_pong/RestructureSystemHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/handler/ping_pong/RestructureSystemHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/servent/message/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/servent/message/MessageType.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +73,7 @@
       <recent name="servent.message.mutex" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MultipleServentStarter">
+  <component name="RunManager" selected="Application.ServentMain 5">
     <configuration name="MultipleServentStarter" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="app.MultipleServentStarter" />
       <module name="kids_pr_ognjen_prica_rn10620" />
@@ -108,7 +99,7 @@
     <configuration name="ServentMain 5" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="app.ServentMain" />
       <module name="kids_pr_ognjen_prica_rn10620" />
-      <option name="PROGRAM_PARAMETERS" value="roughbook/servent/servent5.properties 5" />
+      <option name="PROGRAM_PARAMETERS" value="rafbook/servent/servent5.properties" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -133,7 +124,8 @@
       <workItem from="1717657040803" duration="30810000" />
       <workItem from="1717739536981" duration="35542000" />
       <workItem from="1717833375917" duration="7015000" />
-      <workItem from="1718100540422" duration="9804000" />
+      <workItem from="1718100540422" duration="10223000" />
+      <workItem from="1718111860725" duration="65000" />
     </task>
     <servers />
   </component>
