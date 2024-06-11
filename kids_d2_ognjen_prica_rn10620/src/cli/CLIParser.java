@@ -5,7 +5,6 @@ import app.Cancellable;
 import app.snapshot_collector.SnapshotCollector;
 import cli.command.*;
 import servent.SimpleServentListener;
-import servent.message.util.FifoSendWorker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,16 +32,15 @@ public class CLIParser implements Runnable, Cancellable {
     private final List<CLICommand> commandList;
     private volatile boolean working = true;
 
-    public CLIParser(SimpleServentListener listener, List<FifoSendWorker> senderThreads,
+    public CLIParser(SimpleServentListener listener,
                      SnapshotCollector snapshotCollector) {
         this.commandList = new ArrayList<>();
 
         commandList.add(new InfoCommand());
         commandList.add(new PauseCommand());
-        commandList.add(new PingCommand());
         commandList.add(new TransactionBurstCommand(snapshotCollector.getBitcakeManager()));
         commandList.add(new BitcakeInfoCommand(snapshotCollector));
-        commandList.add(new StopCommand(this, listener, senderThreads, snapshotCollector));
+        commandList.add(new StopCommand(this, listener, snapshotCollector));
     }
 
     @Override

@@ -31,8 +31,6 @@ public class ExchangeHandler implements MessageHandler {
         Map<Integer, LiSnapshotResult> regionResults = exchangeMessage.getCollectedRegionalValues();
         int regionMasterId = clientMessage.getOriginalSenderInfo().id();
 
-        AppConfig.timestampedStandardPrint("Got region data from " + clientMessage.getOriginalSenderInfo().id() + ": " + regionResults);
-
         snapshotCollector.addReceivedRegionResults(regionMasterId, regionResults);
     }
 

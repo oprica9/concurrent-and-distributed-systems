@@ -1,7 +1,6 @@
 package servent.handler;
 
 import app.bitcake_manager.BitcakeManager;
-import app.bitcake_manager.lai_yang.LaiYangBitcakeManager;
 import app.bitcake_manager.li.LiBitcakeManager;
 import app.configuration.AppConfig;
 import servent.message.Message;
@@ -33,9 +32,7 @@ public class TransactionHandler implements MessageHandler {
             bitcakeManager.addSomeBitcakes(amountNumber);
 
             synchronized (AppConfig.colorLock) {
-                if (bitcakeManager instanceof LaiYangBitcakeManager lyBitcakeManager && clientMessage.isWhite()) {
-                    lyBitcakeManager.recordGetTransaction(clientMessage.getOriginalSenderInfo().id(), amountNumber);
-                } else if (bitcakeManager instanceof LiBitcakeManager liBitcakeManager && !clientMessage.isTagged()) {
+                if (bitcakeManager instanceof LiBitcakeManager liBitcakeManager && !clientMessage.isTagged()) {
                     liBitcakeManager.recordGetTransaction(clientMessage.getOriginalSenderInfo().id(), amountNumber);
                 }
             }

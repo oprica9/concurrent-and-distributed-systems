@@ -25,8 +25,8 @@ public class LiTellHandler implements MessageHandler {
 
         LiTellMessage liTellMessage = (LiTellMessage) clientMessage;
 
-        System.out.println("Got results from " + clientMessage.getOriginalSenderInfo().id() + ": " + liTellMessage.getLiSnapshotResults());
-        System.out.println("Got borderSet from " + clientMessage.getOriginalSenderInfo().id() + ": " + liTellMessage.getIdBorderSet());
+        AppConfig.timestampedStandardPrint("Got results from " + clientMessage.getOriginalSenderInfo().id() + ": " + liTellMessage.getLiSnapshotResults());
+        AppConfig.timestampedStandardPrint("Got borderSet from " + clientMessage.getOriginalSenderInfo().id() + ": " + liTellMessage.getIdBorderSet());
 
         // Update idBorderSet
         AppConfig.idBorderSet.addAll(liTellMessage.getIdBorderSet());

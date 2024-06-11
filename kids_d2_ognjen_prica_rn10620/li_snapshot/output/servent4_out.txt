@@ -1,103 +1,135 @@
-20:25:33 - Starting servent [4|localhost|1500]
-20:25:33 - Pausing for 500 ms
-20:25:34 - Pausing for 22000 ms
-GOT HERE?
-PROPAGATING DURING INITIATION
-WHY 5
-20:25:35 - Got message [5|103|8|TRANSACTION|4]
-20:25:35 - Got message [5|16|5|TRANSACTION|4]
-20:25:35 - Got message [5|102|1|TRANSACTION|4]
-20:25:35 - Got message [5|75|4|TRANSACTION|4]
-20:25:35 - Got message [5|11|2|TRANSACTION|4]
-20:25:35 - Got message [5|19|7|TRANSACTION|4]
-20:25:35 - Got message [5|79|3|TRANSACTION|4]
-20:25:35 - Got message [5|41|3|TRANSACTION|4]
-20:25:35 - Got message [5|137|9|TRANSACTION|4]
-20:25:35 - Got message [5|17|3|TRANSACTION|4]
-20:25:35 - Got message [5|78|2|TRANSACTION|4]
-20:25:35 - Got message [5|136|8|TRANSACTION|4]
-20:25:35 - Got message [5|107|1|TRANSACTION|4]
-20:25:35 - Got message [5|49|3|TRANSACTION|4]
-20:25:35 - Got message [5|135|10|TRANSACTION|4]
-20:25:35 - Got message [5|18|9|TRANSACTION|4]
-20:25:35 - Got message [5|71|10|TRANSACTION|4]
-20:25:35 - Got message [5|77|4|TRANSACTION|4]
-20:25:35 - Got message [5|73|4|TRANSACTION|4]
-20:25:35 - Got message [5|108|8|TRANSACTION|4]
-20:25:35 - Got message [5|74|1|TRANSACTION|4]
-20:25:35 - Got message [5|106|4|TRANSACTION|4]
-20:25:35 - Got message [5|12|8|TRANSACTION|4]
-20:25:35 - Got message [5|42|9|TRANSACTION|4]
-20:25:35 - Got message [5|133|5|TRANSACTION|4]
-20:25:36 - Got message [5|76|10|TRANSACTION|4]
-20:25:36 - Got message [5|104|2|TRANSACTION|4]
-20:25:36 - Got message [5|10|4|TRANSACTION|4]
-20:25:36 - Got message [5|15|6|TRANSACTION|4]
-20:25:36 - Got message [5|109|7|TRANSACTION|4]
-20:25:36 - Got message [5|14|3|TRANSACTION|4]
-20:25:36 - Got message [5|48|4|TRANSACTION|4]
-20:25:36 - Got message [5|70|4|TRANSACTION|4]
-20:25:36 - Got message [5|132|9|TRANSACTION|4]
-20:25:36 - Got message [5|138|6|TRANSACTION|4]
-20:25:36 - Got message [5|40|1|TRANSACTION|4]
-20:25:36 - Got message [5|131|7|TRANSACTION|4]
-20:25:36 - Got message [5|105|1|TRANSACTION|4]
-20:25:36 - Got message [5|44|1|TRANSACTION|4]
-20:25:36 - Sending message [4|0||LI_MARKER|3]
-20:25:36 - Got message [5|130|1|TRANSACTION|4]
-20:25:36 - Got message [5|45|6|TRANSACTION|4]
-20:25:36 - Got message [5|72|4|TRANSACTION|4]
-20:25:36 - Got message [5|101|7|TRANSACTION|4]
-20:25:36 - Got message [5|139|10|TRANSACTION|4]
-20:25:36 - Got message [5|47|7|TRANSACTION|4]
-20:25:36 - Got message [5|13|1|TRANSACTION|4]
-20:25:36 - Got message [5|46|4|TRANSACTION|4]
-20:25:36 - Sending message [4|1||LI_MARKER|5]
-20:25:36 - Got message [5|134|6|TRANSACTION|4]
-20:25:36 - Got message [5|100|10|TRANSACTION|4]
-20:25:36 - Got message [5|43|9|TRANSACTION|4]
-20:25:37 - Got message [3|1||LI_MARKER|4]
-20:25:37 - Got message [5|150||LI_MARKER|4]
-STARTING ROUNDS...
-Spanning tree for region: 4
+11:03:57 - Starting servent [4|localhost|1500]
+11:03:57 - Pausing for 500 ms
+11:03:58 - Pausing for 22000 ms
+11:03:59 - Got message [5|135|10|TRANSACTION|4]
+11:03:59 - Sending message [4|1||LI_MARKER|5]
+11:03:59 - Got message [5|17|1|TRANSACTION|4]
+11:03:59 - Got message [5|107|1|TRANSACTION|4]
+11:03:59 - Got message [5|12|6|TRANSACTION|4]
+11:03:59 - Got message [5|114|7|TRANSACTION|4]
+11:03:59 - Got message [5|136|9|TRANSACTION|4]
+11:03:59 - Got message [5|46|9|TRANSACTION|4]
+11:03:59 - Got message [5|18|3|TRANSACTION|4]
+11:04:00 - Got message [5|42|9|TRANSACTION|4]
+11:04:00 - Got message [5|108|8|TRANSACTION|4]
+11:04:00 - Got message [5|19|9|TRANSACTION|4]
+11:04:00 - Got message [5|49|6|TRANSACTION|4]
+11:04:00 - Got message [5|73|1|TRANSACTION|4]
+11:04:00 - Got message [5|77|7|TRANSACTION|4]
+11:04:00 - Got message [5|79|2|TRANSACTION|4]
+11:04:00 - Got message [5|15|7|TRANSACTION|4]
+11:04:00 - Got message [5|111|9|TRANSACTION|4]
+11:04:00 - Got message [5|47|9|TRANSACTION|4]
+11:04:00 - Got message [5|76|7|TRANSACTION|4]
+11:04:00 - Got message [5|75|4|TRANSACTION|4]
+11:04:00 - Got message [5|16|4|TRANSACTION|4]
+11:04:00 - Got message [5|109|4|TRANSACTION|4]
+11:04:00 - Got message [5|11|5|TRANSACTION|4]
+11:04:00 - Got message [5|40|7|TRANSACTION|4]
+11:04:00 - Got message [5|44|5|TRANSACTION|4]
+11:04:00 - Got message [5|103|5|TRANSACTION|4]
+11:04:00 - Got message [5|45|4|TRANSACTION|4]
+11:04:00 - Got message [5|104|7|TRANSACTION|4]
+11:04:00 - Got message [5|125|10|TRANSACTION|4]
+11:04:00 - Got message [5|100|6|TRANSACTION|4]
+11:04:00 - Got message [5|112|1|TRANSACTION|4]
+11:04:00 - Got message [5|41|5|TRANSACTION|4]
+11:04:00 - Got message [5|78|6|TRANSACTION|4]
+11:04:00 - Got message [5|70|2|TRANSACTION|4]
+11:04:00 - Got message [5|139|10|TRANSACTION|4]
+11:04:00 - Got message [5|10|2|TRANSACTION|4]
+11:04:00 - Got message [5|48|6|TRANSACTION|4]
+11:04:00 - Got message [5|72|5|TRANSACTION|4]
+11:04:00 - Got message [5|74|6|TRANSACTION|4]
+11:04:00 - Got message [5|71|9|TRANSACTION|4]
+11:04:00 - Got message [5|137|2|TRANSACTION|4]
+11:04:00 - Got message [5|43|7|TRANSACTION|4]
+11:04:00 - Got message [5|132|9|TRANSACTION|4]
+11:04:00 - Got message [5|138|6|TRANSACTION|4]
+11:04:00 - Got message [5|13|4|TRANSACTION|4]
+11:04:00 - Sending message [4|0||LI_MARKER|3]
+11:04:00 - Got message [5|14|8|TRANSACTION|4]
+11:04:00 - Got message [5|110|10|TRANSACTION|4]
+11:04:00 - Got message [5|142|6|TRANSACTION|4]
+11:04:00 - Got message [5|140|6|TRANSACTION|4]
+11:04:00 - Got message [5|106|7|TRANSACTION|4]
+11:04:01 - Got message [3|1||LI_MARKER|4]
+11:04:03 - Got message [5|152||LI_TELL|4]
+11:04:03 - Got results from 5: {5=LiSnapshotResult[serventId=5, parentId=4, recordedAmount=878, giveHistory={1=24, 4=43, 6=55}, getHistory={1=0, 4=0, 6=0}]}
+11:04:03 - Got borderSet from 5: [1]
+11:04:04 - Spanning tree for region: 4
+11:04:04 - Starting rounds with [1]
 
 4
++-- 5
 
-Sending: {4=LiSnapshotResult[serventId=4, parentId=4, recordedAmount=500, giveHistory={3=0, 5=0}, getHistory={3=0, 5=0}]}
-20:25:40 - Sending message [4|2||EXCHANGE|1]
-20:25:43 - Got message [1|4||EXCHANGE|4]
-20:25:43 - Got region data from 1: {0=LiSnapshotResult[serventId=0, parentId=1, recordedAmount=475, giveHistory={1=17, 2=14, 6=19}, getHistory={1=0, 2=25, 6=0}], 1=LiSnapshotResult[serventId=1, parentId=1, recordedAmount=500, giveHistory={0=0, 2=0, 3=0, 5=0}, getHistory={0=0, 2=0, 3=0, 5=0}], 2=LiSnapshotResult[serventId=2, parentId=1, recordedAmount=-268, giveHistory={0=225, 1=169, 3=177, 6=211}, getHistory={0=14, 1=0, 3=0, 6=0}], 3=LiSnapshotResult[serventId=3, parentId=1, recordedAmount=677, giveHistory={1=0, 2=0, 4=0, 6=0}, getHistory={1=0, 2=177, 4=0, 6=0}], 4=LiSnapshotResult[serventId=4, parentId=4, recordedAmount=500, giveHistory={3=0, 5=0}, getHistory={3=0, 5=0}], 5=LiSnapshotResult[serventId=5, parentId=1, recordedAmount=-230, giveHistory={1=232, 4=236, 6=262}, getHistory={1=0, 4=0, 6=0}], 6=LiSnapshotResult[serventId=6, parentId=0, recordedAmount=301, giveHistory={0=201, 2=141, 3=188, 5=161}, getHistory={0=19, 2=211, 3=0, 5=262}]}
-Adding: LiSnapshotResult[serventId=0, parentId=1, recordedAmount=475, giveHistory={1=17, 2=14, 6=19}, getHistory={1=0, 2=25, 6=0}]
-Adding: LiSnapshotResult[serventId=1, parentId=1, recordedAmount=500, giveHistory={0=0, 2=0, 3=0, 5=0}, getHistory={0=0, 2=0, 3=0, 5=0}]
-Adding: LiSnapshotResult[serventId=2, parentId=1, recordedAmount=-268, giveHistory={0=225, 1=169, 3=177, 6=211}, getHistory={0=14, 1=0, 3=0, 6=0}]
-Adding: LiSnapshotResult[serventId=3, parentId=1, recordedAmount=677, giveHistory={1=0, 2=0, 4=0, 6=0}, getHistory={1=0, 2=177, 4=0, 6=0}]
-Adding: LiSnapshotResult[serventId=4, parentId=4, recordedAmount=500, giveHistory={3=0, 5=0}, getHistory={3=0, 5=0}]
-Adding: LiSnapshotResult[serventId=5, parentId=1, recordedAmount=-230, giveHistory={1=232, 4=236, 6=262}, getHistory={1=0, 4=0, 6=0}]
-Adding: LiSnapshotResult[serventId=6, parentId=0, recordedAmount=301, giveHistory={0=201, 2=141, 3=188, 5=161}, getHistory={0=19, 2=211, 3=0, 5=262}]
-20:25:43 - Got message [1|5||EXCHANGE|4]
-20:25:43 - Got region data from 1: {}
-20:25:43 - Sending message [4|3||EXCHANGE|1]
-20:25:44 - Got message [1|6||BLANK|4]
-20:25:45 - Got message [1|7||BLANK|4]
-20:25:45 - Sending message [4|4||BLANK|1]
-20:25:46 - Sending message [4|5||BLANK|1]
-Final snapshot: {0=LiSnapshotResult[serventId=0, parentId=1, recordedAmount=475, giveHistory={1=17, 2=14, 6=19}, getHistory={1=0, 2=25, 6=0}], 1=LiSnapshotResult[serventId=1, parentId=1, recordedAmount=500, giveHistory={0=0, 2=0, 3=0, 5=0}, getHistory={0=0, 2=0, 3=0, 5=0}], 2=LiSnapshotResult[serventId=2, parentId=1, recordedAmount=-268, giveHistory={0=225, 1=169, 3=177, 6=211}, getHistory={0=14, 1=0, 3=0, 6=0}], 3=LiSnapshotResult[serventId=3, parentId=1, recordedAmount=677, giveHistory={1=0, 2=0, 4=0, 6=0}, getHistory={1=0, 2=177, 4=0, 6=0}], 4=LiSnapshotResult[serventId=4, parentId=4, recordedAmount=500, giveHistory={3=0, 5=0}, getHistory={3=0, 5=0}], 5=LiSnapshotResult[serventId=5, parentId=1, recordedAmount=-230, giveHistory={1=232, 4=236, 6=262}, getHistory={1=0, 4=0, 6=0}], 6=LiSnapshotResult[serventId=6, parentId=0, recordedAmount=301, giveHistory={0=201, 2=141, 3=188, 5=161}, getHistory={0=19, 2=211, 3=0, 5=262}]}
-20:25:46 - Recorded bitcake amount for 0 = 475
-20:25:46 - Recorded bitcake amount for 1 = 500
-20:25:46 - Recorded bitcake amount for 2 = -268
-20:25:46 - Recorded bitcake amount for 3 = 677
-20:25:46 - Recorded bitcake amount for 4 = 500
-20:25:46 - Recorded bitcake amount for 5 = -230
-20:25:46 - Recorded bitcake amount for 6 = 301
-20:25:46 - Unreceived bitcake amount: 17 from servent 0 to servent 1
-20:25:46 - Unreceived bitcake amount: 200 from servent 2 to servent 0
-20:25:46 - Unreceived bitcake amount: 169 from servent 2 to servent 1
-20:25:46 - Unreceived bitcake amount: 232 from servent 5 to servent 1
-20:25:46 - Unreceived bitcake amount: 236 from servent 5 to servent 4
-20:25:46 - Unreceived bitcake amount: 201 from servent 6 to servent 0
-20:25:46 - Unreceived bitcake amount: 141 from servent 6 to servent 2
-20:25:46 - Unreceived bitcake amount: 188 from servent 6 to servent 3
-20:25:46 - Unreceived bitcake amount: 161 from servent 6 to servent 5
-20:25:46 - System bitcake count: 3500
-20:25:46 - Got message [1|8||BLANK|4]
-20:25:56 - Stopping...
+11:04:04 - Sending my region: {4=LiSnapshotResult[serventId=4, parentId=4, recordedAmount=1000, giveHistory={3=0, 5=0}, getHistory={3=0, 5=0}], 5=LiSnapshotResult[serventId=5, parentId=4, recordedAmount=878, giveHistory={1=24, 4=43, 6=55}, getHistory={1=0, 4=0, 6=0}]}
+11:04:04 - Sending message [4|2||EXCHANGE|1]
+Sending: {4=LiSnapshotResult[serventId=4, parentId=4, recordedAmount=1000, giveHistory={3=0, 5=0}, getHistory={3=0, 5=0}], 5=LiSnapshotResult[serventId=5, parentId=4, recordedAmount=878, giveHistory={1=24, 4=43, 6=55}, getHistory={1=0, 4=0, 6=0}]}
+11:04:06 - Got message [1|5||EXCHANGE|4]
+11:04:06 - Got region data from 1:
+LiSnapshotResult[serventId=4, parentId=4, recordedAmount=1000, giveHistory={3=0, 5=0}, getHistory={3=0, 5=0}]
+LiSnapshotResult[serventId=5, parentId=4, recordedAmount=878, giveHistory={1=24, 4=43, 6=55}, getHistory={1=0, 4=0, 6=0}]
+11:04:06 - Adding: LiSnapshotResult[serventId=4, parentId=4, recordedAmount=1000, giveHistory={3=0, 5=0}, getHistory={3=0, 5=0}]
+11:04:06 - Adding: LiSnapshotResult[serventId=5, parentId=4, recordedAmount=878, giveHistory={1=24, 4=43, 6=55}, getHistory={1=0, 4=0, 6=0}]
+Sending new information: {4=LiSnapshotResult[serventId=4, parentId=4, recordedAmount=1000, giveHistory={3=0, 5=0}, getHistory={3=0, 5=0}], 5=LiSnapshotResult[serventId=5, parentId=4, recordedAmount=878, giveHistory={1=24, 4=43, 6=55}, getHistory={1=0, 4=0, 6=0}]}
+!changesMade.get() = false
+[] =? [1]
+receivedRegionResults = {4=LiSnapshotResult[serventId=4, parentId=4, recordedAmount=1000, giveHistory={3=0, 5=0}, getHistory={3=0, 5=0}], 5=LiSnapshotResult[serventId=5, parentId=4, recordedAmount=878, giveHistory={1=24, 4=43, 6=55}, getHistory={1=0, 4=0, 6=0}]}
+11:04:07 - Got message [1|4||EXCHANGE|4]
+11:04:07 - Got region data from 1:
+LiSnapshotResult[serventId=0, parentId=1, recordedAmount=867, giveHistory={1=53, 2=58, 6=66}, getHistory={1=0, 2=44, 6=0}]
+LiSnapshotResult[serventId=1, parentId=1, recordedAmount=1000, giveHistory={0=0, 2=0, 3=0, 5=0}, getHistory={0=0, 2=0, 3=0, 5=0}]
+LiSnapshotResult[serventId=2, parentId=1, recordedAmount=-56, giveHistory={0=315, 1=263, 3=234, 6=302}, getHistory={0=58, 1=0, 3=0, 6=0}]
+LiSnapshotResult[serventId=3, parentId=1, recordedAmount=1115, giveHistory={1=0, 2=0, 4=0, 6=0}, getHistory={1=0, 2=115, 4=0, 6=0}]
+LiSnapshotResult[serventId=4, parentId=4, recordedAmount=1000, giveHistory={3=0, 5=0}, getHistory={3=0, 5=0}]
+LiSnapshotResult[serventId=5, parentId=4, recordedAmount=878, giveHistory={1=24, 4=43, 6=55}, getHistory={1=0, 4=0, 6=0}]
+LiSnapshotResult[serventId=6, parentId=0, recordedAmount=1188, giveHistory={0=64, 2=41, 3=50, 5=80}, getHistory={0=66, 2=302, 3=0, 5=55}]
+11:04:07 - Adding: LiSnapshotResult[serventId=0, parentId=1, recordedAmount=867, giveHistory={1=53, 2=58, 6=66}, getHistory={1=0, 2=44, 6=0}]
+11:04:07 - Adding: LiSnapshotResult[serventId=1, parentId=1, recordedAmount=1000, giveHistory={0=0, 2=0, 3=0, 5=0}, getHistory={0=0, 2=0, 3=0, 5=0}]
+11:04:07 - Adding: LiSnapshotResult[serventId=2, parentId=1, recordedAmount=-56, giveHistory={0=315, 1=263, 3=234, 6=302}, getHistory={0=58, 1=0, 3=0, 6=0}]
+11:04:07 - Adding: LiSnapshotResult[serventId=3, parentId=1, recordedAmount=1115, giveHistory={1=0, 2=0, 4=0, 6=0}, getHistory={1=0, 2=115, 4=0, 6=0}]
+11:04:07 - Adding: LiSnapshotResult[serventId=6, parentId=0, recordedAmount=1188, giveHistory={0=64, 2=41, 3=50, 5=80}, getHistory={0=66, 2=302, 3=0, 5=55}]
+11:04:08 - Sending message [4|3||EXCHANGE|1]
+Sending: {4=LiSnapshotResult[serventId=4, parentId=4, recordedAmount=1000, giveHistory={3=0, 5=0}, getHistory={3=0, 5=0}], 5=LiSnapshotResult[serventId=5, parentId=4, recordedAmount=878, giveHistory={1=24, 4=43, 6=55}, getHistory={1=0, 4=0, 6=0}]}
+Sending new information: {0=LiSnapshotResult[serventId=0, parentId=1, recordedAmount=867, giveHistory={1=53, 2=58, 6=66}, getHistory={1=0, 2=44, 6=0}], 1=LiSnapshotResult[serventId=1, parentId=1, recordedAmount=1000, giveHistory={0=0, 2=0, 3=0, 5=0}, getHistory={0=0, 2=0, 3=0, 5=0}], 2=LiSnapshotResult[serventId=2, parentId=1, recordedAmount=-56, giveHistory={0=315, 1=263, 3=234, 6=302}, getHistory={0=58, 1=0, 3=0, 6=0}], 3=LiSnapshotResult[serventId=3, parentId=1, recordedAmount=1115, giveHistory={1=0, 2=0, 4=0, 6=0}, getHistory={1=0, 2=115, 4=0, 6=0}], 6=LiSnapshotResult[serventId=6, parentId=0, recordedAmount=1188, giveHistory={0=64, 2=41, 3=50, 5=80}, getHistory={0=66, 2=302, 3=0, 5=55}]}
+!changesMade.get() = false
+[] =? [1]
+receivedRegionResults = {0=LiSnapshotResult[serventId=0, parentId=1, recordedAmount=867, giveHistory={1=53, 2=58, 6=66}, getHistory={1=0, 2=44, 6=0}], 1=LiSnapshotResult[serventId=1, parentId=1, recordedAmount=1000, giveHistory={0=0, 2=0, 3=0, 5=0}, getHistory={0=0, 2=0, 3=0, 5=0}], 2=LiSnapshotResult[serventId=2, parentId=1, recordedAmount=-56, giveHistory={0=315, 1=263, 3=234, 6=302}, getHistory={0=58, 1=0, 3=0, 6=0}], 3=LiSnapshotResult[serventId=3, parentId=1, recordedAmount=1115, giveHistory={1=0, 2=0, 4=0, 6=0}, getHistory={1=0, 2=115, 4=0, 6=0}], 6=LiSnapshotResult[serventId=6, parentId=0, recordedAmount=1188, giveHistory={0=64, 2=41, 3=50, 5=80}, getHistory={0=66, 2=302, 3=0, 5=55}]}
+11:04:09 - Sending message [4|4||EXCHANGE|1]
+Sending: {0=LiSnapshotResult[serventId=0, parentId=1, recordedAmount=867, giveHistory={1=53, 2=58, 6=66}, getHistory={1=0, 2=44, 6=0}], 1=LiSnapshotResult[serventId=1, parentId=1, recordedAmount=1000, giveHistory={0=0, 2=0, 3=0, 5=0}, getHistory={0=0, 2=0, 3=0, 5=0}], 2=LiSnapshotResult[serventId=2, parentId=1, recordedAmount=-56, giveHistory={0=315, 1=263, 3=234, 6=302}, getHistory={0=58, 1=0, 3=0, 6=0}], 3=LiSnapshotResult[serventId=3, parentId=1, recordedAmount=1115, giveHistory={1=0, 2=0, 4=0, 6=0}, getHistory={1=0, 2=115, 4=0, 6=0}], 6=LiSnapshotResult[serventId=6, parentId=0, recordedAmount=1188, giveHistory={0=64, 2=41, 3=50, 5=80}, getHistory={0=66, 2=302, 3=0, 5=55}]}
+11:04:09 - Got message [1|6||BLANK|4]
+!changesMade.get() = true
+[1] =? [1]
+receivedRegionResults = {}
+11:04:11 - Got message [1|7||EXCHANGE|4]
+11:04:11 - Got region data from 1:
+LiSnapshotResult[serventId=0, parentId=1, recordedAmount=867, giveHistory={1=53, 2=58, 6=66}, getHistory={1=0, 2=44, 6=0}]
+LiSnapshotResult[serventId=1, parentId=1, recordedAmount=1000, giveHistory={0=0, 2=0, 3=0, 5=0}, getHistory={0=0, 2=0, 3=0, 5=0}]
+LiSnapshotResult[serventId=2, parentId=1, recordedAmount=-56, giveHistory={0=315, 1=263, 3=234, 6=302}, getHistory={0=58, 1=0, 3=0, 6=0}]
+LiSnapshotResult[serventId=3, parentId=1, recordedAmount=1115, giveHistory={1=0, 2=0, 4=0, 6=0}, getHistory={1=0, 2=115, 4=0, 6=0}]
+LiSnapshotResult[serventId=6, parentId=0, recordedAmount=1188, giveHistory={0=64, 2=41, 3=50, 5=80}, getHistory={0=66, 2=302, 3=0, 5=55}]
+11:04:11 - Sending message [4|6||BLANK|1]
+11:04:11 - Sending message [4|5||BLANK|1]
+11:04:11 - Final snapshot: {0=LiSnapshotResult[serventId=0, parentId=1, recordedAmount=867, giveHistory={1=53, 2=58, 6=66}, getHistory={1=0, 2=44, 6=0}], 1=LiSnapshotResult[serventId=1, parentId=1, recordedAmount=1000, giveHistory={0=0, 2=0, 3=0, 5=0}, getHistory={0=0, 2=0, 3=0, 5=0}], 2=LiSnapshotResult[serventId=2, parentId=1, recordedAmount=-56, giveHistory={0=315, 1=263, 3=234, 6=302}, getHistory={0=58, 1=0, 3=0, 6=0}], 3=LiSnapshotResult[serventId=3, parentId=1, recordedAmount=1115, giveHistory={1=0, 2=0, 4=0, 6=0}, getHistory={1=0, 2=115, 4=0, 6=0}], 4=LiSnapshotResult[serventId=4, parentId=4, recordedAmount=1000, giveHistory={3=0, 5=0}, getHistory={3=0, 5=0}], 5=LiSnapshotResult[serventId=5, parentId=4, recordedAmount=878, giveHistory={1=24, 4=43, 6=55}, getHistory={1=0, 4=0, 6=0}], 6=LiSnapshotResult[serventId=6, parentId=0, recordedAmount=1188, giveHistory={0=64, 2=41, 3=50, 5=80}, getHistory={0=66, 2=302, 3=0, 5=55}]}
+11:04:11 - Recorded bitcake amount for 0 = 867
+11:04:11 - Recorded bitcake amount for 1 = 1000
+11:04:11 - Recorded bitcake amount for 2 = -56
+11:04:11 - Recorded bitcake amount for 3 = 1115
+11:04:11 - Recorded bitcake amount for 4 = 1000
+11:04:11 - Recorded bitcake amount for 5 = 878
+11:04:11 - Recorded bitcake amount for 6 = 1188
+11:04:11 - Unreceived bitcake amount: 53 from servent 0 to servent 1
+11:04:11 - Unreceived bitcake amount: 271 from servent 2 to servent 0
+11:04:11 - Unreceived bitcake amount: 263 from servent 2 to servent 1
+11:04:11 - Unreceived bitcake amount: 119 from servent 2 to servent 3
+11:04:11 - Unreceived bitcake amount: 24 from servent 5 to servent 1
+11:04:11 - Unreceived bitcake amount: 43 from servent 5 to servent 4
+11:04:11 - Unreceived bitcake amount: 64 from servent 6 to servent 0
+11:04:11 - Unreceived bitcake amount: 41 from servent 6 to servent 2
+11:04:11 - Unreceived bitcake amount: 50 from servent 6 to servent 3
+11:04:11 - Unreceived bitcake amount: 80 from servent 6 to servent 5
+11:04:11 - System bitcake count: 7000
+11:04:12 - Got message [1|8||BLANK|4]
+11:04:12 - Got message [1|9||BLANK|4]
+11:04:20 - Stopping...

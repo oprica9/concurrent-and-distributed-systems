@@ -3,6 +3,8 @@ package servent.message.util;
 import app.ServentInfo;
 import app.configuration.AppConfig;
 import servent.message.Message;
+import servent.message.MessageType;
+import servent.message.snapshot.li.ExchangeMessage;
 import servent.message.snapshot.li.Tag;
 
 import java.io.IOException;
@@ -68,6 +70,11 @@ public class DelayedMessageSender implements Runnable {
                 oos.flush();
 
                 sendSocket.close();
+
+                if (messageToSend.getMessageType() == MessageType.EXCHANGE) {
+                    ExchangeMessage message = (ExchangeMessage) messageToSend;
+                    System.out.println("Sending: " + message.getCollectedRegionalValues());
+                }
 
                 messageToSend.sendEffect();
             }

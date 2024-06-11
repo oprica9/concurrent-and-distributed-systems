@@ -1,24 +1,21 @@
 package app.snapshot_collector;
 
 import app.bitcake_manager.BitcakeManager;
-import app.bitcake_manager.chandy_lamport.CLSnapshotResult;
-import app.bitcake_manager.chandy_lamport.ChandyLamportBitcakeManager;
-import app.bitcake_manager.lai_yang.LYSnapshotResult;
-import app.bitcake_manager.lai_yang.LaiYangBitcakeManager;
 import app.bitcake_manager.li.LiBitcakeManager;
 import app.bitcake_manager.li.LiSnapshotResult;
-import app.bitcake_manager.naive.NaiveBitcakeManager;
 import app.configuration.AppConfig;
 import app.configuration.SnapshotType;
 import app.util.Node;
 import servent.message.Message;
 import servent.message.snapshot.li.BlankMessage;
 import servent.message.snapshot.li.ExchangeMessage;
-import servent.message.snapshot.naive.NaiveAskAmountMessage;
 import servent.message.util.MessageUtil;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -33,9 +30,6 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
     private volatile boolean working = true;
     private final AtomicBoolean collecting = new AtomicBoolean(false);
 
-    private final Map<String, Integer> collectedNaiveValues = new ConcurrentHashMap<>();
-    private final Map<Integer, CLSnapshotResult> collectedCLValues = new ConcurrentHashMap<>();
-    private final Map<Integer, LYSnapshotResult> collectedLYValues = new ConcurrentHashMap<>();
     private final Map<Integer, LiSnapshotResult> collectedLiValues = new ConcurrentHashMap<>();
     private final AtomicBoolean completedRegion = new AtomicBoolean(false);
     private final Map<Integer, LiSnapshotResult> receivedRegionResults = new ConcurrentHashMap<>();
@@ -52,15 +46,6 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
         this.snapshotType = snapshotType;
 
         switch (snapshotType) {
-            case NAIVE:
-                bitcakeManager = new NaiveBitcakeManager();
-                break;
-            case CHANDY_LAMPORT:
-                bitcakeManager = new ChandyLamportBitcakeManager();
-                break;
-            case LAI_YANG:
-                bitcakeManager = new LaiYangBitcakeManager();
-                break;
             case LI:
                 bitcakeManager = new LiBitcakeManager();
                 break;
@@ -102,70 +87,13 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
              */
 
             // 1 send asks
-            switch (snapshotType) {
-                case NAIVE:
-                    Message askMessage = new NaiveAskAmountMessage(AppConfig.myServentInfo, null);
-
-                    for (Integer neighbor : AppConfig.myServentInfo.neighbors()) {
-                        askMessage = askMessage.changeReceiver(neighbor);
-
-                        MessageUtil.sendMessage(askMessage);
-                    }
-                    collectedNaiveValues.put("node" + AppConfig.myServentInfo.id(), bitcakeManager.getCurrentBitcakeAmount());
-                    break;
-
-
-                case CHANDY_LAMPORT:
-                    ((ChandyLamportBitcakeManager) bitcakeManager).markerEvent(AppConfig.myServentInfo.id());
-                    break;
-
-
-                case LAI_YANG:
-                    ((LaiYangBitcakeManager) bitcakeManager).markerEvent(AppConfig.myServentInfo.id(), this);
-                    break;
-
-                case LI:
-                    ((LiBitcakeManager) bitcakeManager).initSnapshot(this);
-                    break;
-
-                case NONE:
-                    //Shouldn't be able to come here. See constructor.
-                    break;
-            }
+            ((LiBitcakeManager) bitcakeManager).initSnapshot(this);
 
             //2 wait for responses or finish
             boolean waiting = true;
             while (waiting) {
-                switch (snapshotType) {
-                    case NAIVE:
-                        if (collectedNaiveValues.size() == AppConfig.getServentCount()) {
-                            waiting = false;
-                        }
-                        break;
-
-
-                    case CHANDY_LAMPORT:
-                        if (collectedCLValues.size() == AppConfig.getServentCount()) {
-                            waiting = false;
-                        }
-                        break;
-
-
-                    case LAI_YANG:
-                        if (collectedLYValues.size() == AppConfig.getServentCount()) {
-                            waiting = false;
-                        }
-                        break;
-
-                    case LI:
-                        if (completedRegion.get()) {
-                            waiting = false;
-                        }
-                        break;
-
-                    case NONE:
-                        //Shouldn't be able to come here. See constructor.
-                        break;
+                if (completedRegion.get()) {
+                    waiting = false;
                 }
 
                 try {
@@ -179,17 +107,16 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
                 }
             }
 
-            if (snapshotType == SnapshotType.LI) {
-                System.out.println("STARTING ROUNDS...");
 
-                System.out.println("Spanning tree for region: " + AppConfig.myServentInfo.id());
+            if (snapshotType == SnapshotType.LI) {
+                AppConfig.timestampedStandardPrint("Spanning tree for region: " + AppConfig.myServentInfo.id());
+                AppConfig.timestampedStandardPrint("Starting rounds with " + AppConfig.idBorderSet);
 
                 printSpanningTree(collectedLiValues);
 
-                System.out.println("Sending: " + collectedLiValues);
+                AppConfig.timestampedStandardPrint("Sending my region: " + collectedLiValues);
 
                 // Start rounds
-
                 for (Integer adjacentInitiator : AppConfig.idBorderSet) {
                     Message exchangeMessage = new ExchangeMessage(
                             AppConfig.myServentInfo, AppConfig.getInfoById(adjacentInitiator),
@@ -201,10 +128,6 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
                 // Start exchanging information
                 waiting = true;
                 while (waiting) {
-                    if (!changesMade.get() && receivedBlanks.containsAll(AppConfig.idBorderSet)) {
-                        waiting = false;
-                    }
-
                     // Start next round
                     if (gotExchangeMessage.containsAll(AppConfig.idBorderSet)) {
                         if (receivedRegionResults.isEmpty()) {
@@ -221,18 +144,41 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
                             // There were changes
                             changesMade.set(true);
 
+                            System.out.println("Sending new information: " + receivedRegionResults);
+
                             for (Integer adjacentInitiator : AppConfig.idBorderSet) {
                                 Message exchangeMessage = new ExchangeMessage(
                                         AppConfig.myServentInfo, AppConfig.getInfoById(adjacentInitiator),
-                                        receivedRegionResults
+                                        deepCopyReceivedRegionResults()
                                 );
                                 MessageUtil.sendMessage(exchangeMessage);
                             }
 
                             collectedLiValues.putAll(receivedRegionResults);
                         }
+
+                        System.out.println("!changesMade.get() = " + !changesMade.get());
+                        System.out.println(receivedBlanks + " =? " + AppConfig.idBorderSet);
+                        System.out.println("receivedRegionResults = " + receivedRegionResults);
+
+                        if (!changesMade.get()
+                                && receivedBlanks.containsAll(AppConfig.idBorderSet)
+                                && receivedRegionResults.isEmpty()) {
+
+                            for (Integer adjacentInitiator : AppConfig.idBorderSet) {
+                                Message blankMessage = new BlankMessage(
+                                        AppConfig.myServentInfo, AppConfig.getInfoById(adjacentInitiator)
+                                );
+                                MessageUtil.sendMessage(blankMessage);
+                            }
+
+                            waiting = false;
+                        }
+
+                        gotExchangeMessage.clear();
                         receivedRegionResults.clear();
                         receivedBlanks.clear();
+                        changesMade.set(true);
                     }
 
                     try {
@@ -245,116 +191,12 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
                         return;
                     }
                 }
-                System.out.println("Final snapshot: " + collectedLiValues);
+                AppConfig.timestampedStandardPrint("Final snapshot: " + collectedLiValues);
             }
 
             //print
-            int sum;
-            switch (snapshotType) {
-                case NAIVE:
-                    sum = 0;
-                    for (Entry<String, Integer> itemAmount : collectedNaiveValues.entrySet()) {
-                        sum += itemAmount.getValue();
-                        AppConfig.timestampedStandardPrint(
-                                "Info for " + itemAmount.getKey() + " = " + itemAmount.getValue() + " bitcake");
-                    }
+            printLi();
 
-                    AppConfig.timestampedStandardPrint("System bitcake count: " + sum);
-
-                    collectedNaiveValues.clear(); //reset for next invocation
-                    break;
-
-                case CHANDY_LAMPORT:
-                    sum = 0;
-                    for (Entry<Integer, CLSnapshotResult> nodeResult : collectedCLValues.entrySet()) {
-                        sum += nodeResult.getValue().recordedAmount();
-                        AppConfig.timestampedStandardPrint(
-                                "Recorded bitcake amount for " + nodeResult.getKey() + " = " + nodeResult.getValue().recordedAmount());
-                        if (nodeResult.getValue().allChannelMessages().isEmpty()) {
-                            AppConfig.timestampedStandardPrint("No channel bitcake for " + nodeResult.getKey());
-                        } else {
-                            for (Entry<String, List<Integer>> channelMessages : nodeResult.getValue().allChannelMessages().entrySet()) {
-                                int channelSum = 0;
-                                for (Integer val : channelMessages.getValue()) {
-                                    channelSum += val;
-                                }
-                                AppConfig.timestampedStandardPrint("Channel bitcake for " + channelMessages.getKey() +
-                                        ": " + channelMessages.getValue() + " with channel bitcake sum: " + channelSum);
-
-                                sum += channelSum;
-                            }
-                        }
-                    }
-
-                    AppConfig.timestampedStandardPrint("System bitcake count: " + sum);
-
-                    collectedCLValues.clear();
-                    break;
-
-                case LAI_YANG:
-                    sum = 0;
-                    for (Entry<Integer, LYSnapshotResult> nodeResult : collectedLYValues.entrySet()) {
-                        sum += nodeResult.getValue().recordedAmount();
-                        AppConfig.timestampedStandardPrint(
-                                "Recorded bitcake amount for " + nodeResult.getKey() + " = " + nodeResult.getValue().recordedAmount());
-                    }
-                    for (int i = 0; i < AppConfig.getServentCount(); i++) {
-                        for (int j = 0; j < AppConfig.getServentCount(); j++) {
-                            if (i != j) {
-                                if (AppConfig.getInfoById(i).neighbors().contains(j) &&
-                                        AppConfig.getInfoById(j).neighbors().contains(i)) {
-                                    int ijAmount = collectedLYValues.get(i).giveHistory().get(j);
-                                    int jiAmount = collectedLYValues.get(j).getHistory().get(i);
-
-                                    if (ijAmount != jiAmount) {
-                                        String outputString = String.format(
-                                                "Unreceived bitcake amount: %d from servent %d to servent %d",
-                                                ijAmount - jiAmount, i, j);
-                                        AppConfig.timestampedStandardPrint(outputString);
-                                        sum += ijAmount - jiAmount;
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    AppConfig.timestampedStandardPrint("System bitcake count: " + sum);
-
-                    collectedLYValues.clear();
-                    break;
-
-                case LI:
-                    sum = 0;
-                    for (Entry<Integer, LiSnapshotResult> nodeResult : collectedLiValues.entrySet()) {
-                        sum += nodeResult.getValue().recordedAmount();
-                        AppConfig.timestampedStandardPrint(
-                                "Recorded bitcake amount for " + nodeResult.getKey() + " = " + nodeResult.getValue().recordedAmount());
-                    }
-                    for (int i = 0; i < AppConfig.getServentCount(); i++) {
-                        for (int j = 0; j < AppConfig.getServentCount(); j++) {
-                            if (i != j) {
-                                if (AppConfig.getInfoById(i).neighbors().contains(j) &&
-                                        AppConfig.getInfoById(j).neighbors().contains(i)) {
-                                    int ijAmount = collectedLiValues.get(i).giveHistory().get(j);
-                                    int jiAmount = collectedLiValues.get(j).getHistory().get(i);
-
-                                    if (ijAmount != jiAmount) {
-                                        String outputString = String.format(
-                                                "Unreceived bitcake amount: %d from servent %d to servent %d",
-                                                ijAmount - jiAmount, i, j);
-                                        AppConfig.timestampedStandardPrint(outputString);
-                                        sum += ijAmount - jiAmount;
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    AppConfig.timestampedStandardPrint("System bitcake count: " + sum);
-
-                    collectedLiValues.clear(); //reset for next invocation
-                    break;
-            }
             collecting.set(false);
         }
     }
@@ -367,11 +209,17 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
 
     @Override
     public void addReceivedRegionResults(int regionMasterId, Map<Integer, LiSnapshotResult> regionResults) {
+
+        AppConfig.timestampedStandardPrint("Got region data from " + regionMasterId + ":");
+        for (Map.Entry<Integer, LiSnapshotResult> entry : regionResults.entrySet()) {
+            System.out.println(entry.getValue());
+        }
+
         gotExchangeMessage.add(regionMasterId);
 
         for (Map.Entry<Integer, LiSnapshotResult> entry : regionResults.entrySet()) {
             if (!receivedResultsFrom.contains(entry.getKey())) {
-                System.out.println("Adding: " + entry.getValue());
+                AppConfig.timestampedStandardPrint("Adding: " + entry.getValue());
                 receivedResultsFrom.add(entry.getKey());
                 receivedRegionResults.put(entry.getKey(), entry.getValue());
             }
@@ -380,22 +228,8 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
 
     @Override
     public void addReceivedBlank(int id) {
+        gotExchangeMessage.add(id);
         receivedBlanks.add(id);
-    }
-
-    @Override
-    public void addNaiveSnapshotInfo(String snapshotSubject, int amount) {
-        collectedNaiveValues.put(snapshotSubject, amount);
-    }
-
-    @Override
-    public void addCLSnapshotInfo(int id, CLSnapshotResult clSnapshotResult) {
-        collectedCLValues.put(id, clSnapshotResult);
-    }
-
-    @Override
-    public void addLYSnapshotInfo(int id, LYSnapshotResult lySnapshotResult) {
-        collectedLYValues.put(id, lySnapshotResult);
     }
 
     @Override
@@ -425,6 +259,40 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
     @Override
     public void stop() {
         working = false;
+    }
+
+    private void printLi() {
+        int sum;
+
+        sum = 0;
+        for (Entry<Integer, LiSnapshotResult> nodeResult : collectedLiValues.entrySet()) {
+            sum += nodeResult.getValue().recordedAmount();
+            AppConfig.timestampedStandardPrint(
+                    "Recorded bitcake amount for " + nodeResult.getKey() + " = " + nodeResult.getValue().recordedAmount());
+        }
+        for (int i = 0; i < AppConfig.getServentCount(); i++) {
+            for (int j = 0; j < AppConfig.getServentCount(); j++) {
+                if (i != j) {
+                    if (AppConfig.getInfoById(i).neighbors().contains(j) &&
+                            AppConfig.getInfoById(j).neighbors().contains(i)) {
+                        int ijAmount = collectedLiValues.get(i).giveHistory().get(j);
+                        int jiAmount = collectedLiValues.get(j).getHistory().get(i);
+
+                        if (ijAmount != jiAmount) {
+                            String outputString = String.format(
+                                    "Unreceived bitcake amount: %d from servent %d to servent %d",
+                                    ijAmount - jiAmount, i, j);
+                            AppConfig.timestampedStandardPrint(outputString);
+                            sum += ijAmount - jiAmount;
+                        }
+                    }
+                }
+            }
+        }
+
+        AppConfig.timestampedStandardPrint("System bitcake count: " + sum);
+
+        collectedLiValues.clear(); //reset for next invocation
     }
 
     private void printSpanningTree(Map<Integer, LiSnapshotResult> liSnapshotResults) {
@@ -461,6 +329,22 @@ public class SnapshotCollectorWorker implements SnapshotCollector {
             }
             return root;
         }
+    }
+
+    private Map<Integer, LiSnapshotResult> deepCopyReceivedRegionResults() {
+        Map<Integer, LiSnapshotResult> copiedMap = new ConcurrentHashMap<>();
+        for (Map.Entry<Integer, LiSnapshotResult> entry : receivedRegionResults.entrySet()) {
+            LiSnapshotResult originalResult = entry.getValue();
+            LiSnapshotResult copiedResult = new LiSnapshotResult(
+                    originalResult.serventId(),
+                    originalResult.parentId(),
+                    originalResult.recordedAmount(),
+                    new ConcurrentHashMap<>(originalResult.giveHistory()),
+                    new ConcurrentHashMap<>(originalResult.getHistory())
+            );
+            copiedMap.put(entry.getKey(), copiedResult);
+        }
+        return copiedMap;
     }
 
 }

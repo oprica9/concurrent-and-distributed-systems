@@ -17,7 +17,7 @@ import java.util.function.BiFunction;
 
 public class LiBitcakeManager implements BitcakeManager {
 
-    private final AtomicInteger currentAmount = new AtomicInteger(500);
+    private final AtomicInteger currentAmount = new AtomicInteger(1000);
     /**
      * This value is protected by AppConfig.colorLock.
      * Access it only if you have the blessing.
@@ -74,8 +74,8 @@ public class LiBitcakeManager implements BitcakeManager {
 
                 recordMySnapshot();
 
-                System.out.println("My parent: " + AppConfig.parent.get() + ", my master: " + AppConfig.master.get());
-                System.out.println("PROPAGATING AFTER INITIATION");
+                AppConfig.timestampedStandardPrint("My parent: " + AppConfig.parent.get() + ", my master: " + AppConfig.master.get());
+
                 propagateMarker();
             }
 
@@ -95,7 +95,7 @@ public class LiBitcakeManager implements BitcakeManager {
             // all its child processes and has recorded the states of all incoming channels, it forwards
             // its locally recorded state and the locally recorded states of all its descendent
             // processes to its parent.
-            System.out.println(receivedMarkers + " and should receive from: " + AppConfig.myServentInfo.neighbors());
+            AppConfig.timestampedStandardPrint(receivedMarkers + " and should receive from: " + AppConfig.myServentInfo.neighbors());
             if (receivedAllMarkers()) {
                 Map<Integer, LiSnapshotResult> childrenResults = snapshotCollector.getLiSnapshotResults();
 
@@ -113,7 +113,6 @@ public class LiBitcakeManager implements BitcakeManager {
     }
 
     public void initSnapshot(SnapshotCollector snapshotCollector) {
-        System.out.println("GOT HERE?");
         synchronized (AppConfig.colorLock) {
             int initId = AppConfig.myServentInfo.id();
             int currMKNO = AppConfig.mkno.incrementAndGet();
@@ -127,15 +126,11 @@ public class LiBitcakeManager implements BitcakeManager {
 
             snapshotCollector.addLiSnapshotInfo(AppConfig.myServentInfo.id(), mySnapshotResult);
 
-            System.out.println("PROPAGATING DURING INITIATION");
             propagateMarker();
         }
     }
 
     private void propagateMarker() {
-        if (AppConfig.myServentInfo.id() == 4) {
-            System.out.println("WHY 5");
-        }
         synchronized (AppConfig.colorLock) {
             for (Integer neighbor : AppConfig.myServentInfo.neighbors()) {
                 if (neighbor != AppConfig.parent.get()) {
