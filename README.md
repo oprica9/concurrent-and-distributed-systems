@@ -7,7 +7,7 @@ This repository contains three projects developed during my Concurrent and Distr
 | Project Name           | Description                                                                                                         | Link                                                                                                                              |
 | -----------------------| -------------------------------------------------------------------------------------------------------------       | ----------------------------------------------------------------------------------------------------------------------------------|
 | **Matrix Solver**      | A concurrent system for matrix multiplication.                                                                      | [Link to Project 1](https://github.com/oprica9/concurrent-and-distributed-systems/tree/main/kids_d1_ognjen_prica_rn10620)         |
-| **Global snapshot**          | A distributed system supporting global snapshots of the system's state.                                       | [Link to Project 2](https://github.com/oprica9/concurrent-and-distributed-systems/tree/main/kids_d2_ognjen_prica_rn10620)         |
+| **Distributed Global Snapshots**          | A distributed system supporting global snapshots of the system's state.                                       | [Link to Project 2](https://github.com/oprica9/concurrent-and-distributed-systems/tree/main/kids_d2_ognjen_prica_rn10620)         |
 | **Rafbook**            | A demonstration of a fault-tolerant distributed system with a virtual file system and friendship management.        | [Link to Project 3](https://github.com/oprica9/concurrent-and-distributed-systems/tree/main/kids_pr_ognjen_prica_rn10620)         |
 
 ## Project Details
@@ -32,7 +32,7 @@ The Matrix Solver is a concurrent system designed to multiply matrices. It reads
 *   Thread pools
 *   Concurrent data structures
 
-### Project 2: Distributed Snapshots
+### Project 2: Distributed Global Snapshots
 
 **Description:**
 
